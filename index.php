@@ -57,7 +57,7 @@
 							<li class="active"><a href="index.php">Home</a></li>
 							<li><a href="agent.php">Agent</a></li>
 							<li><a href="contact.php">Contact</a></li>
-							
+							<li><a href="login.php">login</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -81,7 +81,7 @@
 												<span>3 Bedrooms</span>
 												<span>2 Bathrooms</span>
 											</p>
-											<p><a class="btn btn-primary btn-lg" href="./images/gwanted.png">Learn More</a></p>
+											<p><a class="btn btn-primary btn-lg" href="https://www.zillow.com/homedetails/614-Boulder-Dr-Delaware-OH-43015/33743968_zpid/">Learn More</a></p>
 				   					</div>
 				   				</div>
 				   			</div>
