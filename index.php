@@ -74,11 +74,11 @@
 				   					<div class="desc">
 				   						<span class="status">Sale</span>
 				   						<h1>614 Boulder Dr, Delaware, OH 43015</h1>
-											<h2 class="price">$1,950,000</h2>
+											<h2 class="price">$311,700</h2>
 											<p class="details">
-												<span>6, 510 Sqft</span>
-												<span>4 Bedrooms</span>
-												<span>5 Bathrooms</span>
+												<span>1,274 Sqft</span>
+												<span>3 Bedrooms</span>
+												<span>2 Bathrooms</span>
 											</p>
 											<p><a class="btn btn-primary btn-lg" href="#">Learn More</a></p>
 				   					</div>
