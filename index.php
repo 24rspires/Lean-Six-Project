@@ -39,12 +39,7 @@
 	<link rel="stylesheet" href="css/style.css">
 
 
-	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
 
 	</head>
 	<body>
@@ -68,8 +63,6 @@
 			</div>
 		</header>
 
-		<!-- end:header-top -->
-
 		<aside id="fh5co-hero" class="js-fullheight">
 			<div class="flexslider js-fullheight">
 				<ul class="slides">
@@ -80,7 +73,7 @@
 				   				<div class="slider-text-inner">
 				   					<div class="desc">
 				   						<span class="status">Sale</span>
-				   						<h1>782 W Orange Rd, Delaware, OH 43015</h1>
+				   						<h1>614 Boulder Dr, Delaware, OH 43015</h1>
 											<h2 class="price">$1,950,000</h2>
 											<p class="details">
 												<span>6, 510 Sqft</span>
