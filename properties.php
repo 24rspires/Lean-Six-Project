@@ -86,7 +86,7 @@
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li><a href="index.php">Home</a></li>
 							<li class="active">
-								<a href="properties.html" class="fh5co-sub-ddown">Properties</a>
+								<a href="properties.php" class="fh5co-sub-ddown">Properties</a>
 								<ul class="fh5co-sub-menu">
 									<li><a href="#">Family</a></li>
 									<li><a href="#">CSS3 &amp; HTML5</a></li>
@@ -95,9 +95,9 @@
 									<li><a href="#">Django &amp; Python</a></li>
 								</ul>
 							</li>
-							<li><a href="agent.html">Agent</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="agent.php">Agent</a></li>
+							<li><a href="blog.php">Blog</a></li>
+							<li><a href="contact.php">Contact</a></li>
 						</ul>
 					</nav>
 				</div>
