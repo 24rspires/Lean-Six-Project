@@ -80,7 +80,7 @@
 												<span>3 Bedrooms</span>
 												<span>2 Bathrooms</span>
 											</p>
-											<p><a class="btn btn-primary btn-lg" href="#">Learn More</a></p>
+											<p><a class="btn btn-primary btn-lg" href="https://www.zillow.com/homedetails/614-Boulder-Dr-Delaware-OH-43015/33743968_zpid/">Learn More</a></p>
 				   					</div>
 				   				</div>
 				   			</div>
