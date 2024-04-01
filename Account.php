@@ -38,12 +38,12 @@ class Account {
         return null;
     }
 
-    private static function generateGUID()
+    private static function generateGUID() : string
     {
         return md5(uniqid('', true));
     }
 
-    public function save()
+    public function save(): void
     {
         // $id = Account::generateGUID();
         // $sessionMan = UserSessionManager::getInstance();
@@ -52,7 +52,7 @@ class Account {
         $_SESSION['user_account'] = $this;
     }
 
-    public function load() : NULL
+    public function load() : Account|null
     {
         $account = $_SESSION['user_account'];
         if (isset($account))
@@ -61,11 +61,11 @@ class Account {
         }
         else
         {
-            return NULL;
+            return null;
         }
     }
 
-    public function unload()
+    public function unload() : void
     {
         unsset($_SESSION['user_account']);
     }
