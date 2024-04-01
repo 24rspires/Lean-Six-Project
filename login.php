@@ -8,6 +8,17 @@
         <title>Login</title>
     </head>
     <body>
-
+        <form method="post">
+            <label id="username">Username</label>
+            <br>
+            <input id="username" type="text" placeholder="Username">
+            <br>
+            <label id="password">Password</label>
+            <br>
+            <input id="Password" type="text" placeholder="Password">
+            <!-- /\ change type to password -->
+            <br>
+            <input type="submit" value='sumbit'>
+        </form>
     </body>
 </html>

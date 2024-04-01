@@ -13,7 +13,6 @@ class Account {
     {
         // more riley code
     }
-    
 }
 
 ?>
