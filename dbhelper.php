@@ -3,7 +3,7 @@
 class dbhelper extends mysqli {
     static dbhelper $instance;
 
-    public function getInstance(): dbhelper {
+    public static function getInstance(): dbhelper {
         if (dbhelper::$instance === null) {
             dbhelper::$instance = new dbhelper();
         }
