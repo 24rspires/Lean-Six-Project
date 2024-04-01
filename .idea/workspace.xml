@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2fc80146-fdb4-4670-86b8-08ce3e015a3a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Account.php" beforeDir="false" afterPath="$PROJECT_DIR$/Account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbhelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/dbhelper.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
