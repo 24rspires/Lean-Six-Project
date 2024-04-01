@@ -73,6 +73,7 @@ class Account {
         $em = $this->email;
         $phone = $this->phone;
         $addr = $this->address;
+        
         dbhelper::getInstance()->query("INSERT INTO accounts (username, password, email, phone, address) VALUES ($un, $pass, $em, $phone, $addr)");
     }
 

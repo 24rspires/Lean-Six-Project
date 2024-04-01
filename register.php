@@ -16,35 +16,61 @@
         {
             $username = FormHelper::checkField("username");
             $password = FormHelper::checkField("password");
-            if ($username && $password)
+            $email = FormHelper::checkField("email");
+            $phone = FormHelper::checkField("phone");
+            $address = FormHelper::checkField("address");
+            if (
+                $username &&
+                $password &&
+                $email &&
+                $phone &&
+                $address
+            )
             {
-                $user = Account::tryLogin($username, $password);
-                
-                if ($user !== NULL)
-                {
-                    $user->save();
-                    print "saved";
-                }
-                else
-                {
-                    echo "invalid login";
-                }
+                $account = new Account(
+                    $username,
+                    $password,
+                    $email,
+                    $phone,
+                    $address
+                )
             }
             else
             {
-                echo "invalid";
+                echo "invalid register";
             }
         }
         ?>
         <form method="post">
+
+            <!-- front end add validation -->
             <label id="username">Username</label>
             <br>
             <input id="username" type="text" placeholder="Username" name="username">
             <br>
+
+            <!-- front end add validation minimum 8 characters, 2 numbers, 1 special char -->
             <label id="password">Password</label>
             <br>
             <input id="Password" type="password" placeholder="Password" name="password">
             <br>
+
+            <!-- front end add validation -->
+            <label id="email">Email</label>
+            <br>
+            <input id="email" type="text" placeholder="Email" name="email">
+            <br>
+
+            <label id="phone">Phone</label>
+            <br>
+            <input id="phone" type="text" placeholder="Phone" name="phone">
+            <br>
+
+            <label id="address">Address</label>
+            <br>
+            <input id="address" type="address" placeholder="Address" name="address">
+            <br>
+
             <input type="submit" value='sumbit'>
         </form>
     </body>
