@@ -22,7 +22,7 @@
                 
                 if ($user !== NULL)
                 {
-                    $user->saveSession();
+                    $user->save();
                     print "saved";
                 }
                 else

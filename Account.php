@@ -1,6 +1,8 @@
 <?PHP
 include_once "dbhelper.php";
 
+session_start();
+
 class Account {
     public int $id;
     public string $username;
@@ -8,7 +10,7 @@ class Account {
     public string $email;
     public string $phone;
     public string $address;
-
+    
     public function __construct(int $id = null, string $username = null, string $password = null, string $email = null, string $phone = null, string $address = null) {
         $this->id = $id;
         $this->username = $username;
