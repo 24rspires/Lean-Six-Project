@@ -1,10 +1,10 @@
 <?php
 
 class dbhelper extends mysqli {
-    static dbhelper $instance;
+    static dbhelper|NULL $instance = null;
 
     public static function getInstance(): dbhelper {
-        if (dbhelper::$instance === null) {
+        if (dbhelper::$instance === NULL) {
             dbhelper::$instance = new dbhelper();
         }
 
