@@ -4,20 +4,30 @@ include_once "dbhelper.php";
 session_start();
 
 class Account {
-    public int $id;
-    public string $username;
-    public string $password;
-    public string $email;
-    public string $phone;
-    public string $address;
+    public int|NULL $id;
+    public string|NULL $username;
+    public string|NULL $password;
+    public string|NULL $email;
+    public string|NULL $phone;
+    public string|NULL $address;
+    public string|NULL $create_date;
     
-    public function __construct(int $id = null, string $username = null, string $password = null, string $email = null, string $phone = null, string $address = null) {
+    public function __construct(int $id = null, string $username = null, string $password = null, string $email = null, string $phone = null, string $address = null, string $create_date = null) {
         $this->id = $id;
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
         $this->phone = $phone;
         $this->address = $address;
+        $this->create_date = $create_date;
+    }
+
+    public static function getFromId(int $id)
+    {
+        // TODO work
+        // $result = dbhelper::getInstance()->query("SELECT * FROM accounts WHERE username=\"{$username}\" and password=\"{$password}\"");
+        
+        // if ($result !== false) $result = $result->fetch_assoc();
     }
 
     public static function tryLogin(string $username, string $password) : Account|null {
@@ -33,7 +43,8 @@ class Account {
                 $result["password"],
                 $result["email"],
                 $result["phone"],
-                $result["address"]
+                $result["address"],
+                $result["create_date"]
             );
         }
 
@@ -73,7 +84,9 @@ class Account {
         $em = $this->email;
         $phone = $this->phone;
         $addr = $this->address;
-        dbhelper::getInstance()->query("INSERT INTO accounts (username, password, email, phone, address, create_date) VALUES ($un, $pass, $em, $phone, $addr, NOW())");
+        $sql = "INSERT INTO accounts (username, password, email, phone, address, create_date) VALUES ('$un', '$pass', '$em', '$phone', '$addr', NOW())";
+        print($sql);
+        dbhelper::getInstance()->query($sql);
     }
 
     public function unloadSession() : void

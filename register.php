@@ -28,12 +28,14 @@
             )
             {
                 $account = new Account(
-                    $username,
-                    $password,
-                    $email,
-                    $phone,
-                    $address
-                )
+                    username: $username,
+                    password: $password,
+                    email: $email,
+                    phone: $phone,
+                    address: $address,
+                );
+                $account->insertIntoDatabase();
+                echo "account created";
             }
             else
             {
@@ -61,6 +63,7 @@
             <input id="email" type="text" placeholder="Email" name="email">
             <br>
 
+            <!-- front end add validation -->
             <label id="phone">Phone</label>
             <br>
             <input id="phone" type="text" placeholder="Phone" name="phone">
