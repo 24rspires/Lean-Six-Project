@@ -1,7 +1,7 @@
 <?php
 
 class dbhelper extends mysqli {
-    static dbhelper|NULL $instance = null;
+    private static dbhelper|NULL $instance = null;
 
     public static function getInstance(): dbhelper {
         if (dbhelper::$instance === NULL) {

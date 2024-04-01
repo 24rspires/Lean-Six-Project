@@ -43,7 +43,7 @@ class Account {
         return md5(uniqid('', true));
     }
 
-    public function save(): void
+    public function saveSession(): void
     {
         // $id = Account::generateGUID();
         // $sessionMan = UserSessionManager::getInstance();
@@ -52,7 +52,7 @@ class Account {
         $_SESSION['user_account'] = $this;
     }
 
-    public function load() : Account|null
+    public function loadSession() : Account|null
     {
         $account = $_SESSION['user_account'];
         if (isset($account))
@@ -65,10 +65,17 @@ class Account {
         }
     }
 
-    public function unload() : void
+    public function insertIntoDatabase() : void {
+        $un = $this->username;
+        $pass = $this->password;
+        $em = $this->email;
+        $phone = $this->phone;
+        $addr = $this->address;
+        dbhelper::getInstance()->query("INSERT INTO accounts (username, password, email, phone, address) VALUES ($un, $pass, $em, $phone, $addr)");
+    }
+
+    public function unloadSession() : void
     {
         unsset($_SESSION['user_account']);
     }
 }
-
-?>
