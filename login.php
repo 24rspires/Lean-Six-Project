@@ -43,8 +43,7 @@
             <br>
             <label id="password">Password</label>
             <br>
-            <input id="Password" type="text" placeholder="Password" name="password">
-            <!-- /\ change type to password -->
+            <input id="Password" type="password" placeholder="Password" name="password">
             <br>
             <input type="submit" value='sumbit'>
         </form>
