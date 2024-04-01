@@ -22,8 +22,20 @@ class Account {
         $result = dbhelper::getInstance()->query("SELECT * FROM accounts WHERE username=\"{$username}\" and password=\"{$password}\"");
         
         if ($result !== false) $result = $result->fetch_assoc();
-        
-        return $result !== false || $result !== null ? new Account($result["account_id"], $result["username"], $result["password"], $result["email"], $result["phone"], $result["address"]) : null;
+
+        if ($result !== false && $result !== null)
+        {
+            return new Account(
+                $result["account_id"],
+                $result["username"],
+                $result["password"],
+                $result["email"],
+                $result["phone"],
+                $result["address"]
+            );
+        }
+
+        return null;
     }
 
     private static function generateGUID()
