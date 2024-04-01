@@ -50,8 +50,8 @@
             <br>
             <input id="username" type="text" placeholder="Username" name="username">
             <br>
-
-            <!-- front end add validation minimum 8 characters, 2 numbers, 1 special char -->
+            
+            <!-- front end add validation minimum 8 characters, 2 numbers, 1 special char max 100 -->
             <label id="password">Password</label>
             <br>
             <input id="Password" type="password" placeholder="Password" name="password">

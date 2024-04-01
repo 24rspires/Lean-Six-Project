@@ -25,9 +25,22 @@ class Account {
     public static function getFromId(int $id)
     {
         // TODO work
-        // $result = dbhelper::getInstance()->query("SELECT * FROM accounts WHERE username=\"{$username}\" and password=\"{$password}\"");
+        $result = dbhelper::getInstance()->query("SELECT * FROM accounts WHERE account_id=$id");
         
-        // if ($result !== false) $result = $result->fetch_assoc();
+        if ($result !== false) $result = $result->fetch_assoc();
+
+        if ($result !== false && $result !== null)
+        {
+            return new Account(
+                $result["account_id"],
+                $result["username"],
+                $result["password"],
+                $result["email"],
+                $result["phone"],
+                $result["address"],
+                $result["create_date"]
+            );
+        }
     }
 
     public static function tryLogin(string $username, string $password) : Account|null {
@@ -85,7 +98,7 @@ class Account {
         $phone = $this->phone;
         $addr = $this->address;
         $sql = "INSERT INTO accounts (username, password, email, phone, address, create_date) VALUES ('$un', '$pass', '$em', '$phone', '$addr', NOW())";
-        print($sql);
+        
         dbhelper::getInstance()->query($sql);
     }
 
