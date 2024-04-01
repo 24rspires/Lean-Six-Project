@@ -73,8 +73,7 @@ class Account {
         $em = $this->email;
         $phone = $this->phone;
         $addr = $this->address;
-        
-        dbhelper::getInstance()->query("INSERT INTO accounts (username, password, email, phone, address) VALUES ($un, $pass, $em, $phone, $addr)");
+        dbhelper::getInstance()->query("INSERT INTO accounts (username, password, email, phone, address, create_date) VALUES ($un, $pass, $em, $phone, $addr, NOW())");
     }
 
     public function unloadSession() : void
