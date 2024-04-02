@@ -104,6 +104,6 @@ class Account {
 
     public function unloadSession() : void
     {
-        unsset($_SESSION['user_account']);
+        unset($_SESSION['user_account']);
     }
 }
