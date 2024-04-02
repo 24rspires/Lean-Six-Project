@@ -8,6 +8,6 @@
         <title>Homepage</title>
     </head>
     <body>
-
+        <a href="login.php">Login</a><br/>
     </body>
 </html>
