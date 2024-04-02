@@ -40,7 +40,7 @@ class Properties
         $bed = $this->beds;
         $bath = $this->bath;
 
-        $sql = "INSERT INTO accounts (owner_id, address, city, state_id, zipcode, price, square_feet, bedrooms, bathrooms, create_date) VALUES ($ownId, '$addr', '$cty', $stId, '$zip', $price, $sqFt, $bed, $bath, NOW())";
+        $sql = "INSERT INTO properties (owner_id, address, city, state_id, zipcode, price, square_feet, bedrooms, bathrooms, create_date) VALUES ($ownId, '$addr', '$cty', $stId, '$zip', $price, $sqFt, $bed, $bath, NOW())";
 
         dbhelper::getInstance()->query($sql);
     }
