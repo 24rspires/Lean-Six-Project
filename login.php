@@ -28,12 +28,12 @@
                 }
                 else
                 {
-                    echo "invalid login";
+                    print "invalid login";
                 }
             }
             else
             {
-                echo "invalid";
+                print "invalid";
             }
         }
         ?>
@@ -49,7 +49,7 @@
                             <label for="password">Password</label>
                             <input id="password" type="password" class="form-control" placeholder="Password" name="password">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Sumbit</button>
                     </form>
                 </div>
             </div>
