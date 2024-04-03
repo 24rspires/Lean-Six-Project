@@ -18,6 +18,20 @@
         {
             $currentUser = unserialize($_SESSION['user_account']);
             print "Current user: $currentUser->username<br>";
+            
+            echo '
+            
+
+            <script>
+                function logout() {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.open("GET", "logout.php", true);
+                    xhttp.send();
+                }
+            </script>
+
+            <button onclick="logout()">Logout</button>
+            ';
         }
         else
         {
