@@ -1,5 +1,7 @@
 <?PHP
 sesion_start();
+
+// delete this class
 class LocalUser {
     //static UserSessionManager $instance;
 
