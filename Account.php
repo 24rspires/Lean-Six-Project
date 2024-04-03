@@ -1,7 +1,8 @@
 <?PHP
 include_once "dbhelper.php";
+include_once "General.php";
 
-session_start();
+startSessionIfNotStarted();
 
 class Account {
     public int|NULL $id;
@@ -75,7 +76,7 @@ class Account {
         // $sessionMan = UserSessionManager::getInstance();
         // setcookie($id, $this);
         // $sessionMan->set($id, $this)
-        $_SESSION['user_account'] = $this;
+        $_SESSION['user_account'] = serialize($this);
     }
 
     public function loadSession() : Account|null

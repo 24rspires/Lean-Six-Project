@@ -8,6 +8,23 @@
         <title>Homepage</title>
     </head>
     <body>
+        <?PHP
+        include_once "General.php";
+        include_once "Account.php";
+
+        startSessionIfNotStarted();
+
+        if (isset($_SESSION['user_account']))
+        {
+            $currentUser = unserialize($_SESSION['user_account']);
+            print "Current user: $currentUser->username<br>";
+        }
+        else
+        {
+            print "No user logged in<br>";
+        }
+        
+        ?>
         <a href="login.php">Login</a><br/>
     </body>
 </html>

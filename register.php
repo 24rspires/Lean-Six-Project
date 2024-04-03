@@ -27,19 +27,45 @@
                 $address
             )
             {
-                $account = new Account(
-                    username: $username,
-                    password: $password,
-                    email: $email,
-                    phone: $phone,
-                    address: $address,
-                );
-                $account->insertIntoDatabase();
-                echo "account created";
+                $validPhone = FormHelper::validPhone($phone);
+                $validEmail = FormHelper::validEmail($email);
+                $validPassword = FormHelper::validPassword($password);
+                if (
+                    $validPhone &&
+                    $validEmail &&
+                    $validPassword
+                    )
+                {
+                    $account = new Account(
+                        username: $username,
+                        password: $password,
+                        email: $email,
+                        phone: $phone,
+                        address: $address,
+                    );
+                    $account->insertIntoDatabase();
+                    print "account created";
+                }
+                else
+                {
+                    if (!$validPhone)
+                    {
+                        print "invalid phone<br>";
+                    }
+                    if (!$validPassword)
+                    {
+                        print "invalid password<br>";
+                    }
+                    if (!$validEmail)
+                    {
+                        print "invalid email<br>";
+                    }
+                }
+                
             }
             else
             {
-                echo "invalid register";
+                print "invalid register";
             }
         }
         ?>
