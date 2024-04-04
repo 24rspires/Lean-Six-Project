@@ -24,7 +24,7 @@
                 if ($user !== NULL)
                 {
                     $user->saveSession();
-                    print "saved";
+                    header('Location: index.php');
                 }
                 else
                 {
