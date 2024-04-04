@@ -49,7 +49,7 @@
                             <label for="password">Password</label>
                             <input id="password" type="password" class="form-control" placeholder="Password" name="password">
                         </div>
-                        <button type="submit" class="btn btn-primary">Sumbit</button>
+                        <button type="submit" class="btn btn-dark">Sumbit</button>
                     </form>
                 </div>
             </div>

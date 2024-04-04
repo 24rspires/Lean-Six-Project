@@ -47,7 +47,11 @@
         }
         ?>
 
-        
+        <form>
+            <input type="text" name="field" placeholder="Search for Zipcode, Address or State">
+            <br>
+            <input type="submit" value="submit" name="search">
+        </form>
         
     </body>
 </html>
