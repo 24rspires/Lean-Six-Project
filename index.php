@@ -9,9 +9,9 @@
         <title>Boker Real Estate | Home</title>
     </head>
     <body>
-    <nav>
+        <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
+                <li><a href="index.php">Home</a></li>ewfg
                 <li><a href="login.php">Login</a></li>
             </ul>
         </nav>
