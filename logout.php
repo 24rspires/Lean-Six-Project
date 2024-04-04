@@ -1,7 +1,8 @@
 
 <?PHP
 include_once "General.php";
+include_once "Account.php";
 startSessionIfNotStarted();
 
-unset($_SESSION['user_account']);
+Account::unloadSession();
 ?>

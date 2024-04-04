@@ -79,12 +79,12 @@ class Account {
         $_SESSION['user_account'] = serialize($this);
     }
 
-    public function loadSession() : Account|null
+    public static function loadSession() : Account|null
     {
-        $account = $_SESSION['user_account'];
-        if (isset($account))
+        if (isset($_SESSION['user_account']))
         {
-            return $account;
+            $account = $_SESSION['user_account'];
+            return unserialize($account);
         }
         else
         {
@@ -103,7 +103,7 @@ class Account {
         dbhelper::getInstance()->query($sql);
     }
 
-    public function unloadSession() : void
+    public static function unloadSession() : void
     {
         unset($_SESSION['user_account']);
     }

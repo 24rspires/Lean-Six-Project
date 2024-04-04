@@ -13,10 +13,10 @@
         include_once "Account.php";
 
         startSessionIfNotStarted();
+        $currentUser = Account::loadSession();
 
-        if (isset($_SESSION['user_account']))
+        if ($currentUser !== NULL)
         {
-            $currentUser = unserialize($_SESSION['user_account']);
             print "Current user: $currentUser->username<br>";
             
             echo '
