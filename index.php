@@ -9,6 +9,14 @@
         <link rel="stylesheet" href="./css/style.css">
         <title>Boker Real Estate | Home</title>
     </head>
+
+    <nav>
+        <ul class="Nav-Bar">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="login.php">Login</a></li>
+        </ul>
+    </nav>
+
     <body>
         <?PHP
         include_once "General.php";
@@ -32,19 +40,6 @@
             <input type="submit" value="Logout" name="logout">
             </form>
             ';
-
-            // echo '
-            // <script>
-            //     function logout() {
-            //         var xhttp = new XMLHttpRequest();
-            //         xhttp.open("GET", "logout.php", true);
-            //         xhttp.send();
-            //         window.location.replace("./login.php");
-            //     }
-            // </script>
-
-            // <button onclick="logout()">Logout</button>
-            // ';
         }
         else
         {
@@ -52,12 +47,7 @@
         }
         ?>
 
-        <nav>
-            <ul class="Nav-Bar">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="login.php">Login</a></li>
-            </ul>
-        </nav>
+        
         
     </body>
 </html>
