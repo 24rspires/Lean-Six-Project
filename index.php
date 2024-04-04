@@ -8,6 +8,12 @@
         <title>Homepage</title>
     </head>
     <body>
+    <nav>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="login.php">Login</a></li>
+            </ul>
+        </nav>
         <?PHP
         include_once "General.php";
         include_once "Account.php";
@@ -36,6 +42,6 @@
         }
         
         ?>
-        <a href="login.php">Login</a><br/>
+        
     </body>
 </html>
