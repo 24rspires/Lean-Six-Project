@@ -41,7 +41,6 @@
         {
             print "No user logged in<br>";
         }
-        
         ?>
         
     </body>
