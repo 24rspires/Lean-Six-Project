@@ -33,6 +33,7 @@
                     var xhttp = new XMLHttpRequest();
                     xhttp.open("GET", "logout.php", true);
                     xhttp.send();
+                    window.location.replace("./login.php");
                 }
             </script>
 
