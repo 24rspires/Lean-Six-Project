@@ -53,17 +53,18 @@
 
         
         
-            <div class="container">
-                <div class="bg-box">
-                    <img src="" alt="no images">
-                </div>
+        <div class="container">
+            <div class="bg-box">
+                <img src="the honored one.png" alt="no images">
             </div>
-            <section class="search">
+            <section>
                 <form method="POST">
-                    <input type="text" name="field" placeholder="Search for Zipcode, Address or State">
-                    <br>
-                    <input type="submit" name="search">
+                    <div class="search-container">
+                        <input type="text" name="search" placeholder="Search for Zipcode, Address or State">
+                        <input type="submit" value="Search">
+                    </div>
                 </form>
             </section>
+        </div>
     </body>
 </html>
