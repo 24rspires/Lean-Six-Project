@@ -10,17 +10,15 @@
         <title>Boker Real Estate | Home</title>
     </head>
 
-    <nav>
-        <ul class="Nav-Bar">
-            <li><a href="index.php">Home</a></li>
-            <li><a href="login.php">Login</a></li>
-        </ul>
-    </nav>
+    <?php
+    include_once "General.php";
+    include_once "Account.php";
+    include_once "UIHelper.php";
+    UIHelper::navBar()
+    ?>
 
     <body>
-        <?PHP
-        include_once "General.php";
-        include_once "Account.php";
+        <?php
 
         startSessionIfNotStarted();
 

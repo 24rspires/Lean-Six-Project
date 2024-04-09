@@ -1,6 +1,6 @@
 
 <?PHP
-class FormHelper
+class UIHelper
 {
     public static function checkField(string $name) : FALSE|string
     {
@@ -10,6 +10,16 @@ class FormHelper
         }
         
         return $_POST[$name];
+    }
+
+    public static function navBar() {
+        echo "
+            <nav>
+                <ul class='Nav-Bar'>
+                    <li><a href='index.php'>Home</a></li>
+                    <li><a href='login.php'>Login</a></li>
+                </ul>
+            </nav>";
     }
 
     public static function validEmail(string $email)
