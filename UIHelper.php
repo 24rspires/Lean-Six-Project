@@ -13,7 +13,7 @@ class UIHelper
     }
 
     public static function navBar() {
-        echo "
+        print "
             <nav>
                 <ul class='Nav-Bar'>
                     <li><a href='index.php'>Home</a></li>
