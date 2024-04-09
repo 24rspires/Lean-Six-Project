@@ -1,5 +1,8 @@
 
 <?PHP
+
+include_once "Account.php";
+
 class UIHelper
 {
     public static function checkField(string $name) : FALSE|string
@@ -12,20 +15,33 @@ class UIHelper
         return $_POST[$name];
     }
 
-    public static function navBar() {
+    public static function navBar(Account $account = null) {
         
         // include account because logout will be in navbar
         // possibly consider adding two navbar functions
         // one with paramater for user and a separate version for logged out mode
-        include_once "Account.php";
-        
-        print "
-            <nav>
-                <ul class='Nav-Bar'>
-                    <li><a href='index.php'>Home</a></li>
-                    <li><a href='login.php'>Login</a></li>
-                </ul>
-            </nav>";
+        if ($account === null) {
+            print "
+                <nav>
+                    <ul class='Nav-Bar'>
+                        <li><a href='index.php'>Home</a></li>
+                        <li><a href='login.php'>Login</a></li>
+                    </ul>
+                </nav>";
+        } else {
+            print "
+                <nav>
+                    <ul class='Nav-Bar'>
+                        <li><a href='index.php'>Home</a></li>
+                        <li>
+                            <form method='post'>
+                                <input type='submit' value='Logout' name='logout'>
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+            ";
+        }
 
         if (isset($_POST['logout']))
         {
