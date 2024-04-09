@@ -37,22 +37,5 @@
             }
         }
         ?>
-        <div class="container">
-            <div class="row justify-content-center mt-5">
-                <div class="col-md-6">
-                    <form method="post" class="border p-4">
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input id="username" type="text" class="form-control" placeholder="Username" name="username">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input id="password" type="password" class="form-control" placeholder="Password" name="password">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Sumbit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
     </body>
 </html>
