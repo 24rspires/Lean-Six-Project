@@ -19,10 +19,7 @@
 
     <body>
         <?php
-        // we need to add a table to the database for search terms
         startSessionIfNotStarted();
-
-        
 
         $currentUser = Account::loadSession();
 
