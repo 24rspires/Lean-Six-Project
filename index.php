@@ -59,5 +59,14 @@
             <br>
             <input type="submit" name="search">
         </form>
+        
+            <div class="container">
+                <div class="bg-box">
+                    <img src="" alt="no images">
+                </div>
+            </div>
+            <section>
+                
+            </section>
     </body>
 </html>
