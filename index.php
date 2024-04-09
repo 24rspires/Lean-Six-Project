@@ -54,19 +54,19 @@
         }
         ?>
 
-        <form method="POST">
-            <input type="text" name="field" placeholder="Search for Zipcode, Address or State">
-            <br>
-            <input type="submit" name="search">
-        </form>
+        
         
             <div class="container">
                 <div class="bg-box">
                     <img src="" alt="no images">
                 </div>
             </div>
-            <section>
-                
+            <section class="search">
+                <form method="POST">
+                    <input type="text" name="field" placeholder="Search for Zipcode, Address or State">
+                    <br>
+                    <input type="submit" name="search">
+                </form>
             </section>
     </body>
 </html>
