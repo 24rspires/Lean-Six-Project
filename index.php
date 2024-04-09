@@ -19,15 +19,24 @@
 
     <body>
         <?php
-
+        // we need to add a table to the database for search terms
         startSessionIfNotStarted();
 
-        if (isset($_POST['logout']))
-        {
-            Account::unloadSession();
-        }
+        
 
         $currentUser = Account::loadSession();
+
+        if ($_SERVER['REQUEST_METHOD'] == "POST")
+        {
+            // user has interacted
+            
+            // check if user searched
+            if (isset($_POST['search']))
+            {
+                // query keyword database
+                print "search";
+            }
+        }
 
         if ($currentUser !== NULL)
         {
@@ -45,11 +54,10 @@
         }
         ?>
 
-        <form>
+        <form method="POST">
             <input type="text" name="field" placeholder="Search for Zipcode, Address or State">
             <br>
-            <input type="submit" value="submit" name="search">
+            <input type="submit" name="search">
         </form>
-        
     </body>
 </html>
