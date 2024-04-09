@@ -44,7 +44,7 @@
 
             print '
             <form method="post">
-            <input type="submit" value="Logout" name="logout">
+                <input type="submit" value="Logout" name="logout">
             </form>
             ';
         }
