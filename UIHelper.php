@@ -1,6 +1,6 @@
 
 <?PHP
-class FormHelper
+class UIHelper
 {
     public static function checkField(string $name) : FALSE|string
     {
@@ -10,6 +10,27 @@ class FormHelper
         }
         
         return $_POST[$name];
+    }
+
+    public static function navBar() {
+        
+        // include account because logout will be in navbar
+        // possibly consider adding two navbar functions
+        // one with paramater for user and a separate version for logged out mode
+        include_once "Account.php";
+        
+        print "
+            <nav>
+                <ul class='Nav-Bar'>
+                    <li><a href='index.php'>Home</a></li>
+                    <li><a href='login.php'>Login</a></li>
+                </ul>
+            </nav>";
+
+        if (isset($_POST['logout']))
+        {
+            Account::unloadSession();
+        }
     }
 
     public static function validEmail(string $email)

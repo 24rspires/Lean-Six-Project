@@ -9,16 +9,16 @@
     </head>
     <body>
         <?PHP
-        include_once "FormHelper.php";
+        include_once "UIHelper.php";
         include_once "Account.php";
         
         if ($_SERVER['REQUEST_METHOD'] == "POST")
         {
-            $username = FormHelper::checkField("username");
-            $password = FormHelper::checkField("password");
-            $email = FormHelper::checkField("email");
-            $phone = FormHelper::checkField("phone");
-            $address = FormHelper::checkField("address");
+            $username = UIHelper::checkField("username");
+            $password = UIHelper::checkField("password");
+            $email = UIHelper::checkField("email");
+            $phone = UIHelper::checkField("phone");
+            $address = UIHelper::checkField("address");
             if (
                 $username &&
                 $password &&
@@ -27,9 +27,9 @@
                 $address
             )
             {
-                $validPhone = FormHelper::validPhone($phone);
-                $validEmail = FormHelper::validEmail($email);
-                $validPassword = FormHelper::validPassword($password);
+                $validPhone = UIHelper::validPhone($phone);
+                $validEmail = UIHelper::validEmail($email);
+                $validPassword = UIHelper::validPassword($password);
                 if (
                     $validPhone &&
                     $validEmail &&

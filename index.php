@@ -10,26 +10,33 @@
         <title>Boker Real Estate | Home</title>
     </head>
 
-    <nav>
-        <ul class="Nav-Bar">
-            <li><a href="index.php">Home</a></li>
-            <li><a href="login.php">Login</a></li>
-        </ul>
-    </nav>
+    <?php
+    include_once "General.php";
+    include_once "Account.php";
+    include_once "UIHelper.php";
+    UIHelper::navBar()
+    ?>
 
     <body>
-        <?PHP
-        include_once "General.php";
-        include_once "Account.php";
-
+        <?php
+        // we need to add a table to the database for search terms
         startSessionIfNotStarted();
 
-        if (isset($_POST['logout']))
-        {
-            Account::unloadSession();
-        }
+        
 
         $currentUser = Account::loadSession();
+
+        if ($_SERVER['REQUEST_METHOD'] == "POST")
+        {
+            // user has interacted
+            
+            // check if user searched
+            if (isset($_POST['search']))
+            {
+                // query keyword database
+                print "search";
+            }
+        }
 
         if ($currentUser !== NULL)
         {
@@ -47,8 +54,11 @@
         }
         ?>
 
-        
-        
+        <form method="POST">
+            <input type="text" name="field" placeholder="Search for Zipcode, Address or State">
+            <br>
+            <input type="submit" name="search">
+        </form>
         
             <div class="container">
                 <div class="bg-box">
