@@ -30,7 +30,7 @@
             // check if user searched
             if (isset($_POST['search']))
             {
-                // query keyword database
+                
                 print "search";
             }
         }
