@@ -81,7 +81,7 @@ class Properties
         {
             foreach ($result as $property)
             {
-                print_r($property);
+                
             }
         }
     }
