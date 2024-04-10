@@ -13,6 +13,7 @@
     <?php
     include_once "General.php";
     include_once "Account.php";
+    include_once "Properties.php";
     include_once "UIHelper.php";
     UIHelper::navBar()
     ?>
@@ -30,7 +31,7 @@
             // check if user searched
             if (isset($_POST['search']))
             {
-                
+                Properties::searchByFilter();
                 print "search";
             }
         }
