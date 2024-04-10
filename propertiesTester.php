@@ -15,7 +15,7 @@ include_once "Properties.php";
 </head>
 <body>
     <?php
-        print_r(Properties::getAll());
+        print_r(Properties::searchByFilter());
     ?>
 </body>
 </html>
