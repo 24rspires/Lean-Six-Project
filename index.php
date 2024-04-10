@@ -9,43 +9,64 @@
         <link rel="stylesheet" href="./css/style.css">
         <title>Boker Real Estate | Home</title>
     </head>
-    <body>
-        <nav>
-            <ul class="Nav-Bar">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="login.php">Login</a></li>
-            </ul>
-        </nav>
-            
-        <?PHP
-        include_once "General.php";
-        include_once "Account.php";
 
+    <?php
+    include_once "General.php";
+    include_once "Account.php";
+    include_once "UIHelper.php";
+    UIHelper::navBar()
+    ?>
+
+    <body>
+        <?php
+        // we need to add a table to the database for search terms
         startSessionIfNotStarted();
+
+        
+
         $currentUser = Account::loadSession();
+
+        if ($_SERVER['REQUEST_METHOD'] == "POST")
+        {
+            // user has interacted
+            
+            // check if user searched
+            if (isset($_POST['search']))
+            {
+                // query keyword database
+                print "search";
+            }
+        }
 
         if ($currentUser !== NULL)
         {
             print "Current user: $currentUser->username<br>";
-            echo '
-            <script>
-                function logout() {
-                    var xhttp = new XMLHttpRequest();
-                    xhttp.open("GET", "logout.php", true);
-                    xhttp.send();
-                    window.location.replace("./login.php");
-                }
-            </script>
 
-            <button onclick="logout()">Logout</button>
+            print '
+            <form method="post">
+                <input type="submit" value="Logout" name="logout">
+            </form>
             ';
         }
         else
         {
             print "No user logged in<br>";
         }
-        
         ?>
+
+        <form method="POST">
+            <input type="text" name="field" placeholder="Search for Zipcode, Address or State">
+            <br>
+            <input type="submit" name="search">
+        </form>
         
+            <div class="container">
+                <div class="bg-box">
+                    <img src="" alt="no images">
+                </div>
+            </div>
+            <section>
+                
+            </section>
     </body>
 </html>
