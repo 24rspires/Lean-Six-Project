@@ -1,5 +1,5 @@
 <?php
-
+// https://gist.github.com/bryant988/9510cff838d86dcefa3b9ea3835b8552?permalink_comment_id=4706389
 include_once "dbhelper.php";
 class Properties
 {
