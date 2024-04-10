@@ -3,7 +3,7 @@
 class Properties
 {
     public int $id;
-    public int $ownerId;
+    public int|null $ownerId;
     public string $address;
     public string $city;
     public int $stateId;
@@ -14,7 +14,7 @@ class Properties
     public int $bath;
     public string $createDate;
 
-    public function __construct(int $id, int $ownerId, string $address, string $city, int $stateId, int $zip, float $price, int $squareFoot, int $beds, int $bath, string $createDate)
+    public function __construct(int $id, int|null $ownerId, string $address, string $city, int $stateId, int $zip, float $price, int $squareFoot, int $beds, int $bath, string $createDate)
     {
         $this->id = $id;
         $this->ownerId = $ownerId;
@@ -75,14 +75,29 @@ class Properties
 
         $result = dbhelper::getInstance()->query($query);
 
-        if ($result !== false) $result = $result->fetch_all();
-
+        if ($result !== false) $result = $result->fetch_all(MYSQLI_ASSOC);
+        
         if ($result !== null && $result !== false)
         {
-            foreach ($result as $property)
+            $properties = array();
+            foreach ($result as $data)
             {
-                
+                $newProperty = new Properties(
+                    $data["property_id"],
+                    $data["owner_id"],
+                    $data["address"],
+                    $data["city"],
+                    $data["state_id"],
+                    $data["zipcode"],
+                    $data["price"],
+                    $data["square_feet"],
+                    $data["bedrooms"],
+                    $data["bathrooms"],
+                    $data["create_date"]
+                );
+                $properties[] = $newProperty;
             }
+            return $properties;
         }
     }
 }
