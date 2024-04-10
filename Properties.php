@@ -47,7 +47,7 @@ class Properties
 
     public static function searchByFilter(string|null $city=null, int|null $zipcode=null, int|null $price_min=null, int|null $price_max=null, int|null $square_feet_min=null, int|null $square_feet_max=null, int|null $bedroom_min=null, int|null $bedroom_max=null, int|null $bathroom_min=null, int|null $bathroom_max=null)
     {
-        $query = "select * from where true";
+        $query = "select * from boker.properties where true";
         if ($city !== null)
         {
             $query .= " and city='$city'";
@@ -75,5 +75,14 @@ class Properties
 
         $result = dbhelper::getInstance()->query($query);
 
+        if ($result !== false) $result = $result->fetch_all();
+
+        if ($result !== null && $result !== false)
+        {
+            foreach ($result as $property)
+            {
+                print_r($property);
+            }
+        }
     }
 }
