@@ -7,12 +7,48 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
 </head>
-    <body>
-        <?php
-        include_once "General.php";
-        include_once "Account.php";
-        include_once "UIHelper.php";
-        UIHelper::navBar()
-        ?>
-    </body>
+<body>
+    <?php
+    include_once "General.php";
+    include_once "Account.php";
+    include_once "UIHelper.php";
+    UIHelper::navBar()
+  ?>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="agents-list">
+                        <li class="agent">
+                            <img src="" alt="Agent 1 Profile Picture" class="agent-pfp">
+                            <div class="agent-info">
+                                <h3>Fuck Face Farmer</h3>
+                                <a href="tel:6145571566">614-557-1566</a><br />
+                                <p>Email: agent1@example.com</p>
+                            </div>
+                        </li>
+                        <br><br>
+                        <li class="agent">
+                            <img src="" alt="Agent 2 Profile Picture" class="agent-pfp">
+                            <div class="agent-info">
+                                <h3>Agent 2</h3>
+                                <p>Position: Agent</p>
+                                <p>Email: agent2@example.com</p>
+                            </div>
+                        </li>
+                        <br><br>
+                        <li class="agent">
+                            <img src="" alt="Agent 3 Profile Picture" class="agent-pfp">
+                            <div class="agent-info">
+                                <h3>Agent 3</h3>
+                                <p>Position: Agent</p>
+                                <p>Email: agent3@example.com</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
 </html>

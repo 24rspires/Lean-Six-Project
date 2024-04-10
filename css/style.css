@@ -61,3 +61,49 @@ font-family: 'Montserrat', sans-serif;
   padding: 10px;
   border-radius: 5px;
 }
+
+.agents-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.agent {
+  background-color: #ff0000;
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Avoid double borders */
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.agent:hover {
+  background-color: #ff0000;
+}
+
+.agent-pfp {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.agent-info {
+  flex: 1;
+}
+
+.agent-info h3 {
+  margin: 0 0 5px 0;
+}
+
+.agent-info p {
+  margin: 0;
+}
