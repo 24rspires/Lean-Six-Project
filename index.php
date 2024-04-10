@@ -31,7 +31,8 @@
             // check if user searched
             if (isset($_POST['search']))
             {
-                Properties::searchByFilter();
+                $properties = Properties::searchByFilter();
+                
                 print "search";
             }
         }
