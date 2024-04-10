@@ -56,7 +56,7 @@
         
         <div class="container">
             <div class="bg-box">
-                <img src="the honored one.png" alt="no images">
+                <img src="boker.png" alt="no images">
             </div>
             <section>
                 <form method="POST">
