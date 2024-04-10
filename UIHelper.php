@@ -15,7 +15,8 @@ class UIHelper
         return $_POST[$name];
     }
 
-    public static function navBar(Account $account = null) {
+    public static function navBar(Account $account = null): void
+    {
         
         // include account because logout will be in navbar
         // possibly consider adding two navbar functions
@@ -49,17 +50,17 @@ class UIHelper
         }
     }
 
-    public static function validEmail(string $email)
+    public static function validEmail(string $email): bool
     {
         return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
     }
 
-    public static function validPhone(string $phone)
+    public static function validPhone(string $phone): bool
     {
         return preg_match('/^\d{10}$/', $phone) === 1;
     }
 
-    public static function validPassword(string $password)
+    public static function validPassword(string $password): bool
     {
         $length = strlen($password);
         $numbers = preg_match_all('/\d/', $password, $matches);
