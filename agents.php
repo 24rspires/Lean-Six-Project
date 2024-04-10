@@ -19,32 +19,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="agents-list">
-                        <li class="agent">
-                            <img src="" alt="Agent 1 Profile Picture" class="agent-pfp">
-                            <div class="agent-info">
-                                <h3>Fuck Face Farmer</h3>
-                                <a href="tel:6145571566">614-557-1566</a><br />
-                                <p>Email: agent1@example.com</p>
-                            </div>
-                        </li>
+                        <?php UIHelper::agentCard("", "Luke Atkins", "6145571566", "agent1@example.com"); ?>
                         <br><br>
-                        <li class="agent">
-                            <img src="" alt="Agent 2 Profile Picture" class="agent-pfp">
-                            <div class="agent-info">
-                                <h3>Agent 2</h3>
-                                <p>Position: Agent</p>
-                                <p>Email: agent2@example.com</p>
-                            </div>
-                        </li>
+                        <?php UIHelper::agentCard("", "Agent 2", "1234567890", "agent2@example.com"); ?>
                         <br><br>
-                        <li class="agent">
-                            <img src="" alt="Agent 3 Profile Picture" class="agent-pfp">
-                            <div class="agent-info">
-                                <h3>Agent 3</h3>
-                                <p>Position: Agent</p>
-                                <p>Email: agent3@example.com</p>
-                            </div>
-                        </li>
+                        <?php UIHelper::agentCard("", "Agent 3", "1234567890", "agent3@example.com"); ?>
                     </ul>
                 </div>
             </div>
