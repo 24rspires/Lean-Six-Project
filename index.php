@@ -19,10 +19,7 @@
 
     <body>
         <?php
-        // we need to add a table to the database for search terms
         startSessionIfNotStarted();
-
-        
 
         $currentUser = Account::loadSession();
 
@@ -54,19 +51,20 @@
         }
         ?>
 
-        <form method="POST">
-            <input type="text" name="field" placeholder="Search for Zipcode, Address or State">
-            <br>
-            <input type="submit" name="search">
-        </form>
         
-            <div class="container">
-                <div class="bg-box">
-                    <img src="" alt="no images">
-                </div>
+        
+        <div class="container">
+            <div class="bg-box">
+                <img src="the honored one.png" alt="no images">
             </div>
             <section>
-                
+                <form method="POST">
+                    <div class="search-container">
+                        <input type="text" name="search" placeholder="Search for Zipcode, Address or State">
+                        <input type="submit" value="Search">
+                    </div>
+                </form>
             </section>
+        </div>
     </body>
 </html>
