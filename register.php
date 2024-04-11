@@ -1,106 +1,66 @@
 <!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Login</title>
-    </head>
-    <body>
-        <?PHP
-        include_once "UIHelper.php";
-        include_once "Account.php";
-        
-        if ($_SERVER['REQUEST_METHOD'] == "POST")
-        {
-            $username = UIHelper::checkField("username");
-            $password = UIHelper::checkField("password");
-            $email = UIHelper::checkField("email");
-            $phone = UIHelper::checkField("phone");
-            $address = UIHelper::checkField("address");
-            if (
-                $username &&
-                $password &&
-                $email &&
-                $phone &&
-                $address
-            )
-            {
-                $validPhone = UIHelper::validPhone($phone);
-                $validEmail = UIHelper::validEmail($email);
-                $validPassword = UIHelper::validPassword($password);
-                if (
-                    $validPhone &&
-                    $validEmail &&
-                    $validPassword
-                    )
-                {
-                    $account = new Account(
-                        username: $username,
-                        password: $password,
-                        email: $email,
-                        phone: $phone,
-                        address: $address,
-                    );
-                    $account->insertIntoDatabase();
-                    print "account created";
-                }
-                else
-                {
-                    if (!$validPhone)
-                    {
-                        print "invalid phone<br>";
-                    }
-                    if (!$validPassword)
-                    {
-                        print "invalid password<br>";
-                    }
-                    if (!$validEmail)
-                    {
-                        print "invalid email<br>";
-                    }
-                }
-                
-            }
-            else
-            {
-                print "invalid register";
-            }
-        }
-        ?>
-        <form method="post">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Boker Real Estate</title>
+    <link rel="stylesheet" href="./css/register.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
 
-            <!-- front end add validation -->
-            <label id="username">Username</label>
-            <br>
-            <input id="username" type="text" placeholder="Username" name="username">
-            <br>
-            
-            <!-- front end add validation minimum 8 characters, 2 numbers, 1 special char max 100 -->
-            <label id="password">Password</label>
-            <br>
-            <input id="Password" type="password" placeholder="Password" name="password">
-            <br>
+<body>
+<?php include_once "UIHelper.php"; UIHelper::navBar(); ?>
+<div class="container">
+    <div class="form-box">
+        <h1 id="title">Sign Up</h1>
+        <form>
+            <div class="input-group">
+                <div class="input-field" id="nameField">
+                    <img src="./images/user-svg.svg">
+                    <input type="text" placeholder="Name">
+                </div>
 
-            <!-- front end add validation -->
-            <label id="email">Email</label>
-            <br>
-            <input id="email" type="text" placeholder="Email" name="email">
-            <br>
+                <div class="input-field">
+                    <img src="./images/email-svg.svg">
+                    <input type="email" placeholder="Email">
+                </div>
 
-            <!-- front end add validation -->
-            <label id="phone">Phone</label>
-            <br>
-            <input id="phone" type="text" placeholder="Phone" name="phone">
-            <br>
+                <div class="input-field">
+                    <img src="./images/lock-svg.svg">
+                    <input type="password" placeholder="Password">
+                </div>
+                <p>Forgot your password? <a href="#"> Click Here!</a></p>
+            </div>
 
-            <label id="address">Address</label>
-            <br>
-            <input id="address" type="address" placeholder="Address" name="address">
-            <br>
-
-            <input type="submit" value='sumbit'>
+            <div class="btn-field">
+                <button type="button" id="signupBtn">Sign Up</button>
+                <button type="button" id="signinBtn" class="disable">Sign In</button>
+            </div>
         </form>
-    </body>
+    </div>
+</div>
+
+<script>
+    let signupBtn = document.getElementById("signupBtn");
+    let signinBtn = document.getElementById("signinBtn");
+    let nameField = document.getElementById("nameField");
+    let title = document.getElementById("title");
+
+    signinBtn.onclick = function() {
+        nameField.style.maxHeight = "0px";
+        title.innerHTML = "Sign In";
+        signupBtn.classList.add("disable");
+        signinBtn.classList.remove("disable");
+    }
+
+    signupBtn.onclick = function() {
+        nameField.style.maxHeight = "60px";
+        title.innerHTML = "Sign Up";
+        signupBtn.classList.remove("disable");
+        signinBtn.classList.add("disable");
+    }
+
+</script>
+</body>
 </html>
