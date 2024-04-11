@@ -14,17 +14,17 @@
 <div class="container">
     <div class="form-box">
         <h1 id="title">Sign In</h1>
-        <form>
+        <form method="post">
             <div class="input-group">
                 <br>
                 <div class="input-field">
                     <img src="./images/email-svg.svg">
-                    <input type="email" placeholder="Email">
+                    <input type="text" placeholder="Username" name="username">
                 </div>
 
                 <div class="input-field">
                     <img src="./images/lock-svg.svg">
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" name="password">
                 </div>
 
                 <p>Don't have an account? <a href="register.php"> Click Here!</a></p>
