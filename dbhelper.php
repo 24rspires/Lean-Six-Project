@@ -21,6 +21,6 @@ class dbhelper extends mysqli {
         $password = trim($dbconfig["password"]);
         $db = trim($dbconfig["database"]);
 
-        $this->connect($servername, $username, $password, $db);
+        parent::__construct($servername, $username, $password, $db);
     }
 }
