@@ -51,6 +51,19 @@
         }
         ?>
 
+        <div class="container">
+            <div class="bg-box">
+                <img src="boker.png" alt="no images">
+            </div>
+            <section>
+                <form method="POST">
+                    <div class="search-container">
+                        <input type="text" name="search" placeholder="Search for Zipcode, Address or State">
+                        <input type="submit" value="Search">
+                    </div>
+                </form>
+            </section>
+        </div>
     
     </body>
 </html>
