@@ -14,7 +14,6 @@
     include_once "General.php";
     include_once "Account.php";
     include_once "UIHelper.php";
-    UIHelper::navBar()
     ?>
 
     <body>
@@ -22,6 +21,8 @@
         startSessionIfNotStarted();
 
         $currentUser = Account::loadSession();
+
+        UIHelper::navBar($currentUser);
 
         if ($_SERVER['REQUEST_METHOD'] == "POST")
         {
