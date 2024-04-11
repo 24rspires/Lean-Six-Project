@@ -17,33 +17,24 @@ class UIHelper
 
     public static function navBar(Account $account = null): void
     {
-        
+
+        $loginButton = "<a href='login.php'>Login</a>";
+
+        if ($account !== null) $loginButton = "
+                                <form method='post'>
+                                    <input type='submit' value='Logout' name='logout'>
+                                </form>";
         // include account because logout will be in navbar
         // possibly consider adding two navbar functions
         // one with paramater for user and a separate version for logged out mode
-        if ($account === null) {
-            print "
+        print "
                 <nav>
                     <ul class='Nav-Bar'>
                         <li><a href='index.php'>Home</a></li>
-                        <li><a href='login.php'>Login</a></li>
+                        <li>{$loginButton}</li>
                         <li><a href='agents.php'>Agents</a></li>
                     </ul>
                 </nav>";
-        } else {
-            print "
-                <nav>
-                    <ul class='Nav-Bar'>
-                        <li><a href='index.php'>Home</a></li>
-                        <li>
-                            <form method='post'>
-                                <input type='submit' value='Logout' name='logout'>
-                            </form>
-                        </li>
-                    </ul>
-                </nav>
-            ";
-        }
 
         if (isset($_POST['logout']))
         {
