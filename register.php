@@ -30,37 +30,16 @@
                     <img src="./images/lock-svg.svg">
                     <input type="password" placeholder="Password">
                 </div>
-                <p>Forgot your password? <a href="#"> Click Here!</a></p>
+
+                <p>Already have an account? <a href="login.php"> Click Here!</a></p>
             </div>
 
             <div class="btn-field">
-                <button type="button" id="signupBtn">Sign Up</button>
-                <button type="button" id="signinBtn" class="disable">Sign In</button>
+                <button type="button" id="signupBtn"><a href="login.php">Sign Up</a></button>
             </div>
         </form>
     </div>
 </div>
 
-<script>
-    let signupBtn = document.getElementById("signupBtn");
-    let signinBtn = document.getElementById("signinBtn");
-    let nameField = document.getElementById("nameField");
-    let title = document.getElementById("title");
-
-    signinBtn.onclick = function() {
-        nameField.style.maxHeight = "0px";
-        title.innerHTML = "Sign In";
-        signupBtn.classList.add("disable");
-        signinBtn.classList.remove("disable");
-    }
-
-    signupBtn.onclick = function() {
-        nameField.style.maxHeight = "60px";
-        title.innerHTML = "Sign Up";
-        signupBtn.classList.remove("disable");
-        signinBtn.classList.add("disable");
-    }
-
-</script>
 </body>
 </html>
