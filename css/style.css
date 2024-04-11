@@ -73,19 +73,23 @@ font-family: 'Montserrat', sans-serif;
 }
 
 .agent {
-  background-color: #ff0000;
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Avoid double borders */
+  background-color: #86aa9b;
+  border: 1px solid #000000;
+  margin-top: 10vh;
+  margin-bottom: 5vh; 
   padding: 12px;
   text-decoration: none;
   font-size: 18px;
   color: black;
   width: 100%;
   box-sizing: border-box;
+  transition: all .5s ease-in-out;
+  
 }
 
 .agent:hover {
-  background-color: #ff0000;
+  background-color: #8f8f8f;
+
 }
 
 .agent-pfp {
@@ -106,4 +110,8 @@ font-family: 'Montserrat', sans-serif;
 
 .agent-info p {
   margin: 0;
+}
+
+.agents-background{
+  
 }

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
 </head>
-<body>
+<body class="agents-background">
     <?php
     include_once "General.php";
     include_once "Account.php";
@@ -18,12 +18,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <ul class="agents-list">
-                        <?php UIHelper::agentCard("", "Luke Atkins", "6145571566", "agent1@example.com"); ?>
-                        <br><br>
-                        <?php UIHelper::agentCard("", "Agent 2", "1234567890", "agent2@example.com"); ?>
-                        <br><br>
-                        <?php UIHelper::agentCard("", "Agent 3", "1234567890", "agent3@example.com"); ?>
+                    <ul class="agents-list transition-test">
+                        <?php UIHelper::agentCard("./images/agents/doughnut.png", "Luke Atkins", "6145571566", "agent1@example.com"); ?>
+                        
+                        <?php UIHelper::agentCard("./images/agents/doughnut.png", "John Doe", "1234567890", "agent2@example.com"); ?>
+                        
+                        <?php UIHelper::agentCard("./images/agents/doughnut.png", "McD", "1234567890", "agent3@example.com"); ?>
                     </ul>
                 </div>
             </div>
