@@ -68,5 +68,21 @@ class UIHelper
         
         return $length >= 8 && $numbers >= 2 && $length < 100;
     }
+    
+    
+    public static function agentCard(string $pfpUrl, string $name, string $phone, string $email): void
+    {
+        
+        print "
+            <li class='agent'>
+                <img src='{$pfpUrl}' alt='{$name} Profile Picture' class='agent-pfp'>
+                <div class='agent-info'>
+                    <h3>{$name}</h3>
+                    <p>Phone Number: <a href='tel:${phone}''>${phone}</a></p>
+                    <p>Email: <a href='mailto:${email}'>${email}</a></p>
+                </div>
+            </li>
+        ";
+    }
 }
 ?>

@@ -16,10 +16,10 @@ class dbhelper extends mysqli {
      */
     private function __construct() {
         $dbconfig = parse_ini_file("./db.ini");
-        $servername = $dbconfig["servername"];
-        $username = $dbconfig["username"];
-        $password = $dbconfig["password"];
-        $db = $dbconfig["database"];
+        $servername = trim($dbconfig["servername"]);
+        $username = trim($dbconfig["username"]);
+        $password = trim($dbconfig["password"]);
+        $db = trim($dbconfig["database"]);
 
         $this->connect($servername, $username, $password, $db);
     }

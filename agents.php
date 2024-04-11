@@ -7,12 +7,27 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
 </head>
-    <body>
-        <?php
-        include_once "General.php";
-        include_once "Account.php";
-        include_once "UIHelper.php";
-        UIHelper::navBar()
-        ?>
-    </body>
+<body class="agents-background">
+    <?php
+    include_once "General.php";
+    include_once "Account.php";
+    include_once "UIHelper.php";
+    UIHelper::navBar()
+  ?>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="agents-list transition-test">
+                        <?php UIHelper::agentCard("./images/agents/doughnut.png", "Luke Atkins", "6145571566", "agent1@example.com"); ?>
+                        
+                        <?php UIHelper::agentCard("./images/agents/doughnut.png", "John Doe", "1234567890", "agent2@example.com"); ?>
+                        
+                        <?php UIHelper::agentCard("./images/agents/doughnut.png", "McD", "1234567890", "agent3@example.com"); ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
 </html>
