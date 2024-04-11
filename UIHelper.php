@@ -26,7 +26,7 @@ class UIHelper
                 <nav>
                     <ul class='Nav-Bar'>
                         <li><a href='index.php'>Home</a></li>
-                        <li><a href='login.php'>Login</a></li>
+                        <li><a href='register.php'>Login</a></li>
                         <li><a href='agents.php'>Agents</a></li>
                     </ul>
                 </nav>";

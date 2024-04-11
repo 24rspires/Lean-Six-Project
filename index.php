@@ -51,19 +51,16 @@
         }
         ?>
 
-        <div class="container">
-            <div class="bg-box">
-                <img src="boker.png" alt="no images">
-            </div>
-            <section>
-                <form method="POST">
-                    <div class="search-container">
+        <section>
+            <div class="container">
+                <div class="bg-box">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3045.9908816514417!2d-83.04148932347631!3d40.23150496689128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8838f057158834c1%3A0xefcdfe7e59a24f21!2sDelaware%20Area%20Career%20Center%20South%20Campus!5e0!3m2!1sen!2sus!4v1712858502536!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <form method="POST">
                         <input type="text" name="search" placeholder="Search for Zipcode, Address or State">
                         <input type="submit" value="Search">
-                    </div>
-                </form>
-            </section>
-        </div>
-    
+                    </form>
+                </div>
+            </div>
+        </section>
     </body>
 </html>
