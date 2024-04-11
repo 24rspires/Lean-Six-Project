@@ -109,7 +109,7 @@ form p a {
 .btn-field {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .btn-field button {
@@ -124,13 +124,13 @@ form p a {
     transition: background 1s;
 }
 
-.input-group {
-    height: 280px;
+.btn-field button a {
+    text-decoration: none;
+    color: #fff;
 }
 
-.btn-field button.disable {
-    background: #eaeaea;
-    color: #555;
+.input-group {
+    height: 280px;
 }
 
 img {
