@@ -110,9 +110,10 @@ form p a {
     width: 100%;
     display: flex;
     justify-content: center;
+
 }
 
-.btn-field button {
+.btn-field input {
     flex-basis: 48%;
     background: #86aa9b;
     color: #fff;
@@ -122,12 +123,11 @@ form p a {
     outline: 0;
     cursor: pointer;
     transition: background 1s;
+    align-items: center;
+    text-align: center;
 }
 
-.btn-field button a {
-    text-decoration: none;
-    color: #fff;
-}
+
 
 .input-group {
     height: 280px;
