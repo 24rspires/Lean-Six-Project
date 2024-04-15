@@ -110,7 +110,10 @@ form p a {
     width: 100%;
     display: flex;
     justify-content: center;
+}
 
+#signupBtn {
+    padding: 0;
 }
 
 .btn-field input {

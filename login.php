@@ -30,7 +30,7 @@
                 <p>Don't have an account? <a href="register.php"> Click Here!</a></p>
             </div>
 
-            <div class="btn-field">
+            <div id="boker" class="btn-field">
                 <input type="submit" value="Sign In" id="signupBtn">
 <!--                <button type="button" id="signupBtn"><a href="index.php">Sign In</a></button>-->
             </div>
