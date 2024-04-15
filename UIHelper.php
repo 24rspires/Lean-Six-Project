@@ -7,14 +7,9 @@ class UIHelper
 {
     public static function checkField(string $name) : FALSE|string
     {
-        if (!isset($_POST[$name]) || empty($_POST[$name]))
-        {
+        if (!isset($_POST[$name]) || empty($_POST[$name])) {
             return false;
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> properties
         return $_POST[$name];
     }
 
