@@ -1,8 +1,3 @@
-<?php
-include_once "Properties.php";
-print_r(Properties::getSeachTerms());
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -190,9 +185,6 @@ print_r(Properties::getSeachTerms());
     }
 
     getCountries().then(countries => autocomplete(document.getElementById("myInput"), countries));
-
-    /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-
 </script>
 
 </body>
