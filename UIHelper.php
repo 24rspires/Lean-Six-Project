@@ -21,7 +21,7 @@ class UIHelper
 
         if ($account !== null) $loginButton = "
                                 <form method='post'>
-                                    <input type='submit' value='Logout' name='logout'>
+                                    <input type='submit' value='Logout' name='logout' class='logout'>
                                 </form>";
         // include account because logout will be in navbar
         // possibly consider adding two navbar functions
