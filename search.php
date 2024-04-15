@@ -61,7 +61,9 @@
         $_GET['bathroom_min'],
         $_GET['bathroom_max'],
     );
-    print_r($result);
+    
+    print_r($result[0]->getImages());
+
     ?>
     <form method="GET">
         

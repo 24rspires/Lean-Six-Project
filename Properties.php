@@ -102,4 +102,36 @@ class Properties
             return $properties;
         }
     }
+
+    public function getImages(): null|array
+    {
+        $this->id=133; // delete this
+        $query = "select * from boker.property_media where property_id=$this->id";
+        
+        $result = dbhelper::getInstance()->query($query);
+
+        if ($result !== false) $result = $result->fetch_all(MYSQLI_ASSOC);
+
+        if ($result !== null && $result !== false)
+        {
+            $ids = array();
+
+            foreach ($result as $property_media)
+            {
+                $ids[] = $property_media['id'];
+            }
+
+            $in_string = "(" . implode(', ', $ids) . ")"
+            $media_query = "select * from boker.media where media_id in $in_string";
+
+            $media_result = dbhelper::getInstance()->query($media_query);
+
+            if ($media_result !== false) $media_result = $media_result->fetch_all(MYSQLI_ASSOC);
+
+            if ($media_result !== null && $media_result !== false)
+            {
+
+            }
+        }
+    }
 }

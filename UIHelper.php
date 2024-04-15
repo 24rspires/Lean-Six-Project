@@ -11,16 +11,11 @@ class UIHelper
         {
             return false;
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> properties
         return $_POST[$name];
     }
 
     public static function navBar(Account $account = null): void
     {
-
         $loginButton = "<a href='login.php'>Login</a>";
 
         if ($account !== null) $loginButton = "
@@ -39,7 +34,7 @@ class UIHelper
                     </ul>
                 </nav>";
 
-        if (isset($_POST['logout']))
+        if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['logout']))
         {
             Account::unloadSession();
         }

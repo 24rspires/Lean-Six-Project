@@ -51,7 +51,7 @@
             print "No user logged in<br>";
         }
         ?>
-
+        
         <section>
             <div class="container">
                 <div class="bg-box">
