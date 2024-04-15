@@ -67,6 +67,7 @@ class Properties
         }
         if ($bathroom_min !== null && $bathroom_max !== null)
         {
+            -
             $query .= " and bathrooms between $bathroom_min and $bathroom_max";
         }
         if ($bedroom_min !== null && $bedroom_max !== null)
