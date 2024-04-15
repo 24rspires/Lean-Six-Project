@@ -38,6 +38,8 @@ class UIHelper
         if (isset($_POST['logout']))
         {
             Account::unloadSession();
+
+            header("Location: ".  (empty($_SERVER['HTTPS']) ? 'http' : 'https') ."://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         }
     }
 
