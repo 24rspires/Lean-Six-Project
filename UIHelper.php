@@ -11,7 +11,10 @@ class UIHelper
         {
             return false;
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> properties
         return $_POST[$name];
     }
 

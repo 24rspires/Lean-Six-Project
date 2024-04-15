@@ -13,6 +13,7 @@
     <?php
     include_once "General.php";
     include_once "Account.php";
+    include_once "Properties.php";
     include_once "UIHelper.php";
     ?>
 
@@ -31,8 +32,7 @@
             // check if user searched
             if (isset($_POST['search']))
             {
-                // query keyword database
-                print "search";
+                // redirect with get page
             }
         }
 
