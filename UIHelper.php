@@ -13,8 +13,9 @@ class UIHelper
         return $_POST[$name];
     }
 
-    public static function navBar(Account $account = null): void
+    public static function navBar(): void
     {
+        $account = Account::loadSession();
 
         $loginButton = "<a href='login.php'>Login</a>";
 

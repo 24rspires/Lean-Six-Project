@@ -23,7 +23,7 @@
 
         $currentUser = Account::loadSession();
 
-        UIHelper::navBar($currentUser);
+        UIHelper::navBar();
 
         if ($_SERVER['REQUEST_METHOD'] == "POST")
         {
