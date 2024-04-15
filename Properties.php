@@ -102,4 +102,21 @@ class Properties
             return $properties;
         }
     }
+
+    public static function getSeachTerms() {
+        $query = "select address, city from boker.properties";
+
+        $result = dbhelper::getInstance()->query($query);
+
+        if ($result !== false) $result = $result->fetch_all(MYSQLI_ASSOC);
+
+        if ($result !== null && $result !== false) {
+            $terms = [];
+
+            foreach ($result as $data) {
+                $terms[] = $data['address'] . ", " . $data['city'];
+            }
+        }
+        return $terms;
+    }
 }
