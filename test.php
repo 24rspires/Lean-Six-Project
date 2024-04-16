@@ -1,3 +1,21 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['submit'])) {
+        $addr = explode(',', $_POST['myCountry']);
+        $stateZip = array_pop($addr);
+        $stateZip = explode(' ', $stateZip);
+        $addr = array_merge($addr, $stateZip);
+
+        $address = trim(urlencode($addr[0]));
+        $city = trim($addr[1]);
+
+        //print_r($addr);
+        header("Location: ./search.php?address={$address}&city={$city}&state={$addr[3]}&zipcode={$addr[4]}");
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +28,11 @@
 
 <p>Start typing:</p>
 
-<form autocomplete="off" action="/action_page.php">
+<form autocomplete="off" method="post">
     <div class="autocomplete" style="width:300px;">
         <input id="myInput" type="text" name="myCountry" placeholder="Country">
     </div>
-    <input type="submit">
+    <input type="submit" value="Sumbit" name="submit">
 </form>
 <script src="scripts/autocomplete.js"></script>
 </body>
