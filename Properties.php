@@ -104,7 +104,7 @@ class Properties
     }
 
     public static function getSeachTerms() {
-        $query = "select address, city from boker.properties";
+        $query = "select address, city, zipcode from boker.properties";
 
         $result = dbhelper::getInstance()->query($query);
 
@@ -114,7 +114,7 @@ class Properties
             $terms = [];
 
             foreach ($result as $data) {
-                $terms[] = $data['address'] . ", " . $data['city'];
+                $terms[] = $data['address'] . ", " . $data['city'] . ", OH " . $data['zipcode'];
             }
         }
         return $terms;
