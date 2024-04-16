@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['submit'])) {
-        $addr = explode(',', $_POST['myCountry']);
+        $addr = explode(',', $_POST['address']);
         $stateZip = array_pop($addr);
         $stateZip = explode(' ', $stateZip);
         $addr = array_merge($addr, $stateZip);
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <form autocomplete="off" method="post">
     <div class="autocomplete" style="width:300px;">
-        <input id="myInput" type="text" name="myCountry" placeholder="Country">
+        <input id="myInput" type="text" name="address" placeholder="Address">
     </div>
     <input type="submit" value="Sumbit" name="submit">
 </form>
