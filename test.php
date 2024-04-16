@@ -7,10 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $addr = array_merge($addr, $stateZip);
 
         $address = trim(urlencode($addr[0]));
-        $city = trim($addr[1]);
+        $city = urlencode(ltrim($addr[1]));
 
         //print_r($addr);
-        header("Location: ./search.php?address={$address}&city={$city}&state={$addr[3]}&zipcode={$addr[4]}");
+        header("Location: ./search.php?address={$address}&city={$city}&zipcode={$addr[4]}");
     }
 }
 
