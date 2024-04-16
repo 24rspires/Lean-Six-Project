@@ -1,5 +1,5 @@
 async function getCountries() {
-    const data = await fetch("http://localhost/adp2/lean-six-project/getTerms.php");
+    const data = await fetch("http://localhost/adp2/lean-six-project/api/getTerms.php");
 
     return await data.json();
 }
