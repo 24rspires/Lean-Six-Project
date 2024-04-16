@@ -105,6 +105,7 @@ class Properties
 
     public function getImages(): null|array
     {
+        $images = array();
         $this->id=133; // delete this
         $query = "select * from boker.property_media where property_id=$this->id";
         
@@ -118,19 +119,23 @@ class Properties
 
             foreach ($result as $property_media)
             {
-                $ids[] = $property_media['id'];
+                $ids[] = $property_media['media_id'];
             }
 
-            $in_string = "(" . implode(', ', $ids) . ")"
+            $in_string = "(" . implode(', ', $ids) . ")";
             $media_query = "select * from boker.media where media_id in $in_string";
-
+            
             $media_result = dbhelper::getInstance()->query($media_query);
 
             if ($media_result !== false) $media_result = $media_result->fetch_all(MYSQLI_ASSOC);
 
             if ($media_result !== null && $media_result !== false)
             {
-
+                foreach ($media_result as $media)
+                {
+                    $src = $media['file_path'];
+                    $images[] = "images/houses/$src";
+                }
             }
         }
     }
