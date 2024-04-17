@@ -1,0 +1,41 @@
+#boker {
+    /*text-align: center;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    height: 100vh;
+}
+
+#mainImg {
+    height: 405px;
+    width: 405px;
+}
+
+#smallRow {
+    margin-left: 5px;
+}
+
+#smallImg {
+    height: 200px;
+    width: 200px;
+}
+
+.col {
+    padding: 0;
+}
+
+.row {
+    padding: 0;
+}
+
+#top {
+    margin: 0px 5px 5px 5px;
+}
+
+#bottom {
+    margin: 5px 5px 0px 5px;
+    padding: 0;
+}
+
+#quad {
+    margin-left: 5px;
+}
