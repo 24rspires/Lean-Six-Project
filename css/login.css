@@ -5,15 +5,14 @@ body {
     padding: 0;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
+    background-image: linear-gradient(rgba(34, 47, 42, 255), rgba(34, 47, 42, 255)), url('../images/house1.jpg');
 }
 
 
 
 .container {
-    margin: 0;
-    width: 100%;
+    width: auto;
     height: 100vh;
-    background-image: linear-gradient(rgba(34, 47, 42, 255), rgba(34, 47, 42, 255)), url('../images/house1.jpg');
     background-position: center;
     background-size: cover;
     position: relative;
@@ -52,6 +51,7 @@ body {
 
 .input-field {
     background: #eaeaea;
+    padding: 15px;
     margin: 15px 0;
     border-radius: 3px;
     display: flex;
