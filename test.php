@@ -18,6 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         } else if ($_POST['type'] === 'county') {
             header("Location: ./search.php?city={$_POST['query']}");
+        } else if ($_POST['type'] === 'zipcode') {
+            header("Location: ./search.php?zipcode={$_POST['query']}");
         }
 
 
@@ -41,8 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <form autocomplete="off" method="post">
     <div class="autocomplete" style="width:300px;">
-        <input id="myInput" type="text" name="query" placeholder="Address">
+        <input id="myInput" type="text" name="query" placeholder="614 Boker Dr, Bokerville, BO 12345">
         <input id="typeInput" name="type" type="hidden" />
+        <input id="zipcodeInput" name="zipcode" type="hidden" />
     </div>
     <input type="submit" value="Sumbit" name="submit">
 </form>
