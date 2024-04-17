@@ -15,7 +15,8 @@ class dbhelper extends mysqli {
      * Use getInstance instead of constructing new dbhelper
      */
     private function __construct() {
-        $dbconfig = parse_ini_file("./db.ini");
+        $root = __DIR__;
+        $dbconfig = parse_ini_file("$root/db.ini");
         $servername = trim($dbconfig["servername"]);
         $username = trim($dbconfig["username"]);
         $password = trim($dbconfig["password"]);

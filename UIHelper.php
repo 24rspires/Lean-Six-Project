@@ -7,20 +7,20 @@ class UIHelper
 {
     public static function checkField(string $name) : FALSE|string
     {
-        if (!isset($_POST[$name]) || empty($_POST[$name]))
-        {
+        if (!isset($_POST[$name]) || empty($_POST[$name])) {
             return false;
         }
         return $_POST[$name];
     }
 
-    public static function navBar(Account $account = null): void
+    public static function navBar(): void
     {
+        $account = Account::loadSession();
         $loginButton = "<a href='login.php'>Login</a>";
 
         if ($account !== null) $loginButton = "
                                 <form method='post'>
-                                    <input type='submit' value='Logout' name='logout'>
+                                    <input type='submit' value='Logout' name='logout' class='logout'>
                                 </form>";
         // include account because logout will be in navbar
         // possibly consider adding two navbar functions
@@ -37,6 +37,8 @@ class UIHelper
         if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['logout']))
         {
             Account::unloadSession();
+
+            header("Location: ".  (empty($_SERVER['HTTPS']) ? 'http' : 'https') ."://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         }
     }
 

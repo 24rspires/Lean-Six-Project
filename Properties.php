@@ -103,6 +103,23 @@ class Properties
         }
     }
 
+    public static function getSeachTerms() {
+        $query = "select address, city, zipcode from boker.properties";
+
+        $result = dbhelper::getInstance()->query($query);
+
+        if ($result !== false) $result = $result->fetch_all(MYSQLI_ASSOC);
+
+        if ($result !== null && $result !== false) {
+            $terms = [];
+
+            foreach ($result as $data) {
+                $terms[] = $data['address'] . ", " . $data['city'] . ", OH " . $data['zipcode'];
+            }
+        }
+        return $terms;
+    }
+
     public function getImages(): null|array
     {
         $images = array();

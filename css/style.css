@@ -1,42 +1,5 @@
-nav {
-background-color: #333;
-padding: 20px;
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
-nav ul {
-display: flex;
-justify-content: center;
-}
-
-nav ul li {
-margin: 0 10px;
-}
-
-nav ul li a {
-color: #fff;
-text-decoration: none;
-font-size: 20px;
-font-family: 'Montserrat', sans-serif;
-}
-
-.Nav-Bar{
-    list-style-type: none;
-}
-
-@media (max-width: 768px) {
-    nav {
-      flex-direction: column;
-    }
-  
-        nav ul {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-        nav ul li {
-      margin: 10px 0;
-    }
-  }
 
 .bg-box {
     position: flex;
@@ -73,7 +36,7 @@ font-family: 'Montserrat', sans-serif;
 }
 
 .agent {
-  background-color: #86aa9b;
+  background-color: #d6bfb5;
   border: 1px solid #000000;
   margin-top: 10vh;
   margin-bottom: 5vh; 
@@ -83,12 +46,12 @@ font-family: 'Montserrat', sans-serif;
   color: black;
   width: 100%;
   box-sizing: border-box;
-  transition: all .5s ease-in-out;
+  transition: all .2s ease-in-out;
   
 }
 
 .agent:hover {
-  background-color: #8f8f8f;
+  background-color: #c7a597;
 
 }
 
@@ -106,12 +69,14 @@ font-family: 'Montserrat', sans-serif;
 
 .agent-info h3 {
   margin: 0 0 5px 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 .agent-info p {
   margin: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 .agents-background{
-  background-color: red;
+  background-color: rgba(34, 47, 42, 255);
 }
