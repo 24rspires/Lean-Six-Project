@@ -60,10 +60,15 @@ class UIHelper
         return $length >= 8 && $numbers >= 2 && $length < 100;
     }
     
+    public static function toMoney($number)
+    {
+        setlocale(LC_MONETARY, 'en_US');
+        
+        return money_format('%!.0n', $number);
+    }
     
     public static function agentCard(string $pfpUrl, string $name, string $phone, string $email): void
     {
-        
         print "
             <li class='agent'>
                 <img src='{$pfpUrl}' alt='{$name} Profile Picture' class='agent-pfp'>
@@ -73,6 +78,29 @@ class UIHelper
                     <p>Email: <a href='mailto:${email}'>${email}</a></p>
                 </div>
             </li>
+        ";
+    }
+
+    public static function propertyCard(int $pid, string $price, int $bds, float $ba, float $sqft, string $address, string $realtor, array $images): void
+    {
+        // data to get
+        // images (click view in progress)
+        // 
+        $realtor = "Boker realty"; // temporary
+        print "
+            <a class='col-sm-5 col-lg-3 col-md-4 col-xl-2 property-container m-2' href='property.php?id=$pid'>
+                <img class='property-image' src='images/houses/129/0.jpg'>
+                <div class='row'>
+                    <h6 class='property-price'>$price</h6>
+                </div>
+                <div class='data-holder'>
+                    <div class='row'>
+                        <p class='data-row'><span class='data'>$bds</span> bds <span class='data'>|</span> <span class='data'>$ba</span> ba <span class='data'>|</span> <span class='data'>$sqft</span> sqft<p>
+                        <p class='data-row address'>$address</p>
+                        <p class='realtor'>$realtor</p>
+                    </div>
+                </div>
+            </a>
         ";
     }
 }
