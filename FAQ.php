@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <section class="d-flex container justify-content-center align-self-center mt-5">
+        <!-- <section class="d-flex container justify-content-center align-self-center mt-5">
             <div class="row">
                 <div class="col-lg-12">
                 <ul class="faq-box list-unstyled">
@@ -34,10 +34,22 @@
                         Answer 2
                     </div>
                     </li>
-                    <!-- Add more questions and answers as needed -->
+                     
                 </ul>
                 </div>
             </div>
-        </section>
+        </section> -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-primary" data-toggle="collapse" data-target="#content">test</button>
+                    <div class="collapse" id="content">
+                        <div class="well">
+                        asldkfhasl;djkfhkl
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
