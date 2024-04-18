@@ -31,41 +31,12 @@
 </head>
 <body>
     <?PHP
+    // if startSessionIfNotStarted() is not called before
+    // the headers are sent the page will error
+    // do not move the includes
     include_once "Account.php";
     include_once "Properties.php";
     include_once "UIHelper.php";
-    
-    $boker_words = array(
-        'city', 'zipcode',
-        'price_min', 'price_max',
-        'square_feet_min', 'square_feet_max',
-        'bedroom_min', 'bedroom_max',
-        'bathroom_min', 'bathroom_max',
-    );
-    
-    foreach ($boker_words as $boker_key)
-    {
-        if (!isset($_GET[$boker_key]))
-        {
-            $_GET[$boker_key] = NULL;
-        }
-    }
-
-    $result = Properties::searchByFilter(
-        $_GET['city'],
-        $_GET['zipcode'],
-        $_GET['price_min'],
-        $_GET['price_max'],
-        $_GET['square_feet_min'],
-        $_GET['square_feet_max'],
-        $_GET['bedroom_min'],
-        $_GET['bedroom_max'],
-        $_GET['bathroom_min'],
-        $_GET['bathroom_max'],
-    );
-    
-    // print_r($result[0]->getImages());
-
     ?>
     <form method="GET" id="form">
         <label for="city">City</label>
@@ -154,9 +125,9 @@
         }
 
         .property-image {
+            object-fit: cover;
             width: 100%;
-            height: auto;
-            overflow: hidden;
+            /* height: 20%; */
             border-top-left-radius: 7px;
             border-top-right-radius: 7px;
         }
@@ -223,25 +194,86 @@
     window.addEventListener('load', updateScreenSizeDisplay);
     window.addEventListener('resize', updateScreenSizeDisplay);
 </script>
-
     <div class="container">
         <h1 class="result-header">Results</h1>
         <div class="row d-flex justify-content-center">
             <?PHP
-            print UIHelper::toMoney(5000);
-            UIHelper::propertyCard(
-                129,
-                "$100,000",
-                4,
-                5,
-                2000,
-                "boker street 43015",
-                "boker realty",
-                array()
-            );
+            // query for data
+            // load results
+            if ($_SERVER['REQUEST_METHOD'] == "GET")
+            {
+                $PAGE_SIZE = 50;
+                $PAGE_NUMBER = 0;
+                $boker_words = array(
+                    'city', 'zipcode',
+                    'price_min', 'price_max',
+                    'square_feet_min', 'square_feet_max',
+                    'bedroom', 'bathroom',
+                    'page'
+                );
+                
+                foreach ($boker_words as $boker_key)
+                {
+                    if (!isset($_GET[$boker_key]))
+                    {
+                        $_GET[$boker_key] = NULL;
+                    }
+                }
+
+                if ($_GET['page'] !== NULL)
+                {
+                    $PAGE_NUMBER = $_GET['page'];
+                }
+
+                $result = Properties::searchByFilter(
+                    $_GET['city'],
+                    $_GET['zipcode'],
+                    $_GET['price_min'],
+                    $_GET['price_max'],
+                    $_GET['square_feet_min'],
+                    $_GET['square_feet_max'],
+                    $_GET['bedroom'],
+                    $_GET['bathroom'],
+                    $PAGE_SIZE,
+                    $PAGE_NUMBER
+                );
+
+                foreach ($result as $property)
+                {
+                    $formatted_price = UIHelper::toMoney($property->price);
+                    $images = $property->getImages();
+                    $address = $property->address;
+                    $state = "OH";
+                    $city = $property->city;
+                    $zip = $property->zip;
+                    $formatted_address = "$address, $city, $state $zip";
+
+                    UIHelper::propertyCard(
+                        $property->id,
+                        $formatted_price,
+                        $property->beds,
+                        $property->bath,
+                        $property->squareFoot,
+                        $formatted_address,
+                        "Boker Realty", // we don't have a realtor in the db
+                        $images
+                    );
+                }
+            }
+            // $format_price = UIHelper::toMoney(300000);
+            // UIHelper::propertyCard(
+            //     129,
+            //     $format_price,
+            //     4,
+            //     5,
+            //     2000,
+            //     "boker street 43015",
+            //     "boker realty",
+            //     array()
+            // );
             ?>
 
-            <a class="col-sm-5 col-lg-3 col-md-4 col-xl-2 property-container m-2" href="house/id">
+            <!-- <a class="col-sm-5 col-lg-3 col-md-4 col-xl-2 property-container m-2" href="house/id">
                 <img class="property-image" src="images/houses/129/0.jpg">
                 <div class="row">
                     <h6 class="property-price">$500,000</h6>
@@ -253,7 +285,7 @@
                         <p class="realtor">Boker realty</p>
                     </div>
                 </div>
-            </a>
+            </a> -->
         </div>
         
     <div>

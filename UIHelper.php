@@ -61,10 +61,23 @@ class UIHelper
     }
     
     public static function toMoney($number)
-    {
-        setlocale(LC_MONETARY, 'en_US');
+    {        
+        $number_str = (string)$number;
         
-        return money_format('%!.0n', $number);
+        $parts = explode('.', $number_str);
+        
+        $whole_part = '';
+        $len = strlen($parts[0]);
+        for ($i = $len - 1, $j = 0; $i >= 0; $i--, $j++) {
+            $whole_part = $parts[0][$i] . $whole_part;
+            if ($j % 3 == 2 && $i != 0) {
+                $whole_part = ',' . $whole_part;
+            }
+        }
+        
+        $formatted = '$' . $whole_part . (isset($parts[1]) ? '.' . $parts[1] : '');
+        
+        return $formatted;
     }
     
     public static function agentCard(string $pfpUrl, string $name, string $phone, string $email): void
@@ -86,10 +99,18 @@ class UIHelper
         // data to get
         // images (click view in progress)
         // 
+
         $realtor = "Boker realty"; // temporary
+        $first_image = "images/nohouseimage.jpg";
+        if (isset($images[0]))
+        {
+            $first_image = $images[0];
+        }
         print "
             <a class='col-sm-5 col-lg-3 col-md-4 col-xl-2 property-container m-2' href='property.php?id=$pid'>
-                <img class='property-image' src='images/houses/129/0.jpg'>
+                <div>
+                    <img class='property-image' src='$first_image'>
+                </div>
                 <div class='row'>
                     <h6 class='property-price'>$price</h6>
                 </div>

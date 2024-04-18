@@ -68,9 +68,17 @@ class Properties
         dbhelper::getInstance()->query($sql);
     }
 
-    public static function searchByFilter(string|null $city=null, int|null $zipcode=null, int|null $price_min=null, int|null $price_max=null, int|null $square_feet_min=null, int|null $square_feet_max=null, int|null $bedroom_min=null, int|null $bedroom_max=null, int|null $bathroom_min=null, int|null $bathroom_max=null)
+    public static function searchByFilter(string|null $city=null, int|null $zipcode=null, int|null $price_min=null, int|null $price_max=null, int|null $square_feet_min=null, int|null $square_feet_max=null, int|null $bedroom, int|null $bathroom=null, int $page_size, int $page_number)
     {
-        $query = "select * from boker.properties where true";
+        if ($page_number < 0)
+        {
+            print "<h1 style='font-weight: bold'>Error page NUMBER is less than 0</h1>";
+        }
+        if ($page_size <= 0)
+        {
+            print "<h1 style='font-weight: bold'>Error page SIZE is less than or equal to 0</h1>";
+        }
+        $query = "select * from properties where true";
         if ($city !== null)
         {
             $query .= " and city='$city'";
@@ -87,15 +95,21 @@ class Properties
         {
             $query .= " and square_feet between $square_feet_min and $square_feet_max";
         }
-        if ($bathroom_min !== null && $bathroom_max !== null)
+        if ($bathroom !== null)
         {
-            -
-            $query .= " and bathrooms between $bathroom_min and $bathroom_max";
+            $query .= " and bathrooms > $bathroom";
         }
-        if ($bedroom_min !== null && $bedroom_max !== null)
+        if ($bedroom !== null)
         {
-            $query .= " and bedrooms between $bedroom_min and $bedroom_max";
+            $query .= " and bedrooms > $bedroom";
         }
+
+        // add limit
+        $limit_min = $page_number * $page_size;
+        $limit_max = $limit_min + $page_size;
+
+        // print "limit_min: " . $limit_min;
+        // print "limit_max: " . $limit_max;
 
         $result = dbhelper::getInstance()->query($query);
 
@@ -150,7 +164,6 @@ class Properties
     public function getImages(): null|array
     {
         $images = array();
-        $this->id=133; // delete this
         $query = "select * from boker.property_media where property_id=$this->id";
         
         $result = dbhelper::getInstance()->query($query);
@@ -166,19 +179,22 @@ class Properties
                 $ids[] = $property_media['media_id'];
             }
 
-            $in_string = "(" . implode(', ', $ids) . ")";
-            $media_query = "select * from boker.media where media_id in $in_string";
-            
-            $media_result = dbhelper::getInstance()->query($media_query);
-
-            if ($media_result !== false) $media_result = $media_result->fetch_all(MYSQLI_ASSOC);
-
-            if ($media_result !== null && $media_result !== false)
+            if (!empty($ids))
             {
-                foreach ($media_result as $media)
+                $in_string = "(" . implode(', ', $ids) . ")";
+                $media_query = "select * from boker.media where media_id in $in_string";
+                
+                $media_result = dbhelper::getInstance()->query($media_query);
+
+                if ($media_result !== false) $media_result = $media_result->fetch_all(MYSQLI_ASSOC);
+
+                if ($media_result !== null && $media_result !== false)
                 {
-                    $src = $media['file_path'];
-                    $images[] = "images/houses/$src";
+                    foreach ($media_result as $media)
+                    {
+                        $src = $media['file_path'];
+                        $images[] = "images/houses/$src";
+                    }
                 }
             }
         }
