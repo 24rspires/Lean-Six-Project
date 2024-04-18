@@ -106,8 +106,8 @@ class Properties
 
         // add limit
         $limit_min = $page_number * $page_size;
-        $limit_max = $limit_min + $page_size;
 
+        $query .= " limit $limit_min, $page_size";
         // print "limit_min: " . $limit_min;
         // print "limit_max: " . $limit_max;
 
