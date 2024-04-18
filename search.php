@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="dynamicTitle">boker search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script type="text/javascript">
         var index = 0;
         var titles = [
@@ -32,6 +33,7 @@
     <?PHP
     include_once "Account.php";
     include_once "Properties.php";
+    include_once "UIHelper.php";
     
     $boker_words = array(
         'city', 'zipcode',
@@ -131,52 +133,129 @@
         
         <button type="button" id="sumbit">sumbit</button>
 
-        <script>
-            var defaults = {
-                'city': '',
-                'zipcode': '',
-                'price_min': 0,
-                'price_max': 1000000,
-                'bathroom': 0,
-                'bedroom': 0
-            };
-            $("#sumbit").click(function(){
-                var formData = new FormData(document.getElementById("form"));
-                var urlEncodedData = [];
-                
-                for (var pair of formData.entries()) {
-                    var key = pair[0];
-                    var val = pair[1];
-                    
-                    console.log(typeof val);
-                    console.log(key);
-
-                    var defaultValue = defaults[key];
-                    if (defaults.hasOwnProperty(key))
-                    {
-                        if (val == defaultValue)
-                        {
-                            continue;
-                        }
-                    }
-
-                    urlEncodedData.push(
-                        encodeURIComponent(key) + '=' + encodeURIComponent(pair[1])
-                    );
-                }
-                
-                var minPrice = $("#slider-range").slider("values", 0);
-                var maxPrice = $("#slider-range").slider("values", 1);
-                
-                urlEncodedData.push(encodeURIComponent("price_min")+"="+encodeURIComponent(minPrice))
-                urlEncodedData.push(encodeURIComponent("price_max")+"="+encodeURIComponent(maxPrice))
-                // get the price range and append to url encoded data
-                
-                var urlEncodedString = urlEncodedData.join('&');
-                
-                window.location.href = "search.php?" + urlEncodedString;
-            })
-        </script>
+        <script src="scripts/searchForm.js"></script>
     </form>
+    <!-- end of form search content goes under here -->
+    <style>
+        .result-header {
+            text-align: center;
+            padding: 40px
+        }
+
+        .property-container {
+            border-radius: 7px;
+            padding: 0px;
+            /* padding: 0px 10px 0px 10px; */
+            text-decoration: none;
+            color: black;
+
+            border: 1px solid transparent;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .property-image {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+        }
+        
+        .property-price {
+            padding-top: 0px;
+            padding-bottom: 0px;
+            margin: 4px;
+            font-weight: bold;
+        }
+
+        .data {
+            font-weight: 400;
+            color: gray;
+        }
+
+        .data-row {
+            margin: 0px;
+        }
+
+        .data-holder {
+            padding: 0px 8px 0px 8px;
+            margin: 0px;
+        }
+
+        .realtor {
+            font-weight: 400;
+            color: gray;
+            font-size: 10px;
+            margin: 0px
+        }
+
+        .address {
+            font-size: 80%;
+        }
+    </style>
+    
+    <div id="screenSizeDisplay"></div>
+
+<script>
+    // Function to get Bootstrap's current screen size
+    function getBootstrapScreenSize() {
+        const width = window.innerWidth;
+        if (width < 576) {
+            return 'xs';
+        } else if (width >= 576 && width < 768) {
+            return 'sm';
+        } else if (width >= 768 && width < 992) {
+            return 'md';
+        } else if (width >= 992 && width < 1200) {
+            return 'lg';
+        } else {
+            return 'xl';
+        }
+    }
+
+    // Update screen size display on page load and resize
+    function updateScreenSizeDisplay() {
+        const screenSize = getBootstrapScreenSize();
+        document.getElementById('screenSizeDisplay').innerText = 'Current Bootstrap Screen Size: ' + screenSize;
+    }
+
+    // Call the function when the page loads and when the window resizes
+    window.addEventListener('load', updateScreenSizeDisplay);
+    window.addEventListener('resize', updateScreenSizeDisplay);
+</script>
+
+    <div class="container">
+        <h1 class="result-header">Results</h1>
+        <div class="row d-flex justify-content-center">
+            <?PHP
+            print UIHelper::toMoney(5000);
+            UIHelper::propertyCard(
+                129,
+                "$100,000",
+                4,
+                5,
+                2000,
+                "boker street 43015",
+                "boker realty",
+                array()
+            );
+            ?>
+
+            <a class="col-sm-5 col-lg-3 col-md-4 col-xl-2 property-container m-2" href="house/id">
+                <img class="property-image" src="images/houses/129/0.jpg">
+                <div class="row">
+                    <h6 class="property-price">$500,000</h6>
+                </div>
+                <div class="data-holder">
+                    <div class="row">
+                        <p class="data-row"><span class="data">5</span> bds <span class="data">|</span> <span class="data">4</span> ba <span class="data">|</span> <span class="data">3,711</span> sqft<p>
+                        <p class="data-row address">911 Boker Rd, Bokerville, OH 43015</p>
+                        <p class="realtor">Boker realty</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+    <div>
 </body>
 </html>

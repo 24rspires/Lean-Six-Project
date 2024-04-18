@@ -30,6 +30,28 @@ class Properties
         $this->createDate = $createDate;
     }
 
+    public static function getFromId(int $id): Properties
+    {
+        // i don't think i need this
+        $result = dbhelper::getInstance()->query("SELECT * FROM properties WHERE property_id=$id");
+        
+        if ($result !== false) $result = $result->fetch_assoc();
+
+        if ($result !== false && $result !== null)
+        {
+            return new Properties(
+                $result["property_id"],
+                $result["owner_id"],
+                $result["address"],
+                $result["city"],
+                $result["state_id"],
+                $result["zipcode"],
+                $result["price"],
+                $result[""]
+            );
+        }
+    }
+
     public function insertIntoDatabase() : void {
         $ownId = $this->ownerId;
         $addr = $this->address;
