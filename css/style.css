@@ -1,25 +1,68 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+nav {
+  background-color: #333;
+  padding: 20px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.Nav-Bar{
+  list-style-type: none;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+}
 
 .bg-box {
-    position: flex;
-  
-  
-    width: 100%;
-    height: 100%;
+  position: flex;
+
+
+  width: 100%;
+  height: 100%;
 }
 .bg-box img {
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-    object-fit: cover;
-    margin-right : 25%;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  margin-right : 25%;
 }
 
 .search-container {
   position: absolute;
   bottom: 20px;
-  
+  left: 20px;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 10px;
   border-radius: 5px;
@@ -36,22 +79,22 @@
 }
 
 .agent {
-  background-color: #d6bfb5;
+  background-color: #86aa9b;
   border: 1px solid #000000;
   margin-top: 10vh;
-  margin-bottom: 5vh; 
+  margin-bottom: 5vh;
   padding: 12px;
   text-decoration: none;
   font-size: 18px;
   color: black;
   width: 100%;
   box-sizing: border-box;
-  transition: all .2s ease-in-out;
-  
+  transition: all .5s ease-in-out;
+
 }
 
 .agent:hover {
-  background-color: #c7a597;
+  background-color: #8f8f8f;
 
 }
 
@@ -69,18 +112,280 @@
 
 .agent-info h3 {
   margin: 0 0 5px 0;
-  font-family: 'Poppins', sans-serif;
 }
 
 .agent-info p {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
 }
 
 .agents-background{
-  background-color: rgba(34, 47, 42, 255);
+
 }
 
-body{
-  background-color: rgba(34, 47, 42, 255);;
+/* Index Page CSS*/
+body {
+  background-color: #eaeaea;
+}
+
+.home {
+  width: 95.75%;
+  margin-top: 1rem;
+  height: 88vh;
+  padding: 0 2.5rem;
+}
+
+.home .home-image {
+  background-image: url('../images/house2.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.home .home-image .home-text {
+  text-align: center;
+  margin-top: 5rem;
+  width: 100%;
+  max-width: 65rem;
+  color: #fff;
+}
+
+.home .home-image .home-text h1 {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+.home .home-image .home-text p {
+  font-size: 1.5rem;
+  margin: 0 10rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.home .home-image .home-text a {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.2rem;
+  border: 2px solid #fff;
+  padding: .5rem 1.5rem;
+  border-radius: .5rem;
+}
+
+.home .home-image .home-text a:hover {
+  background: #fff;
+  color: #fff;
+  font-weight: 400;
+}
+
+.property {
+  width: 85%;
+  padding: 10rem 8rem;
+  margin-top: 1px;
+}
+
+.property .prop-h h2 {
+  font-size: 4rem;
+  text-align: center;
+}
+
+.property .prop-h p {
+  font-size: 1.3rem;
+  color: #333;
+  line-height: 1.5;
+  text-align: center;
+  margin: -30px 0 2rem;
+}
+
+.property .de-box {
+  margin-top: 4rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4rem;
+}
+
+.property .de-box a {
+  color: #000;
+  text-decoration: none;
+}
+
+.property .de-box a:hover {
+  transform: translate(0, -.1rem);
+  box-shadow: 1px 5px 15px #2d2d2d;
+  border-radius: 1.2rem;
+  transition: transform .5s;
+}
+
+.property .de-box .box {
+  width: 100%;
+  height: 42rem;
+  background: #fff;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.property .de-box .box .image {
+  width: 100%;
+  height: 26rem;
+  overflow: hidden;
+}
+
+.property .de-box .box .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.property .de-box .price-name {
+  padding: 2rem;
+  border-bottom: 1px solid #000;
+}
+
+.property .de-box .price-name h4 {
+  font-size: 2rem;
+  color: #000;
+  margin-bottom: .8rem;
+}
+
+.property .de-box .price-name p {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.property .de-box .box .location-detail {
+  padding: 1rem;
+}
+
+.property .de-box .box .location-detail p {
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-align-all: center;
+}
+
+.property .de-box .box .location-detail p img {
+  width: 20px;
+  vertical-align: middle;
+  padding-left: 22px;
+}
+
+.property .de-box .box .location-detail .detail {
+  width: 100%;
+}
+
+.property .de-box .box .location-detail .detail ul {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 35px;
+  font-weight: 500;
+  left: 0.5%;
+}
+
+.property .de-box .box .location-detail .detail ul li {
+  list-style: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.property .de-box .box .location-detail .detail ul li img {
+  width: 18px;
+  margin-right: 0.5rem;
+}
+
+.property .explore {
+  width: 100%;
+  display: flex;
+  margin-top: 5rem;
+  justify-content: center;
+}
+
+.property .explore a {
+  color: #fff;
+  background: #000;
+  padding: 1rem 2rem;
+  font-size: 1.3rem;
+  border-radius: .8rem;
+}
+
+.property .explore a:hover {
+  transform: translate(0, -.7rem);
+  box-shadow: 1px 5px 15px #000;
+}
+
+.property {
+  padding: 2px 8.5rem 4.5rem;
+}
+
+.property .de-box {
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.property img {
+  width: 200px;
+}
+
+.footer {
+  width: 100%;
+  background: #f2c3bb;
+  padding: 3rem 8rem 0;
+}
+
+.footer img {
+  width: 150px;
+}
+
+.footer .footer-box {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  gap: 9rem;
+  padding: 5rem 0rem;
+}
+
+.footer .footer-box .box {
+  width: 100%;
+}
+
+.footer .footer-box .box .logo {
+  width: 20em;
+  overflow: hidden;
+}
+
+.footer .footer-box .box .logo img {
+  width: 100%;
+}
+
+.footer .footer-box .box p {
+  width: 100%;
+  max-width: 17em;
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin: 0.5rem 0;
+}
+
+.footer .footer-box .box h3 {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 3rem;
+}
+
+.footer .footer-box .box ul li {
+  list-style: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 2rem;
+  line-height: 1.4;
+}
+
+.footer .footer-box .box ul li a {
+  color: #fff;
+  text-decoration: none;
 }
