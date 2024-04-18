@@ -1,93 +1,148 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="stylesheet" href="./css/nav-bar.css">
-        <title>Boker Real Estate | Home</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>Home | Boker Real Estate</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="title" content="Boker Real Estate">
+    <meta name="description" content="This is our Lean Six project">
+    <link href="./css/style.css" rel="stylesheet">
+    <script src="./js/main.js" defer></script>
+</head>
 
-    <?php
-    include_once "General.php";
-    include_once "Account.php";
-    include_once "Properties.php";
-    include_once "UIHelper.php";
-    ?>
-
-    <body>
-        <?php
-        startSessionIfNotStarted();
-
-        $currentUser = Account::loadSession();
-
-        UIHelper::navBar();
-
-        if ($_SERVER['REQUEST_METHOD'] == "POST")
-        {
-            // user has interacted
-
-            // check if user searched
-            if (isset($_POST['search']))
-            {
-                // redirect with get page
-            }
-        }
-
-        if ($currentUser !== NULL)
-        {
-            print "Current user: $currentUser->username<br>";
-
-            print '
-            <form method="post">
-                <input type="submit" value="Logout" name="logout">
-            </form>
-            ';
-        }
-        else
-        {
-            print "No user logged in<br>";
-        }
-        ?>
-        
-        
-        <div class="d-flex container justify-content-center">
-            <div class="bg-box">
-                <form method="POST">
-                    <input type="text" name="city" placeholder="city">
-                    <input type="text" name="state" placeholder="state">
-                    <input type="text" name="zip" placeholder="zip">
-                    <input type="submit" value="Sumbit" name="sumbit">
-                </form>
-
-
-
-    <!--                    <div class="container">-->
-    <!--                        <div class="dropdown">-->
-    <!--                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example-->
-    <!--                                <span class="caret"></span></button>-->
-    <!--                            <ul class="dropdown-menu">-->
-    <!--                                <li><a href="#">HTML</a></li>-->
-    <!--                                <li><a href="#">CSS</a></li>-->
-    <!--                                <li><a href="#">JavaScript</a></li>-->
-    <!--                            </ul>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-
-
-                <?php
-                    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-                        if (isset($_POST['search'])) {
-                            $city = "";
-                            header("Location: ./search.php");
-                        }
-                    }
-                ?>
+<body>
+<?php include_once "UIHelper.php"; UIHelper::navBar(); ?>
+<main>
+    <div class="home">
+        <div class="home-image">
+            <div class="home-text">
+                <h1>Welcome to Boker Real Estate</h1>
+                <p>Your Gateway to Dream Homes and Investment Opportunities!</p>
+                <a href="#">Get Started!</a>
             </div>
         </div>
-    </body>
+    </div>
+
+    <div class="property">
+        <div class="prop-h">
+            <h2>Trending Properties</h2>
+            <p>Explore our trending properties showcasing premier locations and exceptional value!</p>
+        </div>
+
+        <div class="de-box">
+            <a href="#"><div class="box">
+                <div class="image">
+                    <img src="./images/property1.jpg" alt="">
+                </div>
+
+                <div class="price-name">
+                    <h4>$729,900</h4>
+                </div>
+
+                <div class="location-detail">
+                    <p><img src="./images/location.svg"> 5723 Piatt Rd, Lewis Center, OH</p>
+                    <div class="detail">
+                        <ul>
+                            <li>
+                                <img src="./images/bed.svg">4 Beds
+                            </li>
+
+                            <li>
+                                <img src="./images/bath.svg">4 Baths
+                            </li>
+
+                            <li>
+                                <img src="./images/sqft.svg">2,812 Sqft
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                </div></a>
+
+            <a><div class="box">
+                <div class="image">
+                    <img src="./images/property2.jpg" alt="">
+                </div>
+
+                <div class="price-name">
+                    <h4>$774,762</h4>
+                </div>
+
+                <div class="location-detail">
+                    <p><img src="./images/location.svg"> 5544 Butternut Dr, Lewis Center, OH</p>
+                    <div class="detail">
+                        <ul>
+                            <li>
+                                <img src="./images/bed.svg">3 Beds
+                            </li>
+
+                            <li>
+                                <img src="./images/bath.svg">3 Baths
+                            </li>
+
+                            <li>
+                                <img src="./images/sqft.svg">2,453 Sqft
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                </div></a>
+
+            <a><div class="box">
+                <div class="image">
+                    <img src="./images/property3.jpg" alt="">
+                </div>
+
+                <div class="price-name">
+                    <h4>$672,500</h4>
+                </div>
+
+                <div class="location-detail">
+                    <p><img src="./images/location.svg"> 1949 Linden St, Lewis Center, OH</p>
+                    <div class="detail">
+                        <ul>
+                            <li>
+                                <img src="./images/bed.svg">5 Beds
+                            </li>
+
+                            <li>
+                                <img src="./images/bath.svg">4 Baths
+                            </li>
+
+                            <li>
+                                <img src="./images/sqft.svg">2,951 Sqft
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div></a>
+        </div>
+
+        <div class="explore">
+            <a href="#">Explore All</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-box">
+            <div class="box">
+                <div class="logo">
+                    <img src="./images/Boker%20Real%20Estate-logos.jpeg" alt="">
+                </div>
+                <p>Unlock Home Dreams with Boker!</p>
+            </div>
+
+            <div class="box">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="agents.php">Agents</a></li>
+                    <li><a href="FAQ.php">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="./js/main.js"></script>
+</body>
 </html>
