@@ -126,9 +126,10 @@ class Properties
     }
 
     public static function getSeachTerms() {
-        $query = "select address, city, zipcode from boker.properties";
+        $query = "select property_id, address, city, zipcode from boker.properties";
 
         $result = dbhelper::getInstance()->query($query);
+
 
         if ($result !== false) $result = $result->fetch_all(MYSQLI_ASSOC);
 
@@ -136,7 +137,11 @@ class Properties
             $terms = [];
 
             foreach ($result as $data) {
-                $terms[] = $data['address'] . ", " . $data['city'] . ", OH " . $data['zipcode'];
+                $terms[] = array(
+                    "value" => $data['address'] . ", " . $data['city'] . ", OH " . $data['zipcode'],
+                    "id" => $data['property_id'],
+                    "type" => 'address'
+                );
             }
         }
         return $terms;
