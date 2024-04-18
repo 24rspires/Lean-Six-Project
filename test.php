@@ -1,22 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['submit'])) {
-        if ($_POST['type'] === 'address') {
-
-            $addr = explode(',', $_POST['query']);
-            $stateZip = array_pop($addr);
-            $stateZip = explode(' ', $stateZip);
-            $addr = array_merge($addr, $stateZip);
-
-            $address = trim(urlencode($addr[0]));
-            $city = urlencode(ltrim($addr[1]));
-
-
-
-            //print_r($addr);
-            header("Location: ./search.php?address={$address}&city={$city}&zipcode={$addr[4]}");
-
-        } else if ($_POST['type'] === 'county') {
+        if ($_POST['type'] === 'county') {
             header("Location: ./search.php?city={$_POST['query']}");
         } else if ($_POST['type'] === 'zipcode') {
             header("Location: ./search.php?zipcode={$_POST['query']}");
@@ -44,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="autocomplete" style="width:300px;">
         <input id="myInput" type="text" name="query" placeholder="614 Boker Dr, Bokerville, BO 12345">
         <input id="typeInput" name="type" type="hidden" />
-        <input id="zipcodeInput" name="zipcode" type="hidden" />
+        <input id="propId" name="propId" type="hidden" />
     </div>
     <input type="submit" value="Sumbit" name="submit">
 </form>
