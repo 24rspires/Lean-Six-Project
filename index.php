@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="location-detail">
-                    <p><img src="./images/location.svg">5723 Piatt Rd, Lewis Center, OH 43035</p>
+                    <p><img src="./images/location.svg"> 5723 Piatt Rd, Lewis Center, OH</p>
                     <div class="detail">
                         <ul>
                             <li>
@@ -61,27 +61,27 @@
 
             <a><div class="box">
                 <div class="image">
-                    <img src="./images/property1.jpg" alt="">
+                    <img src="./images/property2.jpg" alt="">
                 </div>
 
                 <div class="price-name">
-                    <h4>$729,900</h4>
+                    <h4>$774,762</h4>
                 </div>
 
                 <div class="location-detail">
-                    <p><img src="./images/location.svg">5723 Piatt Rd, Lewis Center, OH 43035</p>
+                    <p><img src="./images/location.svg"> 5544 Butternut Dr, Lewis Center, OH</p>
                     <div class="detail">
                         <ul>
                             <li>
-                                <img src="./images/bed.svg">4 Beds
+                                <img src="./images/bed.svg">3 Beds
                             </li>
 
                             <li>
-                                <img src="./images/bath.svg">4 Baths
+                                <img src="./images/bath.svg">3 Baths
                             </li>
 
                             <li>
-                                <img src="./images/sqft.svg">2,812 Sqft
+                                <img src="./images/sqft.svg">2,453 Sqft
                             </li>
                         </ul>
                     </div>
@@ -90,19 +90,19 @@
 
             <a><div class="box">
                 <div class="image">
-                    <img src="./images/property1.jpg" alt="">
+                    <img src="./images/property3.jpg" alt="">
                 </div>
 
                 <div class="price-name">
-                    <h4>$729,900</h4>
+                    <h4>$672,500</h4>
                 </div>
 
                 <div class="location-detail">
-                    <p><img src="./images/location.svg">5723 Piatt Rd, Lewis Center, OH 43035</p>
+                    <p><img src="./images/location.svg"> 1949 Linden St, Lewis Center, OH</p>
                     <div class="detail">
                         <ul>
                             <li>
-                                <img src="./images/bed.svg">4 Beds
+                                <img src="./images/bed.svg">5 Beds
                             </li>
 
                             <li>
@@ -110,7 +110,7 @@
                             </li>
 
                             <li>
-                                <img src="./images/sqft.svg">2,812 Sqft
+                                <img src="./images/sqft.svg">2,951 Sqft
                             </li>
                         </ul>
                     </div>
