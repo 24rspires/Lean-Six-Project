@@ -202,7 +202,7 @@
             // load results
             if ($_SERVER['REQUEST_METHOD'] == "GET")
             {
-                $PAGE_SIZE = 50;
+                $PAGE_SIZE = 15;
                 $PAGE_NUMBER = 0;
                 $boker_words = array(
                     'city', 'zipcode',
@@ -224,7 +224,7 @@
                 {
                     $PAGE_NUMBER = $_GET['page'];
                 }
-
+                
                 $result = Properties::searchByFilter(
                     $_GET['city'],
                     $_GET['zipcode'],
@@ -238,26 +238,37 @@
                     $PAGE_NUMBER
                 );
 
-                foreach ($result as $property)
+                if (!empty($result))
                 {
-                    $formatted_price = UIHelper::toMoney($property->price);
-                    $images = $property->getImages();
-                    $address = $property->address;
-                    $state = "OH";
-                    $city = $property->city;
-                    $zip = $property->zip;
-                    $formatted_address = "$address, $city, $state $zip";
+                    foreach ($result as $property)
+                    {
+                        $formatted_price = UIHelper::toMoney($property->price);
+                        $images = $property->getImages();
+                        $address = $property->address;
+                        $state = "OH";
+                        $city = $property->city;
+                        $zip = $property->zip;
+                        $formatted_address = "$address, $city, $state $zip";
 
-                    UIHelper::propertyCard(
-                        $property->id,
-                        $formatted_price,
-                        $property->beds,
-                        $property->bath,
-                        $property->squareFoot,
-                        $formatted_address,
-                        "Boker Realty", // we don't have a realtor in the db
-                        $images
-                    );
+                        UIHelper::propertyCard(
+                            $property->id,
+                            $formatted_price,
+                            $property->beds,
+                            $property->bath,
+                            $property->squareFoot,
+                            $formatted_address,
+                            "Boker Realty", // we don't have a realtor in the db
+                            $images
+                        );
+                    }
+                }
+                else
+                {
+                    print "
+                    <div class='justify-content-center'>
+                        <h1 class='text-center mb-5'>No results!</h1>
+                    </div>
+                    ";
                 }
             }
             // $format_price = UIHelper::toMoney(300000);
@@ -287,7 +298,40 @@
                 </div>
             </a> -->
         </div>
-        
+        <div class="justify-content-center d-flex mt-4 mb-4">
+            <button id='prev-btn' class="btn btn-dark">Previous Page</button>
+            <button id='next-btn' class="btn btn-dark">Next Page</button>
+        </div>
+
+        <script>
+            $(document).ready(function()
+            {
+                function move(up)
+                {
+                    const url = new URL(window.location.href);
+
+                    movement = up == 1 ? 1 : -1
+                    pageNumber = parseInt(url.searchParams.get("page")) || 0;
+                    
+                    if (pageNumber <= 0 && movement <= -1)
+                    {
+                        return;
+                    }
+                    
+                    url.searchParams.set("page", pageNumber + movement);
+                    var newUrl = url.toString();
+                    window.location.href = newUrl;
+                }
+                $('#prev-btn').click(function()
+                {
+                    move(-1);
+                })
+                $('#next-btn').click(function()
+                {
+                    move(1);
+                })
+            })
+        </script>
     <div>
 </body>
 </html>
