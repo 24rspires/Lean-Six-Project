@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="dynamicTitle">boker search</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type="text/javascript">
         var index = 0;
         var titles = [
@@ -124,10 +125,19 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
+        .property-container:hover {
+            cursor: pointer;
+        }
+
         .property-image {
             object-fit: cover;
             width: 100%;
             /* height: 20%; */
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+        }
+
+        .rounded-property-image {
             border-top-left-radius: 7px;
             border-top-right-radius: 7px;
         }
@@ -194,7 +204,7 @@
     window.addEventListener('load', updateScreenSizeDisplay);
     window.addEventListener('resize', updateScreenSizeDisplay);
 </script>
-    <div class="container">
+    <div>
         <h1 class="result-header">Results</h1>
         <div class="row d-flex justify-content-center">
             <?PHP
@@ -283,7 +293,40 @@
             //     array()
             // );
             ?>
-
+            
+            <!-- <div class="col-sm-5 col-lg-3 col-md-4 col-xl-3 property-container m-2" pid='129'>
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-target='boker'>
+                    <div class="carousel-inner rounded-property-image">
+                        <div class="carousel-item active">
+                        <img class="d-block w-100 rounded-property-image" src="images/houses/129/0.jpg" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                        <img class="d-block w-100 rounded-property-image" src="images/houses/129/1.jpg" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                        <img class="d-block w-100 rounded-property-image" src="images/houses/129/2.jpg" alt="Third slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" click-ignore aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" click-ignore aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div class="row">
+                    <h6 class="property-price">$500,000</h6>
+                </div>
+                <div class="data-holder">
+                    <div class="row">
+                        <p class="data-row"><span class="data">5</span> bds <span class="data">|</span> <span class="data">4</span> ba <span class="data">|</span> <span class="data">3,711</span> sqft<p>
+                        <p class="data-row address">911 Boker Rd, Bokerville, OH 43015</p>
+                        <p class="realtor">Boker realty</p>
+                    </div>
+                </div>
+            <div> -->
             <!-- <a class="col-sm-5 col-lg-3 col-md-4 col-xl-2 property-container m-2" href="house/id">
                 <img class="property-image" src="images/houses/129/0.jpg">
                 <div class="row">
@@ -302,14 +345,32 @@
             <button id='prev-btn' class="btn btn-dark">Previous Page</button>
             <button id='next-btn' class="btn btn-dark">Next Page</button>
         </div>
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <script>
+            $('.carousel').carousel({
+                interval: false
+            });
+
+            $('.property-container').click(function()
+            {
+                var propertyId = $(this).attr('pid');
+                var target = event.target;
+                if (propertyId && $(target).attr('click-ignore') === undefined)
+                {
+                    window.location.href = "property.php?id="+propertyId;
+                }
+            })
+
             $(document).ready(function()
             {
                 function move(up)
                 {
                     const url = new URL(window.location.href);
-
+                    
                     movement = up == 1 ? 1 : -1
                     pageNumber = parseInt(url.searchParams.get("page")) || 0;
                     

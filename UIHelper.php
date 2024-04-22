@@ -101,15 +101,59 @@ class UIHelper
         // 
 
         $realtor = "Boker realty"; // temporary
-        $first_image = "images/nohouseimage.jpg";
+        $missing = "images/nohouseimage.jpg";
         if (isset($images[0]))
         {
             $first_image = $images[0];
         }
+        
+        $imageString = "";
+
+        if (!empty($images))
+        {
+            foreach ($images as $index => $image)
+            {
+                if ($index == 0)
+                {
+                    $imageString .= "
+                        <div class='carousel-item active'>
+                        <img class='d-block w-100 rounded-property-image' src='$image' alt='House Image ($image)'>
+                        </div>
+                    ";
+                }
+                else
+                {
+                    $imageString .= "
+                        <div class='carousel-item'>
+                        <img class='d-block w-100 rounded-property-image' src='$image' alt='House Image ($image)'>
+                        </div>
+                    ";
+                }
+            }
+        }
+        else
+        {
+            $imageString .= "
+                <div class='carousel-item active'>
+                <img class='d-block w-100 rounded-property-image' src='$missing' alt='Missing House Image 404'>
+                </div>
+            ";
+        }
+
         print "
-            <a class='col-sm-5 col-lg-3 col-md-4 col-xl-2 property-container m-2' href='property.php?id=$pid'>
-                <div>
-                    <img class='property-image' src='$first_image'>
+            <div class='col-sm-5 col-lg-3 col-md-4 col-xl-3 property-container m-2' pid='$pid'>
+                <div id='$pid' class='carousel slide' data-ride='carousel'>
+                    <div class='carousel-inner rounded-property-image'>
+                        $imageString
+                    </div>
+                    <a class='carousel-control-prev' href='#$pid' role='button' data-slide='prev'>
+                        <span class='carousel-control-prev-icon' click-ignore aria-hidden='true'></span>
+                        <span class='sr-only'>Previous</span>
+                    </a>
+                    <a class='carousel-control-next' href='#$pid' role='button' data-slide='next'>
+                        <span class='carousel-control-next-icon' click-ignore aria-hidden='true'></span>
+                        <span class='sr-only'>Next</span>
+                    </a>
                 </div>
                 <div class='row'>
                     <h6 class='property-price'>$price</h6>
@@ -121,7 +165,7 @@ class UIHelper
                         <p class='realtor'>$realtor</p>
                     </div>
                 </div>
-            </a>
+            </div>
         ";
     }
 }
