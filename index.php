@@ -1,3 +1,18 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['submit'])) {
+        if ($_POST['type'] === 'county') {
+            header("Location: ./search.php?city={$_POST['query']}");
+        } else if ($_POST['type'] === 'zipcode') {
+            header("Location: ./search.php?zipcode={$_POST['query']}");
+        }
+
+
+
+    }
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,6 +22,7 @@
     <meta name="title" content="Boker Real Estate">
     <meta name="description" content="This is our Lean Six project">
     <link href="./css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/autocomplete.css">
     <script src="./js/main.js" defer></script>
 </head>
 
@@ -18,8 +34,16 @@
             <div class="home-text">
                 <h1>Welcome to Boker Real Estate</h1>
                 <p>Your Gateway to Dream Homes and Investment Opportunities!</p>
-                <a href="#">Get Started!</a>
-            </div>
+                <form autocomplete="off" method="post">
+                    <div class="autocomplete" style="width:300px;">
+                        <input id="myInput" type="text" name="query" placeholder="614 Boker Dr, Bokerville, BO 12345">
+                        <input id="typeInput" name="type" type="hidden" />
+                        <input id="propId" name="propId" type="hidden" />
+                    </div>
+                    <input type="submit" value="Sumbit" name="submit">
+                </form>
+                <script src="./scripts/autocomplete.js"></script>
+            </div> 
         </div>
     </div>
 
