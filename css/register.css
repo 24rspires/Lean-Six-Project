@@ -1,16 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
-* {
+body{
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
+    background-image: linear-gradient(rgba(34, 47, 42, 255), rgba(34, 47, 42, 255)), url('../images/house1.jpg');
 }
 
-.container {
-    width: 100%;
+.container1 {
+    width: auto;
     height: 100vh;
-    background-image: linear-gradient(rgba(34, 47, 42, 255), rgba(34, 47, 42, 255)), url('../images/house1.jpg');
     background-position: center;
     background-size: cover;
     position: relative;
@@ -49,6 +49,7 @@
 
 .input-field {
     background: #eaeaea;
+    padding: 15px;
     margin: 15px 0;
     border-radius: 3px;
     display: flex;
@@ -85,6 +86,7 @@ form p a {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 15px;
 }
 
 .btn-field input[type="submit"] {
@@ -106,7 +108,7 @@ form p a {
 }
 
 .input-group {
-    height: 320px;
+    height: 400px;
 }
 
 img {

@@ -8,9 +8,7 @@ body {
     background-image: linear-gradient(rgba(34, 47, 42, 255), rgba(34, 47, 42, 255)), url('../images/house1.jpg');
 }
 
-
-
-.container {
+.container1 {
     width: auto;
     height: 100vh;
     background-position: center;
