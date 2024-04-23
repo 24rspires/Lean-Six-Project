@@ -13,7 +13,7 @@
 
 <body>
 <?php include_once "UIHelper.php"; UIHelper::navBar(); ?>
-<div class="container">
+<div class="container1">
     <div class="form-box">
         <h1 id="title">Sign Up</h1>
         <form action="login.php" method="post">
