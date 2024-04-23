@@ -8,8 +8,6 @@ body {
     background-image: linear-gradient(rgba(34, 47, 42, 255), rgba(34, 47, 42, 255)), url('../images/house1.jpg');
 }
 
-
-
 .container {
     width: auto;
     height: 100vh;
@@ -51,7 +49,7 @@ body {
 
 .input-field {
     background: #eaeaea;
-    padding: 15px;
+    
     margin: 15px 0;
     border-radius: 3px;
     display: flex;

@@ -25,14 +25,22 @@ class UIHelper
         // include account because logout will be in navbar
         // possibly consider adding two navbar functions
         // one with paramater for user and a separate version for logged out mode
-        print "
-                <nav>
-                    <ul class='Nav-Bar'>
-                        <li><a href='new-index.php'>Home</a></li>
-                        <li>{$loginButton}</li>
-                        <li><a href='agents.php'>Agents</a></li>
-                    </ul>
-                </nav>";
+        print '
+            <section class="nav">
+            <div class=" d-flex container justify-content-center">
+                <div class="row ">
+                    <div class="col">
+                        <a href="index.php">Home</a>
+                    </div>
+                    <div class="col">
+                        <a href="agents.php">Agents</a>
+                    </div>
+                    <div class="col">
+                        <a href="login.php">Login</a>
+                    </div>
+                </div>
+            </div>
+        </section>';
 
         if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['logout']))
         {
