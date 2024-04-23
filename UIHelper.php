@@ -168,5 +168,38 @@ class UIHelper
             </div>
         ";
     }
+
+    public static function printError($errorMessage)
+    {
+        print "
+            <link rel='preconnect' href='https://fonts.googleapis.com'>
+            <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+            <link href='https://fonts.googleapis.com/css2?family=Arvo&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik&display=swap' rel='stylesheet'>
+            <style>
+                .error-text {
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 500;
+                    font-style: normal;
+                    font-size: 50px;
+                }
+        
+                .sub-text {
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 500;
+                    font-style: normal;
+                    font-size: 20px;
+                }
+            </style>
+            <div class='container'>
+                <div class='py-4 text-center'>
+                    <h1 class='error-text'>An error has occurred!</h1>
+                    <h4 class='sub-text'>Error message:</h1>
+                <div>
+                <p>
+                    $errorMessage
+                </p>
+            </div>
+        ";
+    }
 }
 ?>
