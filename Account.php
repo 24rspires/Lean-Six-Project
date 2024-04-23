@@ -4,12 +4,6 @@ include_once "General.php";
 
 startSessionIfNotStarted();
 
-$ACCOUNT_TYPES = [
-    0 => "User",
-    1 => "Agent",
-    2 => "Admin"
-];
-
 class Account {
     public int|NULL $account_id;
     public string|NULL $first_name;
@@ -73,16 +67,6 @@ class Account {
                 $result["type"],
                 $result["create_date"]
             );
-        }
-
-        return null;
-    }
-
-    public function getAccountType(): string|null
-    {
-        if (isset($ACCOUNT_TYPES[$this->type]))
-        {
-            return $ACCOUNT_TYPES[$this->type];
         }
 
         return null;
