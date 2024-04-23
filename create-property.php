@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $property = new Properties(0, $ownerId, $address, $city, $stateId, $zip, $price, $square_feet, $bedrooms, $bathrooms, "");
 
         // insert the property into the database
-        //$property->insertIntoDatabase();
+        $property->insert();
     }
 }
 
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
 <div class="container justify-content-center align-items-center" id="main">
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 py-5">
             <h1 class="text-center">Create Property</h1>
             <form action="" method="post">
                 <label for="ownerId">Owner ID</label>
@@ -60,14 +60,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <label for="zip">Zip</label>
                 <input type="text" name="zip" id="zip" class="form-control p-3 fs-5" placeholder="12345"> <br>
                 <label for="price">Price</label>
-                <input type="number" name="price" id="price" class="form-control p-3 fs-5" placeholder="320,000"> <br>
+                <input type="number" name="price" id="price" class="form-control p-3 fs-5" placeholder="320000"> <br>
                 <label for="square_feet">Square Feet</label>
                 <input type="text" name="square_feet" id="square_feet" class="form-control p-3 fs-5" placeholder="1803"> <br>
                 <label for="bedrooms">Bedrooms</label>
                 <input type="text" name="bedrooms" id="bedrooms" class="form-control p-3 fs-5" placeholder="3"> <br>
                 <label for="bathrooms">Bathrooms</label>
                 <input type="text" name="bathrooms" id="bathrooms" class="form-control p-3 fs-5" placeholder="3"> <br>
-                <button type="submit" name="submit" class="btn btn-primary form-control">Submit</button>
+                <button type="submit" name="submit" class="btn btn-primary form-control p-3 fs-5">Submit</button>
             </form>
         </div>
     </div>
