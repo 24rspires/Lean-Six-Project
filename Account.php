@@ -4,6 +4,12 @@ include_once "General.php";
 
 startSessionIfNotStarted();
 
+$ACCOUNT_TYPES = [
+    0 => "User",
+    1 => "Agent",
+    2 => "Admin"
+]
+
 class Account {
     public int|NULL $id;
     public string|NULL $first_name;
@@ -68,6 +74,16 @@ class Account {
         return null;
     }
 
+    public function getAccountType(): string|null
+    {
+        if (isset($ACCOUNT_TYPES[$this->type]))
+        {
+            return $ACCOUNT_TYPES[$this->type]
+        }
+
+        return null;
+    }
+
     public function saveSession(): void
     {
         // $id = Account::generateGUID();
@@ -90,7 +106,7 @@ class Account {
         }
     }
 
-    public function insertIntoDatabase() : void {
+    public function insert() : void {
         $first_name = $this->first_name;
         $last_name = $this->last_name;
         $pass = $this->password;

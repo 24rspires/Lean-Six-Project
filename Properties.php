@@ -3,7 +3,7 @@ include_once "dbhelper.php";
 class Properties
 {
     public int $property_id;
-    public int|null $owner_id;
+    public int|null $agent_id;
     public string $address;
     public string $city;
     public int $state_id;
@@ -15,10 +15,10 @@ class Properties
     public int $type;
     public string $create_date;
 
-    public function __construct(int $property_id, int|null $owner_id, string $address, string $city, int $state_id, int $zipcode, float $price, int $square_feet, int $bedrooms, int $bathrooms, string $create_date)
+    public function __construct(int $property_id, int|null $agent_id, string $address, string $city, int $state_id, int $zipcode, float $price, int $square_feet, int $bedrooms, int $bathrooms, string $create_date)
     {
         $this->property_id = $property_id;
-        $this->owner_id = $owner_id;
+        $this->agent_id = $agent_id;
         $this->address = $address;
         $this->city = $city;
         $this->state_id = $state_id;
@@ -41,7 +41,7 @@ class Properties
         {
             return new Properties(
                 $result["property_id"],
-                $result["owner_id"],
+                $result["agent_id"],
                 $result["address"],
                 $result["city"],
                 $result["state_id"],
@@ -58,7 +58,7 @@ class Properties
     }
 
     public function insert() : void {
-        $owner_id = $this->owner_id;
+        $agent_id = $this->agent_id;
         $address = $this->address;
         $city = $this->city;
         $state_id = $this->state_id;
@@ -68,7 +68,7 @@ class Properties
         $bedrooms = $this->bedrooms;
         $bathrooms = $this->bathrooms;
 
-        $sql = "INSERT INTO properties (owner_id, address, city, state_id, zipcode, price, square_feet, bedrooms, bathrooms, create_date) VALUES ($owner_id, '$address', '$city', $state_id, '$zipcode', $price, $square_feet, $bedrooms, $bathrooms, NOW())";
+        $sql = "INSERT INTO properties (agent_id, address, city, state_id, zipcode, price, square_feet, bedrooms, bathrooms, create_date) VALUES ($agent_id, '$address', '$city', $state_id, '$zipcode', $price, $square_feet, $bedrooms, $bathrooms, NOW())";
 
         dbhelper::getInstance()->query($sql);
     }
@@ -127,7 +127,7 @@ class Properties
             {
                 $newProperty = new Properties(
                     $data["property_id"],
-                    $data["owner_id"],
+                    $data["agent_id"],
                     $data["address"],
                     $data["city"],
                     $data["state_id"],
