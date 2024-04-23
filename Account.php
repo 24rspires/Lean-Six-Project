@@ -6,16 +6,18 @@ startSessionIfNotStarted();
 
 class Account {
     public int|NULL $id;
-    public string|NULL $username;
+    public string|NULL $first_name;
+    public string|NULL $last_name;
     public string|NULL $password;
     public string|NULL $email;
     public string|NULL $phone;
     public string|NULL $address;
     public string|NULL $create_date;
     
-    public function __construct(int $id = null, string $username = null, string $password = null, string $email = null, string $phone = null, string $address = null, string $create_date = null) {
+    public function __construct(int $id = null, string $first_name = null, string $last_name = null, string $password = null, string $email = null, string $phone = null, string $address = null, string $create_date = null) {
         $this->id = $id;
-        $this->username = $username;
+        $this->first_name = $first_name;
+        $this->last_name = $last_name;
         $this->password = $password;
         $this->email = $email;
         $this->phone = $phone;
@@ -25,7 +27,6 @@ class Account {
 
     public static function getFromId(int $id)
     {
-        // TODO work
         $result = dbhelper::getInstance()->query("SELECT * FROM accounts WHERE account_id=$id");
         
         if ($result !== false) $result = $result->fetch_assoc();
@@ -34,7 +35,8 @@ class Account {
         {
             return new Account(
                 $result["account_id"],
-                $result["username"],
+                $result["first_name"],
+                $result["last_name"],
                 $result["password"],
                 $result["email"],
                 $result["phone"],
@@ -53,7 +55,8 @@ class Account {
         {
             return new Account(
                 $result["account_id"],
-                $result["username"],
+                $result["first_name"],
+                $result["last_name"],
                 $result["password"],
                 $result["email"],
                 $result["phone"],
@@ -63,11 +66,6 @@ class Account {
         }
 
         return null;
-    }
-
-    private static function generateGUID() : string
-    {
-        return md5(uniqid('', true));
     }
 
     public function saveSession(): void
@@ -93,12 +91,13 @@ class Account {
     }
 
     public function insertIntoDatabase() : void {
-        $un = $this->username;
+        $first_name = $this->first_name;
+        $last_name = $this->last_name;
         $pass = $this->password;
         $em = $this->email;
         $phone = $this->phone;
         $addr = $this->address;
-        $sql = "INSERT INTO accounts (username, password, email, phone, address, create_date) VALUES ('$un', '$pass', '$em', '$phone', '$addr', NOW())";
+        $sql = "INSERT INTO accounts (first_name, last_name, password, email, phone, address, create_date) VALUES ('$un', '$pass', '$em', '$phone', '$addr', NOW())";
         
         dbhelper::getInstance()->query($sql);
     }

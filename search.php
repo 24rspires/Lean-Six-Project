@@ -175,7 +175,7 @@
         }
     </style>
     
-    <div id="screenSizeDisplay"></div>
+    <!-- <div id="screenSizeDisplay"></div>
 
 <script>
     // Function to get Bootstrap's current screen size
@@ -203,13 +203,11 @@
     // Call the function when the page loads and when the window resizes
     window.addEventListener('load', updateScreenSizeDisplay);
     window.addEventListener('resize', updateScreenSizeDisplay);
-</script>
+</script> -->
     <div>
         <h1 class="result-header">Results</h1>
         <div class="row d-flex justify-content-center">
             <?PHP
-            // query for data
-            // load results
             if ($_SERVER['REQUEST_METHOD'] == "GET")
             {
                 $PAGE_SIZE = 15;

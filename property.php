@@ -14,93 +14,148 @@
     <script src="https://kit.fontawesome.com/d316673763.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container">
-    <div id="screenSize"></div>
-</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script>
-    $(window).on('load', function() {
-        // Loop through 30 images
-        for (var i = 0; i < 30; i++) {
-            var imageUrl = 'images/' + i + '.jpg';
-            var carouselItemClass = i === 0 ? 'carousel-item active' : 'carousel-item';
-            var image = $('<img>').attr('src', imageUrl).addClass('d-block w-100').attr('alt', 'Image ' + (i + 1));
-            var carouselItem = $('<div>').addClass(carouselItemClass).append(image);
-            $('.carousel-inner').append(carouselItem);
-        }
-    });
+<style>
+    .image-container {
+        height: 635px;
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    },
+    .image-container-image {
+        height: 100%;
+        width: 100%;
+        object-fit: none;
+        object-position: center;
+    }
+    .big-image {
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+    }
+    .big-image:hover {
+        cursor: pointer
+    }
+</style>
 
-    // Function to get current Bootstrap screen size
-    function getBootstrapScreenSize() {
-        if ($(window).width() < 576) {
-            return 'xs';
-        } else if ($(window).width() >= 576 && $(window).width() < 768) {
-            return 'sm';
-        } else if ($(window).width() >= 768 && $(window).width() < 992) {
-            return 'md';
-        } else if ($(window).width() >= 992 && $(window).width() < 1200) {
-            return 'lg';
-        } else {
-            return 'xl';
+<?PHP
+include_once "Properties.php";
+include_once "UIHelper.php";
+
+class ImageGetter
+{
+    function __construct($images)
+    {
+        $this->images = $images;
+        $this->index = 0;
+    }
+    function getImage()
+    {
+        if ($this->index < count($this->images))
+        {
+            $image = $this->images[$this->index];
+            $this->index += 1;
+            return $image;
+        }
+        else
+        {
+            return "images/nohouseimage.jpg";
         }
     }
+    function getRemaining()
+    {
+        $length = count($this->images);
+        $left = $length - $this->index;
+        if ($left > 0)
+        {
+            $images = [];
+            foreach ($this->images as $i => $image)
+            {
+                if ($i > $this->index)
+                {
+                    $images[] = $image;
+                }
+            }
+            return $images;
+        }
+        return ["images/nohouseimage.jpg"];
+    }
+}
 
-    // Display the current Bootstrap screen size
-    $(document).ready(function(){
-        $('#screenSize').text('Current Bootstrap Screen Size: ' + getBootstrapScreenSize());
-    });
+if (isset($_GET['id']))
+{
+    $property_id = $_GET['id'];
+    $property = Properties::getFromId($property_id);
+    if (isset($property) && !is_null($property))
+    {
+        $state = "OH";
+        $formatted_address = "$property->address, $property->city, $state $property->zip";
+        $images = $property->getImages();
 
-    // Update screen size when window is resized
-    $(window).resize(function(){
-        $('#screenSize').text('Current Bootstrap Screen Size: ' + getBootstrapScreenSize());
-    });
-</script>
+        define("IMAGEGETTER", new ImageGetter($images));
+        define('PROPERTY', $property);
+        define("PRICE", UIHelper::toMoney($property->price));
+        define("ADDRESS", $formatted_address);
+    }
+    else
+    {
+        print "no property for the id provided";
+        return;
+    }
+}
 
+?>
 
 <div id="main" class="container">
-    <div class="row" id="imageRow">
-        <div class="col-xl">
-            <img src="https://placehold.co/600x600" style="width: 100%; height: auto; margin-bottom: 5px;" alt="" data-bs-toggle="modal" data-bs-target="#imageModal">
+    <div class="row d-flex" id="imageRow">
+        <!-- change images -->
+        <div class="row text-center justify-content-center align-items-center py-3">
+            <img src="<?=IMAGEGETTER->getImage()?>" class="big-image p-0 col-xl-11" data-bs-toggle="modal" data-bs-target="#imageModal">
+        </div>
+        <!-- <div class="col-xl image-container">
+            <img src="<?=IMAGEGETTER->getImage()?>" class="image-container-image" alt="" data-bs-toggle="modal" data-bs-target="#imageModal">
         </div>
         <div class="col-xl">
             <div class="row g-3 d-none d-xl-flex">
                 <div class="col">
-                    <img src="https://placehold.co/200x200" style="width: 100%;" alt="" data-bs-toggle="modal" data-bs-target="#imageModal">
+                    <img src="<?=IMAGEGETTER->getImage()?>" style="width: 100%;" alt="" data-bs-toggle="modal" data-bs-target="#imageModal">
                 </div>
                 <div class="col">
-                    <img src="https://placehold.co/200x200" style="width: 100%; margin-bottom: 15px;" alt="" data-bs-toggle="modal" data-bs-target="#imageModal">
+                    <img src="<?=IMAGEGETTER->getImage()?>" style="width: 100%; margin-bottom: 15px;" alt="" data-bs-toggle="modal" data-bs-target="#imageModal">
                 </div>
             </div>
             <div class="row g-3 d-none d-md-flex">
                 <div class="col">
-                    <img src="https://placehold.co/200x200" style="width: 100%;" alt="" data-bs-toggle="modal" data-bs-target="#imageModal">
+                    <img src="<?=IMAGEGETTER->getImage()?>" style="width: 100%;" alt="" data-bs-toggle="modal" data-bs-target="#imageModal">
                 </div>
                 <div class="col">
-                    <img src="https://placehold.co/200x200" style="width: 100%; margin-bottom: 15px;" alt="" data-bs-toggle="modal" data-bs-target="#imageModal">
+                    <img src="<?=IMAGEGETTER->getImage()?>" style="width: 100%; margin-bottom: 15px;" alt="" data-bs-toggle="modal" data-bs-target="#imageModal">
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <!-- information row -->
     <div class="row">
         <div class="col-5">
-            <h2>$320,000</h2>
-            <p style="padding: 0;">614 Boker Drive, Bokerville, BO 12345</p>
+            <h2><?=PRICE?></h2>
+            <p style="padding: 0;"><?=ADDRESS?></p>
         </div>
         <div class="col-5" style="justify-content: space-between;">
             <div class="row">
                 <div class="col-4">
-                    <p><i style="color: rgb(200, 200, 200);" class="fa-solid fa-bed"></i> <b style="font-size: 1.5rem;">3</b> beds</p>
+                    <p><i style="color: rgb(200, 200, 200);" class="fa-solid fa-bed"></i> <b style="font-size: 1.5rem;"><?=PROPERTY->beds?></b> beds</p>
                 </div>
                 <div class="col-4">
-                    <p><i style="color: rgb(200, 200, 200);" class="fa-solid fa-bath"></i> <b style="font-size: 1.5rem;">3</b> baths</p>
+                    <p><i style="color: rgb(200, 200, 200);" class="fa-solid fa-bath"></i> <b style="font-size: 1.5rem;"><?=PROPERTY->bath?></b> baths</p>
                 </div>
                 <div class="col-4">
-                    <p><i style="color: rgb(200, 200, 200);" class="fa-solid fa-ruler"></i> <b style="font-size: 1.25rem;">1,803</b> sqft</p>
+                    <p><i style="color: rgb(200, 200, 200);" class="fa-solid fa-ruler"></i> <b style="font-size: 1.25rem;"><?=PROPERTY->squareFoot?></b> sqft</p>
                 </div>
             </div>
         </div>
@@ -128,6 +183,44 @@
                 <!-- Carousel here -->
                 <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
+                        <?PHP
+                            $imageString = "";
+
+                            $images = IMAGEGETTER->getRemaining();
+
+                            if (!empty($images))
+                            {
+                                foreach ($images as $index => $image)
+                                {
+                                    if ($index == 0)
+                                    {
+                                        $imageString .= "
+                                            <div class='carousel-item active'>
+                                            <img class='d-block w-100 rounded-property-image' src='$image' alt='House Image ($image)'>
+                                            </div>
+                                        ";
+                                    }
+                                    else
+                                    {
+                                        $imageString .= "
+                                            <div class='carousel-item'>
+                                            <img class='d-block w-100 rounded-property-image' src='$image' alt='House Image ($image)'>
+                                            </div>
+                                        ";
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                $imageString .= "
+                                    <div class='carousel-item active'>
+                                    <img class='d-block w-100 rounded-property-image' src='houses/missinghouseimage.jpg' alt='Missing House Image 404'>
+                                    </div>
+                                ";
+                            }
+                        
+                            print $imageString;
+                        ?>
                         <!-- php for loop to go through all images for a given property -->
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
@@ -186,7 +279,7 @@
 <script>
 
     function dispMessage() {
-        alert('feature not currently avaliable');
+        alert('jack says feature not currently avaliable with much love (big riley)');
     }
 
     $(window).on('load', function() {

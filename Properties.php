@@ -30,7 +30,7 @@ class Properties
         $this->createDate = $createDate;
     }
 
-    public static function getFromId(int $id): Properties
+    public static function getFromId(int $id): Properties|null
     {
         // i don't think i need this
         $result = dbhelper::getInstance()->query("SELECT * FROM properties WHERE property_id=$id");
@@ -47,9 +47,14 @@ class Properties
                 $result["state_id"],
                 $result["zipcode"],
                 $result["price"],
-                $result[""]
+                $result["square_feet"],
+                $result["bedrooms"],
+                $result["bathrooms"],
+                $result["create_date"]
             );
         }
+
+        return null;
     }
 
     public function insertIntoDatabase() : void {
