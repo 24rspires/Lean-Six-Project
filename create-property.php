@@ -2,6 +2,7 @@
 include_once "Properties.php";
 include_once "Account.php";
 include_once "UIHelper.php";
+include_once "State.php";
 
 $account = Account::loadSession();
 ?>
@@ -40,10 +41,10 @@ if ($account->type < 1) {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST['submit'])) {
-        $agentId = $account->account_id;
+        $agent_id = $account->account_id;
         $address = $_POST['address'];
         $city = $_POST['city'];
-        $stateId = intval($_POST['stateId']);
+        $state_id = intval($_POST['state_id']);
         $zip = $_POST['zip'];
         $price = $_POST['price'];
         $square_feet = $_POST['square_feet'];
@@ -51,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $bathrooms = $_POST['bathrooms'];
 
         // Create a new property object with the given properties
-        $property = new Properties(0, $agentId, $address, $city, $stateId, $zip, $price, $square_feet, $bedrooms, $bathrooms, "");
+        $property = new Properties(0, $agent_id, $address, $city, $state_id, $zip, $price, $square_feet, $bedrooms, $bathrooms, "");
 
         // insert the property into the database
         $property->insert();
@@ -67,8 +68,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <input type="text" name="address" id="address" class="form-control p-3 fs-5" placeholder="614 Boker Drive"> <br>
                 <label for="city">City</label>
                 <input type="text" name="city" id="city" class="form-control p-3 fs-5" placeholder="Bokerville"> <br>
-                <label for="stateId">StateId</label>
-                <input type="number" name="stateId" id="stateId" class="form-control p-3 fs-5" placeholder="35"> <br>
+                
+                <label for="state">State</label>
+                <select id="state" class="form-control p-3 fs-5" name="state_id">
+                    <?PHP
+                    $states = State::getAll();
+                    foreach ($states as $state)
+                    {
+                        print "<option value='$state->state_id'>$state->name</option>";
+                    }
+                    ?>
+                </select><br>
                 <label for="zip">Zip</label>
                 <input type="text" name="zip" id="zip" class="form-control p-3 fs-5" placeholder="12345"> <br>
                 <label for="price">Price</label>

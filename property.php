@@ -109,7 +109,6 @@ if (isset($_GET['id']))
         return;
     }
 }
-
 ?>
 
 <div id="main" class="container">
@@ -181,7 +180,7 @@ if (isset($_GET['id']))
             </div>
             <div class="modal-body">
                 <!-- Carousel here -->
-                <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div id="imageCarousel" class="carousel slide" data-interval="false">
                     <div class="carousel-inner">
                         <?PHP
                             $imageString = "";
@@ -314,6 +313,10 @@ if (isset($_GET['id']))
         }
         // Trigger the image counter update manually to initialize it
         updateImageCounter();
+    });
+
+    $('.carousel').carousel({
+        interval: false
     });
 </script>
 

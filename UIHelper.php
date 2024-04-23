@@ -142,7 +142,7 @@ class UIHelper
 
         print "
             <div class='col-sm-5 col-lg-3 col-md-4 col-xl-3 property-container m-2' pid='$pid'>
-                <div id='$pid' class='carousel slide' data-ride='carousel'>
+                <div id='$pid' class='carousel slide' data-interval='false'>
                     <div class='carousel-inner rounded-property-image'>
                         $imageString
                     </div>
@@ -169,37 +169,73 @@ class UIHelper
         ";
     }
 
-    public static function printError($errorMessage)
+    public static function printError(string $errorMessage, string|null $redirectLink = null)
     {
-        print "
-            <link rel='preconnect' href='https://fonts.googleapis.com'>
-            <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-            <link href='https://fonts.googleapis.com/css2?family=Arvo&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik&display=swap' rel='stylesheet'>
-            <style>
-                .error-text {
-                    font-family: 'Montserrat', sans-serif;
-                    font-weight: 500;
-                    font-style: normal;
-                    font-size: 50px;
-                }
-        
-                .sub-text {
-                    font-family: 'Montserrat', sans-serif;
-                    font-weight: 500;
-                    font-style: normal;
-                    font-size: 20px;
-                }
-            </style>
-            <div class='container'>
-                <div class='py-4 text-center'>
-                    <h1 class='error-text'>An error has occurred!</h1>
-                    <h4 class='sub-text'>Error message:</h1>
-                <div>
-                <p>
-                    $errorMessage
-                </p>
-            </div>
-        ";
+        if ($redirectLink === null)
+        {
+            print "
+                <link rel='preconnect' href='https://fonts.googleapis.com'>
+                <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+                <link href='https://fonts.googleapis.com/css2?family=Arvo&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik&display=swap' rel='stylesheet'>
+                <style>
+                    .error-text {
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 500;
+                        font-style: normal;
+                        font-size: 50px;
+                    }
+            
+                    .sub-text {
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 500;
+                        font-style: normal;
+                        font-size: 20px;
+                    }
+                </style>
+                <div class='container'>
+                    <div class='py-4 text-center'>
+                        <h1 class='error-text'>An error has occurred!</h1>
+                        <h4 class='sub-text'>Error message:</h1>
+                    <div>
+                    <p>
+                        $errorMessage
+                    </p>
+                </div>
+            ";
+        }
+        else
+        {
+            print "
+                <link rel='preconnect' href='https://fonts.googleapis.com'>
+                <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+                <link href='https://fonts.googleapis.com/css2?family=Arvo&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik&display=swap' rel='stylesheet'>
+                <style>
+                    .error-text {
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 500;
+                        font-style: normal;
+                        font-size: 50px;
+                    }
+            
+                    .sub-text {
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 500;
+                        font-style: normal;
+                        font-size: 20px;
+                    }
+                </style>
+                <div class='container'>
+                    <div class='py-4 text-center'>
+                        <h1 class='error-text'>An error has occurred!</h1>
+                        <h4 class='sub-text'>Error message:</h1>
+                    <div>
+                    <p>
+                        $errorMessage
+                    </p>
+                    <a href='$redirectLink'>Click this to go back</a>
+                </div>
+            ";
+        }
     }
 }
 ?>
