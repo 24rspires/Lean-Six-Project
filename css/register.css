@@ -87,7 +87,7 @@ form p a {
     justify-content: center;
 }
 
-.btn-field button {
+.btn-field input[type="submit"] {
     flex-basis: 48%;
     background: #86aa9b;
     color: #fff;
@@ -97,6 +97,7 @@ form p a {
     outline: 0;
     cursor: pointer;
     transition: background 1s;
+    padding: 0;
 }
 
 .btn-field button a {
@@ -105,7 +106,7 @@ form p a {
 }
 
 .input-group {
-    height: 280px;
+    height: 320px;
 }
 
 img {

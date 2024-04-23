@@ -74,13 +74,14 @@
         <label for="4">4+</label>
         <input type="radio" name="bedroom" id="5" value="5">
         <label for="5">5+</label>
-
+        
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
         <script>
-        $( function() {
-            $( "#slider-range").slider({
+        // todo slider is broken maybe check jquery version
+        $(document).ready((function() {
+            $("#slider-range").slider({
             range: true,
             min: 0,
             max: 1000000,
@@ -92,7 +93,7 @@
             });
             $( "#amount" ).val( "Minimum: $" + $( "#slider-range" ).slider( "values", 0 ) +
             " - Maximum: $" + $( "#slider-range" ).slider( "values", 1 ) );
-        });
+        }));
         </script>
 
         <!-- todo remove inline hardcoded width -->
@@ -255,15 +256,15 @@
                         $address = $property->address;
                         $state = "OH";
                         $city = $property->city;
-                        $zip = $property->zip;
+                        $zip = $property->zipcode;
                         $formatted_address = "$address, $city, $state $zip";
 
                         UIHelper::propertyCard(
-                            $property->id,
+                            $property->property_id,
                             $formatted_price,
-                            $property->beds,
-                            $property->bath,
-                            $property->squareFoot,
+                            $property->bedrooms,
+                            $property->bathrooms,
+                            $property->square_feet,
                             $formatted_address,
                             "Boker Realty", // we don't have a realtor in the db
                             $images

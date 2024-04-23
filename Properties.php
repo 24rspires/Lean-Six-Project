@@ -1,33 +1,33 @@
 <?php
-// https://gist.github.com/bryant988/9510cff838d86dcefa3b9ea3835b8552?permalink_comment_id=4706389
 include_once "dbhelper.php";
 class Properties
 {
-    public int $id;
-    public int|null $ownerId;
+    public int $property_id;
+    public int|null $owner_id;
     public string $address;
     public string $city;
-    public int $stateId;
-    public int $zip;
+    public int $state_id;
+    public int $zipcode;
     public float $price;
-    public int $squareFoot;
-    public int $beds;
-    public int $bath;
-    public string $createDate;
+    public int $square_feet;
+    public int $bedrooms;
+    public int $bathrooms;
+    public int $type;
+    public string $create_date;
 
-    public function __construct(int $id, int|null $ownerId, string $address, string $city, int $stateId, int $zip, float $price, int $squareFoot, int $beds, int $bath, string $createDate)
+    public function __construct(int $property_id, int|null $owner_id, string $address, string $city, int $state_id, int $zipcode, float $price, int $square_feet, int $bedrooms, int $bathrooms, string $create_date)
     {
-        $this->id = $id;
-        $this->ownerId = $ownerId;
+        $this->property_id = $property_id;
+        $this->owner_id = $owner_id;
         $this->address = $address;
         $this->city = $city;
-        $this->stateId = $stateId;
-        $this->zip = $zip;
+        $this->state_id = $state_id;
+        $this->zipcode = $zipcode;
         $this->price = $price;
-        $this->squareFoot = $squareFoot;
-        $this->beds = $beds;
-        $this->bath = $bath;
-        $this->createDate = $createDate;
+        $this->square_feet = $square_feet;
+        $this->bedrooms = $bedrooms;
+        $this->bathrooms = $bathrooms;
+        $this->create_date = $create_date;
     }
 
     public static function getFromId(int $id): Properties|null
@@ -57,18 +57,18 @@ class Properties
         return null;
     }
 
-    public function insertIntoDatabase() : void {
-        $ownId = $this->ownerId;
-        $addr = $this->address;
-        $cty = $this->city;
-        $stId = $this->stateId;
-        $zip = $this->zip;
+    public function insert() : void {
+        $owner_id = $this->owner_id;
+        $address = $this->address;
+        $city = $this->city;
+        $state_id = $this->state_id;
+        $zipcode = $this->zipcode;
         $price = $this->price;
-        $sqFt = $this->squareFoot;
-        $bed = $this->beds;
-        $bath = $this->bath;
+        $square_feet = $this->square_feet;
+        $bedrooms = $this->bedrooms;
+        $bathrooms = $this->bathrooms;
 
-        $sql = "INSERT INTO properties (owner_id, address, city, state_id, zipcode, price, square_feet, bedrooms, bathrooms, create_date) VALUES ($ownId, '$addr', '$cty', $stId, '$zip', $price, $sqFt, $bed, $bath, NOW())";
+        $sql = "INSERT INTO properties (owner_id, address, city, state_id, zipcode, price, square_feet, bedrooms, bathrooms, create_date) VALUES ($owner_id, '$address', '$city', $state_id, '$zipcode', $price, $square_feet, $bedrooms, $bathrooms, NOW())";
 
         dbhelper::getInstance()->query($sql);
     }
@@ -169,7 +169,7 @@ class Properties
     public function getImages(): null|array
     {
         $images = array();
-        $query = "select * from boker.property_media where property_id=$this->id";
+        $query = "select * from boker.property_media where property_id=$this->property_id";
         
         $result = dbhelper::getInstance()->query($query);
 
