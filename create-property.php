@@ -1,27 +1,9 @@
 <?php
 include_once "Properties.php";
+include_once "Account.php";
+include_once "UIHelper.php";
 
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (isset($_POST['submit'])) {
-        $ownerId = intval($_POST['ownerId']);
-        $address = $_POST['address'];
-        $city = $_POST['city'];
-        $stateId = intval($_POST['stateId']);
-        $zip = $_POST['zip'];
-        $price = $_POST['price'];
-        $square_feet = $_POST['square_feet'];
-        $bedrooms = $_POST['bedrooms'];
-        $bathrooms = $_POST['bathrooms'];
-
-        // Create a new property object with the given properties
-        $property = new Properties(0, $ownerId, $address, $city, $stateId, $zip, $price, $square_feet, $bedrooms, $bathrooms, "");
-
-        // insert the property into the database
-        $property->insert();
-    }
-}
-
+$account = Account::loadSession();
 ?>
 <!doctype html>
 <html lang="en">
@@ -44,13 +26,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </style>
 </head>
 <body>
+
+<?PHP
+if (!isset($account)) {
+    UIHelper::printError("Must be signed in to view page");
+    return;
+}
+
+if ($account->type < 1) {
+    UIHelper::printError("Must be agent to create property");
+    return;
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if (isset($_POST['submit'])) {
+        $agentId = $account->account_id;
+        $address = $_POST['address'];
+        $city = $_POST['city'];
+        $stateId = intval($_POST['stateId']);
+        $zip = $_POST['zip'];
+        $price = $_POST['price'];
+        $square_feet = $_POST['square_feet'];
+        $bedrooms = $_POST['bedrooms'];
+        $bathrooms = $_POST['bathrooms'];
+
+        // Create a new property object with the given properties
+        $property = new Properties(0, $agentId, $address, $city, $stateId, $zip, $price, $square_feet, $bedrooms, $bathrooms, "");
+
+        // insert the property into the database
+        $property->insert();
+    }
+}
+?>
 <div class="container justify-content-center align-items-center" id="main">
     <div class="row">
         <div class="col-lg-12 py-5">
             <h1 class="text-center">Create Property</h1>
             <form action="" method="post">
-                <label for="ownerId">Owner ID</label>
-                <input type="number" name="ownerId" id="ownerId" class="form-control p-3 fs-5" placeholder="12"> <br>
                 <label for="address">Address</label>
                 <input type="text" name="address" id="address" class="form-control p-3 fs-5" placeholder="614 Boker Drive"> <br>
                 <label for="city">City</label>
