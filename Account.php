@@ -46,8 +46,8 @@ class Account {
         }
     }
 
-    public static function tryLogin(string $username, string $password) : Account|null {
-        $result = dbhelper::getInstance()->query("SELECT * FROM accounts WHERE username=\"{$username}\" and password=\"{$password}\"");
+    public static function tryLogin(string $email, string $password) : Account|null {
+        $result = dbhelper::getInstance()->query("SELECT * FROM accounts WHERE email=\"{$email}\" and password=\"{$password}\"");
         
         if ($result !== false) $result = $result->fetch_assoc();
 
@@ -97,7 +97,7 @@ class Account {
         $em = $this->email;
         $phone = $this->phone;
         $addr = $this->address;
-        $sql = "INSERT INTO accounts (first_name, last_name, password, email, phone, address, create_date) VALUES ('$un', '$pass', '$em', '$phone', '$addr', NOW())";
+        $sql = "INSERT INTO accounts (first_name, last_name, password, email, phone, address, create_date) VALUES ('$first_name', '$last_name' , '$pass', '$em', '$phone', '$addr', NOW())";
         
         dbhelper::getInstance()->query($sql);
     }

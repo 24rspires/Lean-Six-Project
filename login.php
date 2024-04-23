@@ -21,7 +21,7 @@
                 <br>
                 <div class="input-field">
                     <img src="./images/email-svg.svg">
-                    <input type="text" placeholder="Username" name="username">
+                    <input type="text" placeholder="Email" name="email">
                 </div>
 
                 <div class="input-field">
@@ -34,7 +34,6 @@
 
             <div id="boker" class="btn-field">
                 <input type="submit" value="Sign In" id="signupBtn">
-<!--                <button type="button" id="signupBtn"><a href="index.php">Sign In</a></button>-->
             </div>
         </form>
     </div>
@@ -46,26 +45,43 @@ include_once "Account.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST")
 {
-    $username = UIHelper::checkField("username");
-    $password = UIHelper::checkField("password");
-    if ($username && $password)
-    {
-        $user = Account::tryLogin($username, $password);
+    $register = UIHelper::checkField("register");
 
-        if ($user !== NULL)
+    if ($register === "Sign Up") {
+        $firstName = UIHelper::checkField("firstName");
+        $lastName = UIHelper::checkField("lastName");
+        $email = UIHelper::checkField("email");
+        $password = UIHelper::checkField("password");
+
+        $account = Account::tryLogin($email, $password);
+
+        print "1";
+
+        if ($account === null)
         {
-            $user->saveSession();
-            header('Location: index.php');
+            $account = new Account(first_name: $firstName, last_name: $lastName, password: $password, email: $email);
+            $account->insertIntoDatabase();
         }
-        else
-        {
-            print "invalid login";
+    } else {
+        $email = UIHelper::checkField("email");
+        $password = UIHelper::checkField("password");
+        if ($email && $password) {
+            $user = Account::tryLogin($email, $password);
+
+            if ($user !== NULL)
+            {
+                $user->saveSession();
+                header('Location: index.php');
+            } else  {
+                print "invalid login";
+            }
+        } else {
+            print "invalid";
         }
     }
-    else
-    {
-        print "invalid";
-    }
+
+
+
 }
 ?>
 
