@@ -8,7 +8,7 @@ $ACCOUNT_TYPES = [
     0 => "User",
     1 => "Agent",
     2 => "Admin"
-]
+];
 
 class Account {
     public int|NULL $account_id;
