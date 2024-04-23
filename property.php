@@ -95,7 +95,7 @@ if (isset($_GET['id']))
     if (isset($property) && !is_null($property))
     {
         $state = "OH";
-        $formatted_address = "$property->address, $property->city, $state $property->zip";
+        $formatted_address = "$property->address, $property->city, $state $property->zipcode";
         $images = $property->getImages();
 
         define("IMAGEGETTER", new ImageGetter($images));
@@ -149,13 +149,13 @@ if (isset($_GET['id']))
         <div class="col-5" style="justify-content: space-between;">
             <div class="row">
                 <div class="col-4">
-                    <p><i style="color: rgb(200, 200, 200);" class="fa-solid fa-bed"></i> <b style="font-size: 1.5rem;"><?=PROPERTY->beds?></b> beds</p>
+                    <p><i style="color: rgb(200, 200, 200);" class="fa-solid fa-bed"></i> <b style="font-size: 1.5rem;"><?=PROPERTY->bedrooms?></b> beds</p>
                 </div>
                 <div class="col-4">
-                    <p><i style="color: rgb(200, 200, 200);" class="fa-solid fa-bath"></i> <b style="font-size: 1.5rem;"><?=PROPERTY->bath?></b> baths</p>
+                    <p><i style="color: rgb(200, 200, 200);" class="fa-solid fa-bath"></i> <b style="font-size: 1.5rem;"><?=PROPERTY->bathrooms?></b> baths</p>
                 </div>
                 <div class="col-4">
-                    <p><i style="color: rgb(200, 200, 200);" class="fa-solid fa-ruler"></i> <b style="font-size: 1.25rem;"><?=PROPERTY->squareFoot?></b> sqft</p>
+                    <p><i style="color: rgb(200, 200, 200);" class="fa-solid fa-ruler"></i> <b style="font-size: 1.25rem;"><?=PROPERTY->square_feet?></b> sqft</p>
                 </div>
             </div>
         </div>
