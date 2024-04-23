@@ -11,23 +11,25 @@ $ACCOUNT_TYPES = [
 ]
 
 class Account {
-    public int|NULL $id;
+    public int|NULL $account_id;
     public string|NULL $first_name;
     public string|NULL $last_name;
     public string|NULL $password;
     public string|NULL $email;
     public string|NULL $phone;
     public string|NULL $address;
+    public int|null $type;
     public string|NULL $create_date;
     
-    public function __construct(int $id = null, string $first_name = null, string $last_name = null, string $password = null, string $email = null, string $phone = null, string $address = null, string $create_date = null) {
-        $this->id = $id;
+    public function __construct(int $account_id = null, string $first_name = null, string $last_name = null, string $password = null, string $email = null, string $phone = null, string $address = null, $type = null, string $create_date = null) {
+        $this->account_id = $account_id;
         $this->first_name = $first_name;
         $this->last_name = $last_name;
         $this->password = $password;
         $this->email = $email;
         $this->phone = $phone;
         $this->address = $address;
+        $this->type = $type;
         $this->create_date = $create_date;
     }
 
@@ -47,6 +49,7 @@ class Account {
                 $result["email"],
                 $result["phone"],
                 $result["address"],
+                $result["type"],
                 $result["create_date"]
             );
         }
@@ -67,6 +70,7 @@ class Account {
                 $result["email"],
                 $result["phone"],
                 $result["address"],
+                $result["type"],
                 $result["create_date"]
             );
         }
@@ -78,7 +82,7 @@ class Account {
     {
         if (isset($ACCOUNT_TYPES[$this->type]))
         {
-            return $ACCOUNT_TYPES[$this->type]
+            return $ACCOUNT_TYPES[$this->type];
         }
 
         return null;
@@ -109,11 +113,12 @@ class Account {
     public function insert() : void {
         $first_name = $this->first_name;
         $last_name = $this->last_name;
-        $pass = $this->password;
-        $em = $this->email;
+        $password = $this->password;
+        $email = $this->email;
         $phone = $this->phone;
-        $addr = $this->address;
-        $sql = "INSERT INTO accounts (first_name, last_name, password, email, phone, address, create_date) VALUES ('$first_name', '$last_name' , '$pass', '$em', '$phone', '$addr', NOW())";
+        $type = $this->type;
+        $address = $this->address;
+        $sql = "INSERT INTO accounts (first_name, last_name, password, email, phone, address, type, create_date) VALUES ('$first_name', '$last_name' , '$password', '$email', '$phone', $type, '$address', NOW())";
         
         dbhelper::getInstance()->query($sql);
     }
