@@ -79,9 +79,8 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
         <script>
-        // todo slider is broken maybe check jquery version
-        $(document).ready((function() {
-            $("#slider-range").slider({
+        $( function() {
+            $( "#slider-range").slider({
             range: true,
             min: 0,
             max: 1000000,
@@ -93,9 +92,8 @@
             });
             $( "#amount" ).val( "Minimum: $" + $( "#slider-range" ).slider( "values", 0 ) +
             " - Maximum: $" + $( "#slider-range" ).slider( "values", 1 ) );
-        }));
+        });
         </script>
-
         <!-- todo remove inline hardcoded width -->
         <p>
         <label for="amount">Price range:</label>
@@ -105,7 +103,6 @@
         <div id="slider-range" style="width:300px;"></div>
         
         <button type="button" id="sumbit">sumbit</button>
-
         <script src="scripts/searchForm.js"></script>
     </form>
     <!-- end of form search content goes under here -->
@@ -345,7 +342,7 @@
             <button id='next-btn' class="btn btn-dark">Next Page</button>
         </div>
         
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
