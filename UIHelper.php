@@ -92,14 +92,13 @@ class UIHelper
     public static function agentCard(string $pfpUrl, string $name, string $phone, string $email): void
     {
         print "
-            <li class='agent'>
-                <img src='{$pfpUrl}' alt='{$name} Profile Picture' class='agent-pfp'>
-                <div class='agent-info'>
-                    <h3>{$name}</h3>
-                    <p>Phone Number: <a href='tel:${phone}''>${phone}</a></p>
-                    <p>Email: <a href='mailto:${email}'>${email}</a></p>
-                </div>
-            </li>
+            <div class='col-md-4 agent-card'>
+                <img src='$pfpUrl' alt='Agent PFP $pfpUrl'>
+                <h3>$name</h3>
+                <p>Email Address: <a href='mailto:$email' class='agent-a'>$email</a></p>
+                <p>Phone Number: <a href='tel:$phone' class='agent-a'>$phone</a></p>
+                <a href='#' class='btn btn-primary'>Learn More</a>
+            </div>
         ";
     }
 
