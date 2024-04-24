@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="explore">
-            <a href="#">Explore All</a>
+            <a href="./search.php">Explore All</a>
         </div>
     </div>
 
