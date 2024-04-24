@@ -138,16 +138,37 @@ if (isset($_GET['id']))
                 </div>
             </div>
         </div>
-        <div class="col-2" style="align-items: center; justify-content: center; text-align: center;">
-            <a href="javascript:dispMessage()">Contact agent</a>
+    </div>
+    <div class="row justify-content-md-center justify-content-lg-start">
+        <div class="col-md-10 col-lg-7 col-xl-6 agent-container p-3">
+            <h3 class="text-center my-0 agent-title">Agent</h3>
+            <div class="row align-items-center">
+                <div class="col-5">
+                    <img class="agent-image" src="images/agents/dunnmeister.jfif">
+                </div>
+                <div class="col text-left">
+                    <h4 class="agent-name">Greg McDonough</h4>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="col">
+                            <p class="agent-number">(740) 971-3727</p>
+                        </div>
+                    </div>
+                    <div class="row py-0">
+                        <div class="col-1">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="col">
+                            <p class="agent-email">gregm_osu@hotmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<!-- Google Maps Iframe -->
-<div class="row">
-
-</div>
-
 <!-- Image Modal -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
