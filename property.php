@@ -105,9 +105,11 @@ if (isset($_GET['id']))
     }
     else
     {
-        print "no property for the id provided";
+        UIHelper::printError("No property for the ID provided");
         return;
     }
+} else {
+    UIHelper::printError("ID is missing");
 }
 ?>
 
