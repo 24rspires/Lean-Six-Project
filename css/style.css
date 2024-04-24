@@ -90,7 +90,7 @@ body {
   width: 95.75%;
   margin-top: 1rem;
   height: 88vh;
-  padding: 10 ;
+  padding: 10px;
 }
 
 .home .home-image {
@@ -223,7 +223,7 @@ body {
 .property .de-box .box .location-detail p {
   font-size: 1.3rem;
   font-weight: 500;
-  text-align-all: center;
+
 }
 
 .property .de-box .box .location-detail p img {
