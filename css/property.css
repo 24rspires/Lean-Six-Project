@@ -24,10 +24,6 @@
     cursor: pointer
 }
 
-img {
-    aspect-ratio: 1536/1024;
-}
-
 .agent-container {
     background-color: white;
     border-radius: 20px;
