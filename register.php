@@ -20,12 +20,12 @@
             <div class="input-group">
                 <div class="input-field" id="nameField">
                     <i class="fa-solid fa-user-minus"></i>
-                    <input type="text" name="firstName" placeholder="First Name">
+                    <input type="text" name="firstName" pattern="[a-zA-Z]+" placeholder="First Name">
                 </div>
 
                 <div class="input-field">
                     <i class="fa-solid fa-user-plus"></i>
-                    <input type="text" name="lastName" placeholder="Last Name">
+                    <input type="text" name="lastName" pattern="[a-zA-Z]+" placeholder="Last Name">
                 </div>
 
                 <div class="input-field">
@@ -35,7 +35,7 @@
 
                 <div class="input-field">
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password" pattern="^(?=(?:.*\d){2})[a-zA-Z\d]{8,99}$" placeholder="Password">
                 </div>
 
                 <p>Already have an account? <a href="login.php"> Click Here!</a></p>
