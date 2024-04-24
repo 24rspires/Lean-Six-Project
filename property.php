@@ -32,6 +32,11 @@ class ImageGetter
     {
         $this->images = $images;
         $this->index = 0;
+        $this->missingImages = ["images/nohouseimage.jpg",
+            "images/nohouseimage2.jpg",
+            "images/nohouseimage3.jpg",
+            "images/nohouseimage4.jpg",];
+        $this->missingIndex = 0;
     }
     function getImage()
     {
@@ -43,7 +48,7 @@ class ImageGetter
         }
         else
         {
-            return "images/nohouseimage.jpg";
+            return $this->missingImages[$this->missingIndex++];
         }
     }
     function getRemaining()
@@ -62,7 +67,7 @@ class ImageGetter
             }
             return $images;
         }
-        return ["images/nohouseimage.jpg"];
+        return $this->missingImages;
     }
 }
 
