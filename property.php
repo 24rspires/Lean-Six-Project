@@ -1,6 +1,3 @@
-<?php
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +22,7 @@
 include_once "Properties.php";
 include_once "UIHelper.php";
 include_once "State.php";
+include_once "Account.php";
 
 UIHelper::navBar();
 
@@ -81,7 +79,9 @@ if (isset($_GET['id']))
     {
         $formatted_address = $property->formatAddress();
         $images = $property->getImages();
-
+        $agent = Account::getFromId($property->agent_id);
+        
+        define("AGENT", $agent);
         define("IMAGEGETTER", new ImageGetter($images));
         define('PROPERTY', $property);
         define("PRICE", UIHelper::toMoney($property->price));
@@ -149,25 +149,25 @@ if (isset($_GET['id']))
         <div class="col-md-10 col-lg-7 col-xl-6 agent-container p-3">
             <h3 class="text-center my-0 agent-title">Agent</h3>
             <div class="row align-items-center">
-                <div class="col-5">
-                    <img class="agent-image" src="images/agents/dunnmeister.jfif">
+                <div class="col-5 text-center">
+                    <img class="col-11 agent-image" src="<?=AGENT->getProfilePicture()?>">
                 </div>
-                <div class="col text-left">
-                    <h4 class="agent-name">Greg McDonough</h4>
-                    <div class="row">
+                <div class="col text-start">
+                    <h4 class="agent-name"><?=UIHelper::formatAgentName(AGENT->first_name, AGENT->last_name)?></h4>
+                    <div class="row my-2">
                         <div class="col-1">
                             <i class="fa-solid fa-phone"></i>
                         </div>
                         <div class="col">
-                            <p class="agent-number">(740) 971-3727</p>
+                            <p class="agent-number"><?=UIHelper::formatAgentNumber(AGENT->phone)?></p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-1">
+                        <div class="col-1  py-0 my-0">
                             <i class="fa-solid fa-envelope"></i>
                         </div>
-                        <div class="col">
-                            <p class="agent-email">gregm_osu@hotmail.com</p>
+                        <div class="col py-0">
+                            <p class="agent-email py-0"><?=AGENT->email?></p>
                         </div>
                     </div>
                 </div>

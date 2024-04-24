@@ -254,5 +254,25 @@ class UIHelper
             print "<option value='$state->state_id'>$state->name</option>";
         }
     }
+
+    public static function formatAgentName(string $first_name, string $last_name)
+    {
+        $first = ucwords(strtolower($first_name));
+        $last = ucwords(strtolower($last_name));
+
+        return "$first $last";
+    }
+
+    public static function formatAgentNumber(string $number): string|null {
+        if(strlen($number) != 10 || !is_numeric($number)) {
+            return null;
+        }
+    
+        $area_code = substr($number, 0, 3);
+        $prefix = substr($number, 3, 3);
+        $line_number = substr($number, 6);
+        
+        return "($area_code) $prefix-$line_number";
+    }
 }
 ?>
