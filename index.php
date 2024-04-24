@@ -31,22 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body id="margin-fix">
 <?php include_once "UIHelper.php"; UIHelper::navBar(); ?>
 <main>
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="home">
+    <div class="container justify-content-center home">
         <div class="home-image">
             <div class="home-text">
                 <h1>Welcome to Boker Real Estate</h1>
@@ -64,9 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
-    <div class="property">
+    <div class="container property">
         <div class="prop-h">
-            <h2>Trending Properties</h2>
+            <h2>Trending Properties</h2><br>
             <p>Explore our trending properties showcasing premier locations and exceptional value!</p>
         </div>
 
@@ -160,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="explore">
-            <a href="#">Explore All</a>
+            <a href="./search.php">Explore All</a>
         </div>
     </div>
 
