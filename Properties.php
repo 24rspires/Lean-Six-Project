@@ -208,8 +208,12 @@ class Properties
         return $images;
     }
 
-    public function formatAddress(): string
+    public function formatAddress(): string|null
     {
-        return "$property->address, $property->city, $state $property->zipcode";
+        $state = State::getFromId($this->state_id);
+        if (isset($state))
+        {
+            return "$this->address, $this->city, $state->abbreviation $this->zipcode";
+        }
     }
 }

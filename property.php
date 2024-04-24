@@ -79,8 +79,7 @@ if (isset($_GET['id']))
     $property = Properties::getFromId($property_id);
     if (isset($property) && !is_null($property))
     {
-        $state = "OH";
-        $formatted_address = "$property->address, $property->city, $state $property->zipcode";
+        $formatted_address = $property->formatAddress();
         $images = $property->getImages();
 
         define("IMAGEGETTER", new ImageGetter($images));

@@ -189,11 +189,9 @@
                     {
                         $formatted_price = UIHelper::toMoney($property->price);
                         $images = $property->getImages();
-                        $address = $property->address;
-                        $state = "OH";
                         $city = $property->city;
                         $zip = $property->zipcode;
-                        $formatted_address = "$address, $city, $state $zip";
+                        $formatted_address = $property->formatAddress();
 
                         UIHelper::propertyCard(
                             $property->property_id,
