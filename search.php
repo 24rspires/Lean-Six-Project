@@ -148,16 +148,24 @@
         Launch static backdrop modal
     </button>
 
+    <style>
+        .modal-dialog,
+        .modal-content {
+            /* 80% of window height */
+            height: 90%;
+        }
+
+    </style>
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content h-100">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <iframe src="property.php?id=129" width="100%" height="100%"></iframe>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -169,7 +177,7 @@
 
 
 
-    <div class="align-items-center justify-content-center text-center p-0">
+    <div>
         <h1 class="result-header">Results</h1>
         <div class="row d-flex justify-content-center">
             <?PHP
