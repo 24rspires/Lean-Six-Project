@@ -2,7 +2,6 @@
 include_once "Properties.php";
 include_once "Account.php";
 include_once "UIHelper.php";
-include_once "State.php";
 
 $account = Account::loadSession();
 ?>
@@ -30,12 +29,12 @@ $account = Account::loadSession();
 
 <?PHP
 if (!isset($account)) {
-    UIHelper::printError("Must be signed in to view page");
+    UIHelper::printError("Must be signed in to view page", "login.php");
     return;
 }
 
 if ($account->type < 1) {
-    UIHelper::printError("Must be agent to create property");
+    UIHelper::printError("Must be agent to create property", "login.php");
     return;
 }
 
@@ -53,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Create a new property object with the given properties
         $property = new Properties(0, $agent_id, $address, $city, $state_id, $zip, $price, $square_feet, $bedrooms, $bathrooms, "");
-
+        
         // insert the property into the database
         $property->insert();
     }
@@ -71,13 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 
                 <label for="state">State</label>
                 <select id="state" class="form-control p-3 fs-5" name="state_id">
-                    <?PHP
-                    $states = State::getAll();
-                    foreach ($states as $state)
-                    {
-                        print "<option value='$state->state_id'>$state->name</option>";
-                    }
-                    ?>
+                    <?=UIHelper::printStateOptions()?>
                 </select><br>
                 <label for="zip">Zip</label>
                 <input type="text" name="zip" id="zip" class="form-control p-3 fs-5" placeholder="12345"> <br>

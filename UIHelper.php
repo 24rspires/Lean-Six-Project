@@ -2,6 +2,7 @@
 <?PHP
 
 include_once "Account.php";
+include_once "State.php";
 
 class UIHelper
 {
@@ -243,6 +244,14 @@ class UIHelper
                     <a href='$redirectLink'>Click this to go back</a>
                 </div>
             ";
+        }
+    }
+
+    public static function printStateOptions()
+    {
+        foreach (State::getAll() as $state)
+        {
+            print "<option value='$state->state_id'>$state->name</option>";
         }
     }
 }
