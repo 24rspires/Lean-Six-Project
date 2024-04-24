@@ -1,41 +1,43 @@
-#boker {
-    /*text-align: center;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
-    height: 100vh;
+.image-container {
+    height: 635px;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#mainImg {
-    height: 405px;
-    width: 405px;
+.image-container-image {
+    height: 100%;
+    width: 100%;
+    object-fit: none;
+    object-position: center;
 }
 
-#smallRow {
-    margin-left: 5px;
+.big-image {
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
 }
 
-#smallImg {
-    height: 200px;
-    width: 200px;
+.big-image:hover {
+    cursor: pointer
 }
 
-.col {
-    padding: 0;
+.agent-container {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+.agent-image {
+    border-radius: 50%;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
 }
 
-.row {
-    padding: 0;
+.agent-name {
+    font-weight: bolder;
 }
 
-#top {
-    margin: 0px 5px 5px 5px;
-}
-
-#bottom {
-    margin: 5px 5px 0px 5px;
-    padding: 0;
-}
-
-#quad {
-    margin-left: 5px;
+.agent-title {
+    font-weight: bolder;
 }

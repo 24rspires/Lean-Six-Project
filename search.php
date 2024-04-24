@@ -6,8 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="dynamicTitle">boker search</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/aspect-ratio.css">
+    <link rel="stylesheet" href="css/nav-bar.css">
     <script type="text/javascript">
         var index = 0;
         var titles = [
@@ -29,6 +34,7 @@
 
         setInterval(changeTitle, 1);
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <?PHP
@@ -38,6 +44,7 @@
     include_once "Account.php";
     include_once "Properties.php";
     include_once "UIHelper.php";
+    UIHelper::navBar();
     ?>
     <form method="GET" id="form">
         <label for="city">City</label>
@@ -74,7 +81,7 @@
         <label for="4">4+</label>
         <input type="radio" name="bedroom" id="5" value="5">
         <label for="5">5+</label>
-
+        
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -94,7 +101,6 @@
             " - Maximum: $" + $( "#slider-range" ).slider( "values", 1 ) );
         });
         </script>
-
         <!-- todo remove inline hardcoded width -->
         <p>
         <label for="amount">Price range:</label>
@@ -104,78 +110,10 @@
         <div id="slider-range" style="width:300px;"></div>
         
         <button type="button" id="sumbit">sumbit</button>
-
         <script src="scripts/searchForm.js"></script>
     </form>
-    <!-- end of form search content goes under here -->
-    <style>
-        .result-header {
-            text-align: center;
-            padding: 40px
-        }
-
-        .property-container {
-            border-radius: 7px;
-            padding: 0px;
-            /* padding: 0px 10px 0px 10px; */
-            text-decoration: none;
-            color: black;
-
-            border: 1px solid transparent;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .property-container:hover {
-            cursor: pointer;
-        }
-
-        .property-image {
-            object-fit: cover;
-            width: 100%;
-            /* height: 20%; */
-            border-top-left-radius: 7px;
-            border-top-right-radius: 7px;
-        }
-
-        .rounded-property-image {
-            border-top-left-radius: 7px;
-            border-top-right-radius: 7px;
-        }
-        
-        .property-price {
-            padding-top: 0px;
-            padding-bottom: 0px;
-            margin: 4px;
-            font-weight: bold;
-        }
-
-        .data {
-            font-weight: 400;
-            color: gray;
-        }
-
-        .data-row {
-            margin: 0px;
-        }
-
-        .data-holder {
-            padding: 0px 8px 0px 8px;
-            margin: 0px;
-        }
-
-        .realtor {
-            font-weight: 400;
-            color: gray;
-            font-size: 10px;
-            margin: 0px
-        }
-
-        .address {
-            font-size: 80%;
-        }
-    </style>
     
-    <div id="screenSizeDisplay"></div>
+    <!-- <div id="screenSizeDisplay"></div>
 
 <script>
     // Function to get Bootstrap's current screen size
@@ -203,13 +141,45 @@
     // Call the function when the page loads and when the window resizes
     window.addEventListener('load', updateScreenSizeDisplay);
     window.addEventListener('resize', updateScreenSizeDisplay);
-</script>
+</script> -->
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Launch static backdrop modal
+    </button>
+
+    <style>
+        .modal-dialog,
+        .modal-content {
+            /* 80% of window height */
+            height: 100%;
+        }
+        .modal-body-no-scroll {
+            overflow: hidden;
+            scrollbar-width: none;
+        }
+
+    </style>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen p-3">
+            <div class="modal-content h-100">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-body-no-scroll">
+                    <iframe class="p-0" src="propertyEmbed.php?id=129" width="100%" height="100%" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <div>
         <h1 class="result-header">Results</h1>
         <div class="row d-flex justify-content-center">
             <?PHP
-            // query for data
-            // load results
             if ($_SERVER['REQUEST_METHOD'] == "GET")
             {
                 $PAGE_SIZE = 15;
@@ -254,18 +224,16 @@
                     {
                         $formatted_price = UIHelper::toMoney($property->price);
                         $images = $property->getImages();
-                        $address = $property->address;
-                        $state = "OH";
                         $city = $property->city;
-                        $zip = $property->zip;
-                        $formatted_address = "$address, $city, $state $zip";
+                        $zip = $property->zipcode;
+                        $formatted_address = $property->formatAddress();
 
                         UIHelper::propertyCard(
-                            $property->id,
+                            $property->property_id,
                             $formatted_price,
-                            $property->beds,
-                            $property->bath,
-                            $property->squareFoot,
+                            $property->bedrooms,
+                            $property->bathrooms,
+                            $property->square_feet,
                             $formatted_address,
                             "Boker Realty", // we don't have a realtor in the db
                             $images
@@ -342,19 +310,15 @@
             </a> -->
         </div>
         <div class="justify-content-center d-flex mt-4 mb-4">
-            <button id='prev-btn' class="btn btn-dark">Previous Page</button>
-            <button id='next-btn' class="btn btn-dark">Next Page</button>
+            <button id='prev-btn' class="btn btn-dark mx-1"><i class="fa-solid fa-arrow-left"></i></button>
+            <button id='next-btn' class="btn btn-dark mx-1"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
         
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
         <script>
-            $('.carousel').carousel({
-                interval: false
-            });
-
             $('.property-container').click(function()
             {
                 var propertyId = $(this).attr('pid');
@@ -394,5 +358,8 @@
             })
         </script>
     <div>
+<!--       propety page iframe-->
+
+
 </body>
 </html>

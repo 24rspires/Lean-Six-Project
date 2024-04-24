@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,8 +21,6 @@
 include_once "Properties.php";
 include_once "UIHelper.php";
 include_once "State.php";
-
-UIHelper::navBar();
 
 class ImageGetter
 {
@@ -101,7 +95,7 @@ if (isset($_GET['id']))
     <div class="row d-flex" id="imageRow">
         <!-- change images -->
         <div class="row text-center justify-content-center align-items-center py-3">
-            <img src="<?=IMAGEGETTER->getImage()?>" class="big-image p-0 col-xl-11" data-bs-toggle="modal" data-bs-target="#imageModal">
+            <img src="<?=IMAGEGETTER->getImage()?>" class="big-image p-0 col-xl-10" data-bs-toggle="modal" data-bs-target="#imageModal">
         </div>
         <!-- <div class="col-xl image-container">
             <img src="<?=IMAGEGETTER->getImage()?>" class="image-container-image" alt="" data-bs-toggle="modal" data-bs-target="#imageModal">

@@ -5,27 +5,30 @@ include_once "General.php";
 startSessionIfNotStarted();
 
 class Account {
-    public int|NULL $id;
-    public string|NULL $username;
+    public int|NULL $account_id;
+    public string|NULL $first_name;
+    public string|NULL $last_name;
     public string|NULL $password;
     public string|NULL $email;
     public string|NULL $phone;
     public string|NULL $address;
+    public int|null $type;
     public string|NULL $create_date;
     
-    public function __construct(int $id = null, string $username = null, string $password = null, string $email = null, string $phone = null, string $address = null, string $create_date = null) {
-        $this->id = $id;
-        $this->username = $username;
+    public function __construct(int $account_id = null, string $first_name = null, string $last_name = null, string $password = null, string $email = null, string $phone = null, string $address = null, $type = null, string $create_date = null) {
+        $this->account_id = $account_id;
+        $this->first_name = $first_name;
+        $this->last_name = $last_name;
         $this->password = $password;
         $this->email = $email;
         $this->phone = $phone;
         $this->address = $address;
+        $this->type = $type;
         $this->create_date = $create_date;
     }
 
     public static function getFromId(int $id)
     {
-        // TODO work
         $result = dbhelper::getInstance()->query("SELECT * FROM accounts WHERE account_id=$id");
         
         if ($result !== false) $result = $result->fetch_assoc();
@@ -34,18 +37,20 @@ class Account {
         {
             return new Account(
                 $result["account_id"],
-                $result["username"],
+                $result["first_name"],
+                $result["last_name"],
                 $result["password"],
                 $result["email"],
                 $result["phone"],
                 $result["address"],
+                $result["type"],
                 $result["create_date"]
             );
         }
     }
 
-    public static function tryLogin(string $username, string $password) : Account|null {
-        $result = dbhelper::getInstance()->query("SELECT * FROM accounts WHERE username=\"{$username}\" and password=\"{$password}\"");
+    public static function tryLogin(string $email, string $password) : Account|null {
+        $result = dbhelper::getInstance()->query("SELECT * FROM accounts WHERE email=\"{$email}\" and password=\"{$password}\"");
         
         if ($result !== false) $result = $result->fetch_assoc();
 
@@ -53,21 +58,18 @@ class Account {
         {
             return new Account(
                 $result["account_id"],
-                $result["username"],
+                $result["first_name"],
+                $result["last_name"],
                 $result["password"],
                 $result["email"],
                 $result["phone"],
                 $result["address"],
+                $result["type"],
                 $result["create_date"]
             );
         }
 
         return null;
-    }
-
-    private static function generateGUID() : string
-    {
-        return md5(uniqid('', true));
     }
 
     public function saveSession(): void
@@ -92,13 +94,15 @@ class Account {
         }
     }
 
-    public function insertIntoDatabase() : void {
-        $un = $this->username;
-        $pass = $this->password;
-        $em = $this->email;
+    public function insert() : void {
+        $first_name = $this->first_name;
+        $last_name = $this->last_name;
+        $password = $this->password;
+        $email = $this->email;
         $phone = $this->phone;
-        $addr = $this->address;
-        $sql = "INSERT INTO accounts (username, password, email, phone, address, create_date) VALUES ('$un', '$pass', '$em', '$phone', '$addr', NOW())";
+        $type = $this->type;
+        $address = $this->address;
+        $sql = "INSERT INTO accounts (first_name, last_name, password, email, phone, address, type, create_date) VALUES ('$first_name', '$last_name' , '$password', '$email', '$phone', $type, '$address', NOW())";
         
         dbhelper::getInstance()->query($sql);
     }
