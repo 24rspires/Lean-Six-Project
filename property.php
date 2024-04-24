@@ -23,6 +23,7 @@
 <?PHP
 include_once "Properties.php";
 include_once "UIHelper.php";
+include_once "State.php";
 
 UIHelper::navBar();
 
@@ -161,7 +162,7 @@ if (isset($_GET['id']))
                             <p class="agent-number">(740) 971-3727</p>
                         </div>
                     </div>
-                    <div class="row py-0">
+                    <div class="row">
                         <div class="col-1">
                             <i class="fa-solid fa-envelope"></i>
                         </div>
@@ -226,7 +227,6 @@ if (isset($_GET['id']))
                         
                             print $imageString;
                         ?>
-                        <!-- php for loop to go through all images for a given property -->
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

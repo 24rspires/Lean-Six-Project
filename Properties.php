@@ -1,5 +1,6 @@
 <?php
 include_once "dbhelper.php";
+include_once "State.php";
 class Properties
 {
     public int $property_id;
@@ -205,5 +206,10 @@ class Properties
         }
 
         return $images;
+    }
+
+    public function formatAddress(): string
+    {
+        return "$property->address, $property->city, $state $property->zipcode";
     }
 }
