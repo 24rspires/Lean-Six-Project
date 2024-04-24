@@ -23,3 +23,21 @@
 .big-image:hover {
     cursor: pointer
 }
+
+.agent-container {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+.agent-image {
+    border-radius: 50%;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+}
+
+.agent-name {
+    font-weight: bolder;
+}
+
+.agent-title {
+    font-weight: bolder;
+}

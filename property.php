@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/property.css">
+    <link rel="stylesheet" href="./css/aspect-ratio.css">
     <link rel="stylesheet" href="./css/nav-bar.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/d316673763.js" crossorigin="anonymous"></script>
@@ -23,6 +24,7 @@
 <?PHP
 include_once "Properties.php";
 include_once "UIHelper.php";
+include_once "State.php";
 
 UIHelper::navBar();
 
@@ -32,6 +34,11 @@ class ImageGetter
     {
         $this->images = $images;
         $this->index = 0;
+        $this->missingImages = ["images/nohouseimage.jpg",
+            "images/nohouseimage2.jpg",
+            "images/nohouseimage3.jpg",
+            "images/nohouseimage4.jpg",];
+        $this->missingIndex = 0;
     }
     function getImage()
     {
@@ -43,7 +50,7 @@ class ImageGetter
         }
         else
         {
-            return "images/nohouseimage.jpg";
+            return $this->missingImages[$this->missingIndex++];
         }
     }
     function getRemaining()
@@ -62,7 +69,7 @@ class ImageGetter
             }
             return $images;
         }
-        return ["images/nohouseimage.jpg"];
+        return $this->missingImages;
     }
 }
 
@@ -138,16 +145,37 @@ if (isset($_GET['id']))
                 </div>
             </div>
         </div>
-        <div class="col-2" style="align-items: center; justify-content: center; text-align: center;">
-            <a href="javascript:dispMessage()">Contact agent</a>
+    </div>
+    <div class="row justify-content-md-center justify-content-lg-start">
+        <div class="col-md-10 col-lg-7 col-xl-6 agent-container p-3">
+            <h3 class="text-center my-0 agent-title">Agent</h3>
+            <div class="row align-items-center">
+                <div class="col-5">
+                    <img class="agent-image" src="images/agents/dunnmeister.jfif">
+                </div>
+                <div class="col text-left">
+                    <h4 class="agent-name">Greg McDonough</h4>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="col">
+                            <p class="agent-number">(740) 971-3727</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="col">
+                            <p class="agent-email">gregm_osu@hotmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<!-- Google Maps Iframe -->
-<div class="row">
-
-</div>
-
 <!-- Image Modal -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -200,7 +228,6 @@ if (isset($_GET['id']))
                         
                             print $imageString;
                         ?>
-                        <!-- php for loop to go through all images for a given property -->
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

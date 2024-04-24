@@ -9,6 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/aspect-ratio.css">
+    <link rel="stylesheet" href="css/nav-bar.css">
     <script type="text/javascript">
         var index = 0;
         var titles = [
@@ -40,6 +44,7 @@
     include_once "Account.php";
     include_once "Properties.php";
     include_once "UIHelper.php";
+    UIHelper::navBar();
     ?>
     <form method="GET" id="form">
         <label for="city">City</label>
@@ -107,73 +112,6 @@
         <button type="button" id="sumbit">sumbit</button>
         <script src="scripts/searchForm.js"></script>
     </form>
-    <!-- end of form search content goes under here -->
-    <style>
-        .result-header {
-            text-align: center;
-            padding: 40px
-        }
-
-        .property-container {
-            border-radius: 7px;
-            padding: 0px;
-            /* padding: 0px 10px 0px 10px; */
-            text-decoration: none;
-            color: black;
-
-            border: 1px solid transparent;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .property-container:hover {
-            cursor: pointer;
-        }
-
-        .property-image {
-            object-fit: cover;
-            width: 100%;
-            /* height: 20%; */
-            border-top-left-radius: 7px;
-            border-top-right-radius: 7px;
-        }
-
-        .rounded-property-image {
-            border-top-left-radius: 7px;
-            border-top-right-radius: 7px;
-        }
-        
-        .property-price {
-            padding-top: 0px;
-            padding-bottom: 0px;
-            margin: 4px;
-            font-weight: bold;
-        }
-
-        .data {
-            font-weight: 400;
-            color: gray;
-        }
-
-        .data-row {
-            margin: 0px;
-        }
-
-        .data-holder {
-            padding: 0px 8px 0px 8px;
-            margin: 0px;
-        }
-
-        .realtor {
-            font-weight: 400;
-            color: gray;
-            font-size: 10px;
-            margin: 0px
-        }
-
-        .address {
-            font-size: 80%;
-        }
-    </style>
     
     <!-- <div id="screenSizeDisplay"></div>
 
