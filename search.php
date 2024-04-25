@@ -153,27 +153,57 @@
         .modal-content {
             /* 80% of window height */
             height: 100%;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
         }
         .modal-body-no-scroll {
             overflow: hidden;
             scrollbar-width: none;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+        .modal-dialog {
+            width: 70vw; /* Adjust as needed */
+            max-width: 100%;
+            margin: 0 auto;
         }
 
+        .modal-content {
+            background-color: transparent; /* Transparent background */
+        }
+
+        .modal-body {
+            height: calc(100% - 56px); /* Adjust according to your modal header height */
+            background-color: transparent; /* Transparent background */
+            position: relative; /* Position relative for absolute positioning */
+        }
+
+        .modal-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .btn-close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            z-index: 1050; /* Ensure it's above the modal */
+        }
     </style>
-    <!-- Modal -->
+
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-xl p-3">
-            <div class="modal-content h-100">
-                <div class="modal-header">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
                 <div class="modal-body modal-body-no-scroll">
-                    <iframe class="p-0" src="" width="100%" height="100%" allowfullscreen></iframe>
+                    <!-- Close button added inside modal-body -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <iframe class="modal-iframe" src="" width="100%" height="100%" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </div>
-
 
 
     <div>
@@ -359,8 +389,5 @@
             })
         </script>
     <div>
-<!--       propety page iframe-->
-
-
 </body>
 </html>

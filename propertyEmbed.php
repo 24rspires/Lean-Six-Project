@@ -168,7 +168,15 @@ if (isset($_GET['id']))
             </div>
         </div>
     </div>
+    <div class="row py-3">
+        <div class="col align-items-center justify-content-center">
+            <?=UIHelper::getMap(PROPERTY->formatAddress())?>
+            <!--            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d779706.5803138056!2d-83.65161977219485!3d40.237331110490835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8849cb2265f3052d%3A0x7b36f060c10163b9!2sLaw%20Office%20of%20Kyle%20D.%20Boker!5e0!3m2!1sen!2sus!4v1714064290063!5m2!1sen!2sus" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>-->
+        </div>
+    </div>
 </div>
+
+
 <!-- Image Modal -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
