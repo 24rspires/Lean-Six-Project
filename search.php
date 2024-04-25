@@ -162,13 +162,13 @@
     </style>
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen p-3">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl p-3">
             <div class="modal-content h-100">
                 <div class="modal-header">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body modal-body-no-scroll">
-                    <iframe class="p-0" src="propertyEmbed.php?id=129" width="100%" height="100%" allowfullscreen></iframe>
+                    <iframe class="p-0" src="" width="100%" height="100%" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -325,7 +325,8 @@
                 var target = event.target;
                 if (propertyId && $(target).attr('click-ignore') === undefined)
                 {
-                    window.location.href = "property.php?id="+propertyId;
+                    $(".modal-body").find("iframe").attr("src", "propertyEmbed.php?id=" + propertyId);
+
                 }
             })
 

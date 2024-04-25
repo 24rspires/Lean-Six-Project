@@ -150,7 +150,7 @@ class UIHelper
         }
 
         print "
-            <div class='col-sm-5 col-lg-3 col-md-4 col-xl-3 property-container m-2' pid='$pid'>
+            <div class='col-sm-5 col-lg-3 col-md-4 col-xl-3 property-container m-2' data-bs-toggle='modal' data-bs-target='#staticBackdrop'  pid='$pid'>
                 <div id='$pid' class='carousel slide' data-interval='false'>
                     <div class='carousel-inner rounded-property-image'>
                         $imageString
