@@ -22,7 +22,7 @@
                 <br>
                 <div class="input-field">
                     <i class="fa-solid fa-envelope"></i>
-                    <input type="text" placeholder="Email" name="email">
+                    <input type="email" placeholder="Email" name="email">
                 </div>
 
                 <div class="input-field">
@@ -55,8 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
         $password = UIHelper::checkField("password");
 
         $account = Account::tryLogin($email, $password);
-
-        print "1";
 
         if ($account === null)
         {
