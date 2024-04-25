@@ -27,7 +27,7 @@ class Account {
         $this->create_date = $create_date;
     }
 
-    public static function getFromId(int $id)
+    public static function getFromId(int $id) : Account|null
     {
         $result = dbhelper::getInstance()->query("SELECT * FROM accounts WHERE account_id=$id");
         
@@ -47,6 +47,8 @@ class Account {
                 $result["create_date"]
             );
         }
+
+        return null;
     }
 
     public static function tryLogin(string $email, string $password) : Account|null {
@@ -95,20 +97,59 @@ class Account {
     }
 
     public function insert() : void {
+        $mode = "INSERT";
+
+        $account_id = $this->account_id;
+        if ($this->account_id !== null && Account::getFromId($this->account_id) !== null) {
+            $mode = "UPDATE";
+        }
+
         $first_name = $this->first_name;
         $last_name = $this->last_name;
         $password = $this->password;
         $email = $this->email;
-        $phone = $this->phone;
-        $type = $this->type;
-        $address = $this->address;
-        $sql = "INSERT INTO accounts (first_name, last_name, password, email, phone, address, type, create_date) VALUES ('$first_name', '$last_name' , '$password', '$email', '$phone', $type, '$address', NOW())";
-        
+        $phone = $this->phone ?? "";
+        $type = $this->type ?? 0;
+        $address = $this->address ?? "";
+
+        $sql = "INSERT INTO accounts (first_name, last_name, password, email, phone, address, type, create_date) VALUES ('$first_name', '$last_name', '$password', '$email', '$phone', '$address', $type, NOW())";
+
+        if ($mode === "UPDATE") {
+            $sql = "UPDATE accounts SET first_name='$first_name', last_name='$last_name', password='$password', email='$email', phone='$phone', address='$address', type='$type' WHERE account_id='$account_id'";
+        }
+
         dbhelper::getInstance()->query($sql);
     }
 
     public static function unloadSession() : void
     {
         unset($_SESSION['user_account']);
+    }
+
+    public function getProfilePicture()
+    {
+        $query = "select * from agent_media where agent_id=$this->account_id";
+        
+        $result = dbhelper::getInstance()->query($query);
+
+        if ($result !== false) $result = $result->fetch_assoc();
+        
+        if ($result !== null && $result !== false)
+        {
+            $media_id = $result['media_id'];
+            $media_query = "select * from media where media_id=$media_id";
+            
+            $media_result = dbhelper::getInstance()->query($media_query);
+            
+            if ($media_result !== false) $media_result = $media_result->fetch_assoc();
+
+            if ($media_result !== null && $media_result !== false)
+            {
+                $relative_path = $media_result['file_path'];
+                return "images/agents/$relative_path";
+            }
+        }
+
+        return "images/default-agent-profile-picture.png";
     }
 }

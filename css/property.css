@@ -32,10 +32,14 @@
 .agent-image {
     border-radius: 50%;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+    aspect-ratio: 1/1;
 }
 
 .agent-name {
     font-weight: bolder;
+}
+.agent-number {
+    margin: 0px;
 }
 
 .agent-title {

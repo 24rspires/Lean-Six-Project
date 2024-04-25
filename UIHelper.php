@@ -78,6 +78,17 @@ class UIHelper
         
         return $length >= 8 && $numbers >= 2 && $length < 100;
     }
+
+    public static function validName(string $name): bool
+    {
+        return preg_match('/^[a-zA-Z]+$/', $name);
+    }
+
+    public static function validAddress(string $address): bool
+    {
+        // TODO: LUKE FIX NOW();
+        return true;
+    }
     
     public static function toMoney($number)
     {        
@@ -102,14 +113,13 @@ class UIHelper
     public static function agentCard(string $pfpUrl, string $name, string $phone, string $email): void
     {
         print "
-            <li class='agent'>
-                <img src='{$pfpUrl}' alt='{$name} Profile Picture' class='agent-pfp'>
-                <div class='agent-info'>
-                    <h3>{$name}</h3>
-                    <p>Phone Number: <a href='tel:${phone}''>${phone}</a></p>
-                    <p>Email: <a href='mailto:${email}'>${email}</a></p>
-                </div>
-            </li>
+            <div class='col-md-4 agent-card'>
+                <img src='$pfpUrl' alt='Agent PFP $pfpUrl'>
+                <h3>$name</h3>
+                <p>Email Address: <a href='mailto:$email' class='agent-a'>$email</a></p>
+                <p>Phone Number: <a href='tel:$phone' class='agent-a'>$phone</a></p>
+                <a href='#' class='btn btn-primary'>Learn More</a>
+            </div>
         ";
     }
 
@@ -160,7 +170,7 @@ class UIHelper
         }
 
         print "
-            <div class='col-sm-5 col-lg-3 col-md-4 col-xl-3 property-container m-2' pid='$pid'>
+            <div class='col-sm-5 col-lg-3 col-md-4 col-xl-3 property-container m-2' data-bs-toggle='modal' data-bs-target='#staticBackdrop'  pid='$pid'>
                 <div id='$pid' class='carousel slide' data-interval='false'>
                     <div class='carousel-inner rounded-property-image'>
                         $imageString
@@ -215,8 +225,8 @@ class UIHelper
                     <div class='py-4 text-center'>
                         <h1 class='error-text'>An error has occurred!</h1>
                         <h4 class='sub-text'>Error message:</h1>
-                    <div>
-                    <p>
+                    </div>
+                    <p class='py-4 text-center'>
                         $errorMessage
                     </p>
                 </div>
@@ -263,6 +273,26 @@ class UIHelper
         {
             print "<option value='$state->state_id'>$state->name</option>";
         }
+    }
+
+    public static function formatAgentName(string $first_name, string $last_name)
+    {
+        $first = ucwords(strtolower($first_name));
+        $last = ucwords(strtolower($last_name));
+
+        return "$first $last";
+    }
+
+    public static function formatAgentNumber(string $number): string|null {
+        if(strlen($number) != 10 || !is_numeric($number)) {
+            return null;
+        }
+    
+        $area_code = substr($number, 0, 3);
+        $prefix = substr($number, 3, 3);
+        $line_number = substr($number, 6);
+        
+        return "($area_code) $prefix-$line_number";
     }
 }
 ?>
