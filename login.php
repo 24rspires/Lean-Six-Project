@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
         if ($account === null)
         {
             $account = new Account(first_name: $firstName, last_name: $lastName, password: $password, email: $email);
-            $account->insertIntoDatabase();
+            $account->insert();
         }
     } else {
         $email = UIHelper::checkField("email");
