@@ -30,29 +30,12 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 agent-card">
-                        <img src="./images/agents/agent1.jpg" alt="Agent 1">
-                        <h3>Michael Harris</h3>
-                        <p> Email Address: <a href="#" class="agent-a">HarrisM@gmail.com</a></p>
-                        <p> Phone Number: <a href="#" class="agent-a">614-629-9648</a></p>
-                        <a href="https://www.delawareareacc.org/" class="btn btn-primary">Learn More</a>
-                    </div>
 
-                    <div class="col-md-4 agent-card">
-                        <img src="./images/agents/agent3.jpg" alt="Agent 2">
-                        <h3>Jennifer Lee</h3>
-                        <p> Email Address: <a href="#" class="agent-a">JenLee@yahoo.com</a></p>
-                        <p> Phone Number: <a href="#" class="agent-a">614-496-3284</a></p>
-                        <a href="https://www.delawareareacc.org/" class="btn btn-primary">Learn More</a>
-                    </div>
+                    <?php UIHelper::agentCard("images/agents/agent1.jpg", "Michael Harris", "614-629-9648", "HarrisM@gmail.com"); ?>
 
-                    <div class="col-md-4 agent-card">
-                        <img src="./images/agents/agent4.jpg" alt="Agent 3">
-                        <h3>Rachael Miller</h3>
-                        <p> Email Address: <a href="#" class="agent-a">RachMill@gmail.com</a></p>
-                        <p> Phone Number: <a href="#" class="agent-a">740-573-8495</a></p>
-                        <a href="https://www.delawareareacc.org/" class="btn btn-primary">Learn More</a>
-                    </div>
+                    <?php UIHelper::agentCard("images/agents/agent3.jpg", "Jennifer Lee", "614-496-3284", "JenLee@yahoo.com"); ?>
+
+                    <?php UIHelper::agentCard("images/agents/agent4.jpg", "Rachael Miller", "740-573-8495", "RachMill@gmail.com"); ?>
                 </div>
             </div>
         </section>
