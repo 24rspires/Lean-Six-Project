@@ -20,9 +20,19 @@ class UIHelper
         $loginButton = "<a href='login.php'>Login</a>";
 
         if ($account !== null) $loginButton = "
-                                <form method='post'>
-                                    <input type='submit' value='Logout' name='logout' class='logout'>
-                                </form>";
+            <div class=' dropdown '>
+                <button class='btn btn-secondary dropdown-toggle logout' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                    $account->first_name  $account->last_name 
+                </button>
+                <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                    <form method='post'>
+                    <input id='' type='submit' value='logout' name='logout' >
+                    </form>
+                    <a class='dropdown-item' href='#'>Another action</a>
+                    <a class='dropdown-item' href='#'>Something else here</a>
+                </div>
+            </div>
+            ";
         // include account because logout will be in navbar
         // possibly consider adding two navbar functions
         // one with paramater for user and a separate version for logged out mode
