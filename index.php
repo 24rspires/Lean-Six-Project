@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input id="typeInput" name="type" type="hidden" />
                         <input id="propId" name="propId" type="hidden" />
                     </div>
-                    <input type="submit" value="Sumbit" name="submit">
+                    <input class="input" type="submit" value="Sumbit" name="submit">
                 </form>
                 <script src="./scripts/autocomplete.js"></script>
             </div> 

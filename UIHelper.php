@@ -25,11 +25,10 @@ class UIHelper
                     $account->first_name  $account->last_name 
                 </button>
                 <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                    <a class='' id='color' href='profile.php'>Account Settings</a>
                     <form method='post'>
                     <input id='' type='submit' value='logout' name='logout' >
                     </form>
-                    <a class='dropdown-item' href='#'>Another action</a>
-                    <a class='dropdown-item' href='#'>Something else here</a>
                 </div>
             </div>
             ";
