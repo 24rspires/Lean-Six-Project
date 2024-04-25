@@ -68,6 +68,17 @@ class UIHelper
         
         return $length >= 8 && $numbers >= 2 && $length < 100;
     }
+
+    public static function validName(string $name): bool
+    {
+        return preg_match('/^[a-zA-Z]+$/', $name);
+    }
+
+    public static function validAddress(string $address): bool
+    {
+        // TODO: LUKE FIX NOW();
+        return true;
+    }
     
     public static function toMoney($number)
     {        

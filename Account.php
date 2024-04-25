@@ -27,7 +27,7 @@ class Account {
         $this->create_date = $create_date;
     }
 
-    public static function getFromId(int $id)
+    public static function getFromId(int $id) : Account|null
     {
         $result = dbhelper::getInstance()->query("SELECT * FROM accounts WHERE account_id=$id");
         
@@ -47,6 +47,8 @@ class Account {
                 $result["create_date"]
             );
         }
+
+        return null;
     }
 
     public static function tryLogin(string $email, string $password) : Account|null {
@@ -95,15 +97,27 @@ class Account {
     }
 
     public function insert() : void {
+        $mode = "INSERT";
+
+        $account_id = $this->account_id;
+        if ($this->account_id !== null && Account::getFromId($this->account_id) !== null) {
+            $mode = "UPDATE";
+        }
+
         $first_name = $this->first_name;
         $last_name = $this->last_name;
         $password = $this->password;
         $email = $this->email;
-        $phone = $this->phone;
-        $type = $this->type;
-        $address = $this->address;
-        $sql = "INSERT INTO accounts (first_name, last_name, password, email, phone, address, type, create_date) VALUES ('$first_name', '$last_name' , '$password', '$email', '$phone', $type, '$address', NOW())";
-        
+        $phone = $this->phone ?? "";
+        $type = $this->type ?? 0;
+        $address = $this->address ?? "";
+
+        $sql = "INSERT INTO accounts (first_name, last_name, password, email, phone, address, type, create_date) VALUES ('$first_name', '$last_name', '$password', '$email', '$phone', '$address', $type, NOW())";
+
+        if ($mode === "UPDATE") {
+            $sql = "UPDATE accounts SET first_name='$first_name', last_name='$last_name', password='$password', email='$email', phone='$phone', address='$address', type='$type' WHERE account_id='$account_id'";
+        }
+
         dbhelper::getInstance()->query($sql);
     }
 
