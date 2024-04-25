@@ -90,7 +90,7 @@
         ?>
         <h1 class="mt-5">Profile Settings</h1>
 
-        <?= count($errors) === 0 ? "
+        <?= count($errors) === 0 && $_SERVER['REQUEST_METHOD'] === 'POST' ? "
             <div class='alert alert-warning alert-dismissible fade show d-flex justify-content-center align-items-center' role='alert'>
                 <p class='my-3'>Account successfully updated!</p>
                 <button type='button' class='close my-3' data-dismiss='alert' aria-label='Close'>
