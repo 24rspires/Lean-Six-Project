@@ -204,8 +204,8 @@ class UIHelper
                     <div class='py-4 text-center'>
                         <h1 class='error-text'>An error has occurred!</h1>
                         <h4 class='sub-text'>Error message:</h1>
-                    <div>
-                    <p>
+                    </div>
+                    <p class='py-4 text-center'>
                         $errorMessage
                     </p>
                 </div>
