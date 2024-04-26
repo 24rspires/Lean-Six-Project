@@ -27,7 +27,7 @@ class UIHelper
                 <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
                     <a class='' id='color' href='profile.php'>Account Settings</a>
                     <form method='post'>
-                    <input id='' type='submit' value='logout' name='logout' >
+                    <input id='color' type='submit' value='Logout' name='logout' >
                     </form>
                 </div>
             </div>

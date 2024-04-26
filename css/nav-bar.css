@@ -27,4 +27,11 @@ color: #ccc;
 }
 #color{
     color: #333;
+    border: none;
+    background-color: #fff;
+}
+
+.btn-secondary:hover{
+    background-color: #333;
+    border-color: #333;
 }

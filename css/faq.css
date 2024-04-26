@@ -1,0 +1,11 @@
+.faq-box.question a:before {
+    content: "+";
+    display: inline-block;
+    margin-right: 5px;
+    transition: transform 0.3s ease;
+}
+
+.faq-box.question a[aria-expanded="true"]:before {
+    content: "-";
+    transform: rotate(45deg);
+}
