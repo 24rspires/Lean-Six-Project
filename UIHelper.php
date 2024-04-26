@@ -109,15 +109,17 @@ class UIHelper
         return $formatted;
     }
     
-    public static function agentCard(string $pfpUrl, string $name, string $phone, string $email): void
+    public static function agentCard(string $pfpUrl, string $name, string $phone, string $email, string|null $learnMore = null): void
     {
+        $learnMore = $learnMore ?? "#";
+
         print "
             <div class='col-md-4 agent-card'>
                 <img src='$pfpUrl' alt='Agent PFP $pfpUrl'>
                 <h3>$name</h3>
                 <p>Email Address: <a href='mailto:$email' class='agent-a'>$email</a></p>
                 <p>Phone Number: <a href='tel:$phone' class='agent-a'>$phone</a></p>
-                <a href='#' class='btn btn-primary'>Learn More</a>
+                <a href='$learnMore' class='btn btn-primary'>Learn More</a>
             </div>
         ";
     }
