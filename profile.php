@@ -83,6 +83,21 @@
                         $user->password = $password;
                         $user->insert();
                         $user->saveSession();
+
+                        if (isset($_FILES['pfp'])) {
+
+                            $fileExtension = explode(".", $_FILES['pfp']['name'])[1];
+
+                            $agentFolder = "C:/xampp/htdocs/adp2/Lean-Six-Project/images/agents/$user->account_id/";
+
+                            if (!file_exists($agentFolder)) {
+                                mkdir($agentFolder, recursive: true);
+                            }
+
+                            move_uploaded_file($_FILES['pfp']['tmp_name'], "$agentFolder/profile.$fileExtension");
+
+                            dbhelper::getInstance()->query("INSERT INTO boker.media (media_type, file_path) VALUES ('image', '$user->account_id/profile.$fileExtension')");
+                        }
                         
                     }
                 }
@@ -98,7 +113,7 @@
                 </button>
             </div>" : "" ?>
 
-        <form method="post" action="profile.php" class="text-left">
+        <form method="post" action="profile.php" enctype="multipart/form-data" class="text-left">
 
             <div class="form-group">
                 <label for="firstName">First Name: </label>
@@ -134,6 +149,17 @@
                 <label for="address">Address: </label>
                 <input type="text" name="address" id="address" placeholder="Address" class="form-control" value="<?= $user->address?>">
             </div>
+
+            <?php
+                if ($user->type > 0) {
+                    echo "
+                        <div class='form-group'>
+                            <label for='pfp'>Profile Picture: </label>
+                            <input type='file' name='pfp' id='pfp' value='Upload Profile Picture' class='form-control-file' accept='.png,.jpg,.jfif'>
+                        </div>
+                    ";
+                }
+            ?>
 
             <div class="form-group">
                 <input type="submit" name="formType" value="Save">
