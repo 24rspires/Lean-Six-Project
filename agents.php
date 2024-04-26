@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <h2 class="section-heading">Our Agents</h2>
-                        <hr class="my-4">
+                        <hr class="my-4">`
                     </div>
                 </div>
             </div>
@@ -31,11 +31,11 @@
             <div class="container">
                 <div class="row">
 
-                    <?php UIHelper::agentCard("images/agents/agent1.jpg", "Michael Harris", "614-629-9648", "HarrisM@gmail.com"); ?>
+                    <?php UIHelper::agentCard("https://media.licdn.com/dms/image/C5603AQFfXDHgxMpdiw/profile-displayphoto-shrink_200_200/0/1651248798288?e=1719446400&v=beta&t=Wgr-pRFECQFJ9LuD8TrMb6k0gtnFkTs5bOPquDQa9GU", "Greg Keyboard-Guardian McDonough", "740-201-3226", "mcdonoughg@delawareareacc.org", "https://www.delawareareacc.org/o/dacchs/page/app-development"); ?>
 
-                    <?php UIHelper::agentCard("images/agents/agent3.jpg", "Jennifer Lee", "614-496-3284", "JenLee@yahoo.com"); ?>
+                    <?php UIHelper::agentCard("https://media.licdn.com/dms/image/C4E03AQGwFDPOLGzSjA/profile-displayphoto-shrink_100_100/0/1619440657993?e=1719446400&v=beta&t=U8VIPI5hjq70S1aAFDD4siQluSLizSDwQGgqq7-HaXw", "Eli CyberBoy Cochran", "740-203-2216", "cochrane@delawareareacc.org", "https://www.delawareareacc.org/o/dacchs/page/cybersecurity"); ?>
 
-                    <?php UIHelper::agentCard("images/agents/agent4.jpg", "Rachael Miller", "740-573-8495", "RachMill@gmail.com"); ?>
+                    <?php UIHelper::agentCard("https://media.licdn.com/dms/image/D5603AQGC2-_P5rj0aw/profile-displayphoto-shrink_100_100/0/1674150794425?e=1719446400&v=beta&t=pwTeh4xoZvie_artAgH0Lu_tViIZ4Ll-m27O2dmuPi0", "Wayne Lean-Six Strunk", "740-203-2400", "waynes@delawareareacc.org", "https://www.delawareareacc.org/o/dacchs/page/app-dev-programming"); ?>
                 </div>
             </div>
         </section>
