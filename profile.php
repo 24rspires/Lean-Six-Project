@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="./css/nav-bar.css">
         <link rel="stylesheet" href="./css/profile.css">
         <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/aspect-ratio.css">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -28,12 +29,16 @@
             if ($user === null) {
                 header("Location: login.php");
             }
+        $query = dbhelper::getInstance()->query("SELECT * FROM boker.agent_media WHERE agent_id = $user->account_id");
 
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($query->num_rows > 0) {
+                $media_id = $query->fetch_assoc()['media_id'];
+                $pfpQuery = dbhelper::getInstance()->query("SELECT * FROM boker.media WHERE media_id = $media_id");
+                $pfp = $pfpQuery->fetch_assoc()["file_path"];
+            }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($_POST['formType'] === 'Save') {
-
-
-
 
                     $firstName = $_POST['firstName'];
                     $lastName = $_POST['lastName'];
@@ -96,7 +101,9 @@
 
                             move_uploaded_file($_FILES['pfp']['tmp_name'], "$agentFolder/profile.$fileExtension");
 
-                            dbhelper::getInstance()->query("INSERT INTO boker.media (media_type, file_path) VALUES ('image', '$user->account_id/profile.$fileExtension')");
+                            if ($query->num_rows === 0) {
+                                dbhelper::getInstance()->insertPFP($user->account_id, $fileExtension);
+                            }
                         }
                         
                     }
@@ -158,6 +165,13 @@
                             <input type='file' name='pfp' id='pfp' value='Upload Profile Picture' class='form-control-file' accept='.png,.jpg,.jfif'>
                         </div>
                     ";
+
+                    If (isset($pfp)) {
+                        echo "
+                            <label>Current Profile Picture:</label><br>
+                            <img src='./images/agents/$pfp' alt='Profile Picture' />
+                        ";
+                    }
                 }
             ?>
 

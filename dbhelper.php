@@ -24,4 +24,15 @@ class dbhelper extends mysqli {
 
         parent::__construct($servername, $username, $password, $db);
     }
+
+    public function insertPFP(int $account_id, string $fileExtension) : string {
+
+        $this->query("INSERT INTO boker.media (media_type, file_path) VALUES ('image', '$account_id/profile.$fileExtension')");
+
+        $insert_id = $this->insert_id;
+
+        $this->query("INSERT INTO boker.agent_media (agent_id, media_id) VALUES($account_id, $insert_id)");
+
+        return "$account_id/profile.$fileExtension";
+    }
 }
