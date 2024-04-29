@@ -47,7 +47,7 @@
 
                     <?php UIHelper::agentCard("https://media.licdn.com/dms/image/C4E03AQGgHWOYW3Pyqw/profile-displayphoto-shrink_200_200/0/1636572540301?e=1719446400&v=beta&t=AggmevXILXSpZuk3YD_BkjlnsaUeT2_J6Fj_S3YOJ50", "Mitch YOU-PUT-A-DUCKY-IN-MY-SYSTEM Buchanan", "740-203-2252", "waynes@delawareareacc.org", "https://www.delawareareacc.org/o/dacchs/page/digital-design"); ?>
 
-                    <?php UIHelper::agentCard("https://media.licdn.com/dms/image/D5603AQF9n7ZG58ZnKg/profile-displayphoto-shrink_100_100/0/1714146404358?e=1719446400&v=beta&t=K79cNQBJYePENrKPsstWSeFmqGY4OYv8paO6-Bw4luw", "Liam Toemas Thomas", "740-972-5496", "messedupelican12@gmail.com", "https://www.delawareareacc.org/o/dacchs/page/digital-design"); ?>
+                    <?php UIHelper::agentCard("https://media.licdn.com/dms/image/D5603AQF9n7ZG58ZnKg/profile-displayphoto-shrink_100_100/0/1714146404358?e=1719446400&v=beta&t=K79cNQBJYePENrKPsstWSeFmqGY4OYv8paO6-Bw4luw", "Liam The Incredible Bulk Thomas", "740-972-5496", "messedupelican12@gmail.com", "https://www.delawareareacc.org/o/dacchs/page/digital-design"); ?>
                 </div>
             </div>
         </section>
