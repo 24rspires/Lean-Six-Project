@@ -9,10 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="css/search.css">
-    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/aspect-ratio.css">
     <link rel="stylesheet" href="css/nav-bar.css">
+    <link rel="stylesheet" href="css/search.css">
     <script type="text/javascript">
         var index = 0;
         var titles = [
@@ -47,70 +47,122 @@
     UIHelper::navBar();
     ?>
     <form method="GET" id="form">
-        <label for="city">City</label>
-        <input type="text" name="city" id="city">
-        <label for="zipcode">Zipcode</label>
-        <input type="number" name="zipcode" id="zipcode">
-        <br>
-        <!-- todo style the radio buttons -->
-        <br>
-        <h2>Bathrooms</h2>
-        <input type="radio" name="bathroom" id="any" value="0" checked>
-        <label for="any">Any</label>
-        <input type="radio" name="bathroom" id="1" value="1">
-        <label for="1">1+</label>
-        <input type="radio" name="bathroom" id="2" value="2">
-        <label for="2">2+</label>
-        <input type="radio" name="bathroom" id="3" value="3">
-        <label for="3">3+</label>
-        <input type="radio" name="bathroom" id="4" value="4">
-        <label for="4">4+</label>
-        <input type="radio" name="bathroom" id="5" value="5">
-        <label for="5">5+</label>
-        <br>
-        <h2>Bedrooms</h2>
-        <input type="radio" name="bedroom" id="any" value="0" checked>
-        <label for="any">Any</label>
-        <input type="radio" name="bedroom" id="1" value="1">
-        <label for="1">1+</label>
-        <input type="radio" name="bedroom" id="2" value="2">
-        <label for="2">2+</label>
-        <input type="radio" name="bedroom" id="3" value="3">
-        <label for="3">3+</label>
-        <input type="radio" name="bedroom" id="4" value="4">
-        <label for="4">4+</label>
-        <input type="radio" name="bedroom" id="5" value="5">
-        <label for="5">5+</label>
-        
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-        <script>
-        $( function() {
-            $( "#slider-range").slider({
-            range: true,
-            min: 0,
-            max: 1000000,
-            step: 50000,
-            values: [ 0, 1000000 ],
-            slide: function( event, ui ) {
-                $( "#amount" ).val( "Minimum: $" + ui.values[ 0 ] + " - Maximum: $" + ui.values[ 1 ] );
-            }
-            });
-            $( "#amount" ).val( "Minimum: $" + $( "#slider-range" ).slider( "values", 0 ) +
-            " - Maximum: $" + $( "#slider-range" ).slider( "values", 1 ) );
-        });
-        </script>
-        <!-- todo remove inline hardcoded width -->
-        <p>
-        <label for="amount">Price range:</label>
-        <input type="text" id="amount" readonly="" style="width: 400px;border:0; color:#33cc33; font-weight:bold;">
-        </p>
-        
-        <div id="slider-range" style="width:300px;"></div>
-        
-        <button type="button" id="sumbit">sumbit</button>
-        <script src="scripts/searchForm.js"></script>
+        <div class="container py-4 d-flex justify-content-center align-items-center text-center">
+            <div class="row g-1">
+                <div class="col dropdown">
+                    <button class="btn btn-dark dropdown-toggle" data-bs-auto-close="outside" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Location
+                    </button>
+                    <div class="dropdown-menu p-2">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" class="form-control">
+                        <label for="zipcode">Zipcode</label>
+                        <input type="number" id="zipcode" name="zipcode" class="form-control">
+                    </div>
+                </div>
+                <div class="col dropdown">
+                    <button class="btn btn-dark dropdown-toggle" data-bs-auto-close="outside" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Rooms
+                    </button>
+                    <div class="dropdown-menu text-center p-2 roomFrame">
+                        <div class="row">
+                            <h2>Bathrooms</h2>
+                            <div class="row m-0 p-0 justify-content-center">
+                                <button class="radio" checked name="bathroom" value="0" type="button">
+                                    Any
+                                </button>
+                                <button class="radio" name="bathroom" value="1" type="button">
+                                    1+
+                                </button>
+                                <button class="radio" name="bathroom" value="2" type="button">
+                                    2+
+                                </button>
+                                <button class="radio" name="bathroom" value="3" type="button">
+                                    3+
+                                </button>
+                                <button class="radio" name="bathroom" value="4" type="button">
+                                    4+
+                                </button>
+                                <button class="radio" name="bathroom" value="5" type="button">
+                                    5+
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h2>Bedrooms</h2>
+                            <div class="col m-0 p-0 justify-content-center">
+                                <button class="radio" checked name="bedroom" value="0" type="button">
+                                    Any
+                                </button>
+                                <button class="radio" name="bedroom" value="1" type="button">
+                                    1+
+                                </button>
+                                <button class="radio" name="bedroom" value="2" type="button">
+                                    2+
+                                </button>
+                                <button class="radio" name="bedroom" value="3" type="button">
+                                    3+
+                                </button>
+                                <button class="radio" name="bedroom" value="4" type="button">
+                                    4+
+                                </button>
+                                <button class="radio" name="bedroom" value="5" type="button">
+                                    5+
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col dropdown">
+                    <button class="btn btn-dark dropdown-toggle" type="button" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
+                        Location
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="col">
+                            <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+                            <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+                            <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+                            <script>
+                            $(function() {
+                                $( "#slider-range").slider({
+                                range: true,
+
+                                min: 0,
+                                max: 1000000,
+                                step: 50000,
+                                values: [ 0, 1000000 ],
+                                slide: function( event, ui ) {
+                                    $( "#amount" ).val( "Minimum: $" + ui.values[ 0 ] + " - Maximum: $" + ui.values[ 1 ] );
+                                }
+                                });
+                                $( "#amount" ).val( "Minimum: $" + $( "#slider-range" ).slider( "values", 0 ) +
+                                " - Maximum: $" + $( "#slider-range" ).slider( "values", 1 ) );
+                            });
+                            </script>
+                            <style>
+                                .slider-data {
+                                    border:0;
+                                    color:#33cc33;
+                                    font-weight:bold;
+                                    width: 100%;
+                                    background-color: rgb(0, 0, 0, 0);
+                                }
+                            </style>
+                            <div class="row justify-content-center">
+                                <label for="amount">Price range:</label>
+                                <input type="text" class="slider-data" id="amount" readonly="">
+                                <div id="slider-range" class="my-2" style="slider-data"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--             
+            <div class="col-4">
+                <button>Submit</button>
+                <script src="scripts/searchForm.js"></script>
+            </div> -->
+        </div>
     </form>
     
     <!-- <div id="screenSizeDisplay"></div>
@@ -144,9 +196,9 @@
 </script> -->
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Launch static backdrop modal
-    </button>
+    </button> -->
 
     <style>
         .modal-dialog,
@@ -189,6 +241,46 @@
             top: 15px;
             right: 25px;
             z-index: 1050; /* Ensure it's above the modal */
+        }
+
+        .radio {
+            width: 50px;
+            height: 50px;
+            padding: 0px !important;
+            margin: 0px !important;
+            border-right: 0;
+            border-left: 0;
+            border-top: 2;
+            border-bottom: 2;
+        }
+
+        .radio:first-child {
+            border-left: 2px solid #767676;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+
+        .radio:last-child {
+            border-right: 2px solid #767676;
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+
+        .radio {
+            border-top: 2px solid #767676;
+            border-bottom: 2px solid #767676;
+        }
+
+        .radio[checked] {
+            background-color: #aeaeae;
+        }
+
+        .radio[checked]:hover {
+            background-color: #aeaeae;
+        }
+
+        .radio:hover {
+            background-color: #e3e2e2;
         }
     </style>
 
@@ -346,7 +438,7 @@
         
         <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
 
         <script>
             $('.property-container').click(function()
