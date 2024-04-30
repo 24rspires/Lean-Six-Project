@@ -171,19 +171,19 @@ class UIHelper
         }
 
         print "
-            <div class='col-sm-5 col-lg-3 col-md-4 col-xl-3 property-container m-2' data-bs-toggle='modal' data-bs-target='#staticBackdrop'  pid='$pid'>
+            <div class='col-sm-5 col-lg-3 col-md-4 col-xl-3 property-container m-2' pid='$pid'>
                 <div id='$pid' class='carousel slide' data-interval='false'>
                     <div class='carousel-inner rounded-property-image'>
                         $imageString
                     </div>
-                    <a class='carousel-control-prev' href='#$pid' role='button' data-slide='prev'>
-                        <span class='carousel-control-prev-icon' click-ignore aria-hidden='true'></span>
+                    <button class='carousel-control-prev' data-bs-target='#$pid' click-ignore data-slide='prev'>
+                        <span class='carousel-control-prev-icon' aria-hidden='true'></span>
                         <span class='sr-only'>Previous</span>
-                    </a>
-                    <a class='carousel-control-next' href='#$pid' role='button' data-slide='next'>
+                    </button>
+                    <button class='carousel-control-next' data-bs-target='#$pid' data-slide='next'>
                         <span class='carousel-control-next-icon' click-ignore aria-hidden='true'></span>
                         <span class='sr-only'>Next</span>
-                    </a>
+                    </button>
                 </div>
                 <div class='row'>
                     <h6 class='property-price'>$price</h6>

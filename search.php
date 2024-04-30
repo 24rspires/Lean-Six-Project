@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,9 +142,9 @@
 </script> -->
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Launch static backdrop modal
-    </button>
+<!--    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">-->
+<!--        Launch static backdrop modal-->
+<!--    </button>-->
 
     <style>
         .modal-dialog,
@@ -168,6 +166,23 @@
             margin: 0 auto;
         }
 
+        @media (max-width: 900px) {
+            .modal-dialog {
+                width: 100vw; /* Adjust as needed */
+                /*max-width: 100%;*/
+                position: absolute;
+                margin: 0 auto;
+            }
+
+            #boker .btn-close {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 25px;
+                z-index: 10;
+            }
+        }
+
         .modal-content {
             background-color: transparent; /* Transparent background */
         }
@@ -184,27 +199,28 @@
             border: none;
         }
 
-        .btn-close {
+        #boker .btn-close {
+            /*display: none;*/
             position: absolute;
             top: 15px;
             right: 25px;
-            z-index: 1050; /* Ensure it's above the modal */
+            z-index: 1;
         }
+
     </style>
 
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+
+    <div class="modal fade" id="staticBackdrop"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
-            <div class="modal-content">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div id="boker" class="modal-content">
+                <button type="button" id="mainModalCloseButton" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body modal-body-no-scroll">
-                    <!-- Close button added inside modal-body -->
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <iframe class="modal-iframe" src="" width="100%" height="100%" allowfullscreen></iframe>
+                    <iframe  id="bokerFrame" class="modal-iframe" src="" width="100%" height="100%" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </div>
-
 
     <div>
         <h1 class="result-header">Results</h1>
@@ -356,7 +372,7 @@
                 if (propertyId && $(target).attr('click-ignore') === undefined)
                 {
                     $(".modal-body").find("iframe").attr("src", "propertyEmbed.php?id=" + propertyId);
-
+                    // $("#staticBackdrop").modal("show");
                 }
             })
 
