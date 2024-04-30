@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/nav-bar.css">
     <link rel="stylesheet" href="./css/faq.css">
     <title>Frequently Asked Questions</title>
 </head>
+<?php include_once "UIHelper.php"; UIHelper::navBar(); ?>
 <body>
     <div class="d-flex container justify-content-center">
         <div class="row">
@@ -40,7 +42,7 @@
                         <div class="card-header" id="headingTwo">
                             <h2 class="mb-0">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Od czego zaczyna się nauka?
+                                    ?
                                 </button>
                             </h2>
                         </div>

@@ -46,6 +46,9 @@ class UIHelper
                         <a href='agents.php'>Agents</a>
                     </div>
                     <div class='col'>
+                        <a href='FAQ.php'>FAQ</a>
+                    </div>
+                    <div class='col'>
                         $loginButton
                     </div>
                 </div>
@@ -299,19 +302,27 @@ class UIHelper
     public static function getMap(String $addr): void {
         $root = __DIR__;
         $address = $addr;
-        $apiKey = parse_ini_file("$root/env.ini")["GOOGLE_API_KEY"];
-        print "
-            <iframe
-                    width='600'
-                    height='450'
-                    style='border:0'
-                    loading='lazy'
-                    allowfullscreen
-                    referrerpolicy='no-referrer-when-downgrade'
-                    src='https://www.google.com/maps/embed/v1/place?key={$apiKey}
-                    &q={$address}'>
-            </iframe>
-        ";
+        $env_path = "$root/env.ini";
+        if (file_exists("env_path"))
+        {
+            $apiKey = parse_ini_file("$root/env.ini")["GOOGLE_API_KEY"];
+            print "
+                <iframe
+                        width='600'
+                        height='450'
+                        style='border:0'
+                        loading='lazy'
+                        allowfullscreen
+                        referrerpolicy='no-referrer-when-downgrade'
+                        src='https://www.google.com/maps/embed/v1/place?key={$apiKey}
+                        &q={$address}'>
+                </iframe>
+            ";
+        }
+        else
+        {
+            // print "env.ini is missing";
+        }
     }
 
 }

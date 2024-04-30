@@ -59,7 +59,7 @@ body{
     overflow: hidden;
 }
 
-input {
+input, select {
     width: 100%;
     background: transparent;
     border: 0;
@@ -105,10 +105,11 @@ form p a {
 .btn-field button a {
     text-decoration: none;
     color: #fff;
+    margin-bottom: 15px;
 }
 
 .input-group {
-    height: 400px;
+    height: 525px;
 }
 
 img {

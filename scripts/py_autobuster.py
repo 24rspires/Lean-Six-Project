@@ -1,7 +1,7 @@
 
 import pyautogui
-from os import system, getcwd, listdir, getlogin
-from os.path import join
+from os import system, getcwd, listdir, getlogin, mkdir
+from os.path import join, exists
 from shutil import move
 from time import sleep
 from pyperclip import copy
@@ -36,7 +36,7 @@ def save_images_from_page(url):
     paste()
 
 def get_house_urls():
-    with open('scripts/house_urls.txt', 'r') as file:
+    with open('scripts/bokerImages.txt', 'r') as file:
         return file.read().split(';')
 
 def get_downloads():
@@ -44,10 +44,12 @@ def get_downloads():
 
 def move_all_images_in_downloads(save_path):
     downloads = get_downloads()
+    if not exists(save_path):
+        mkdir(save_path)
     for image in listdir(downloads):
-        file_name = image.split('.')[0]
+        file_name= image.split('.')[0]
         if file_name.isnumeric():
-            move(join(downloads, image), save_path)
+            move(join(downloads, image), f"{save_path}/{file_name}.jpg")
 
 def is_done_downloading():
     downloads = get_downloads()
@@ -59,17 +61,16 @@ def is_done_downloading():
     return done
 
 def main():
-    start = 129
+    start = 202
     urls = get_house_urls()
     copy_code()
     for offset, url in enumerate(urls):
         p_id = start + offset
         save_images_from_page(url)
-        sleep()
+        sleep(30)
         while not is_done_downloading():
             sleep(1)
         move_all_images_in_downloads(f'{getcwd()}/images/{p_id}')
-        break
 
 
 if __name__ == "__main__":

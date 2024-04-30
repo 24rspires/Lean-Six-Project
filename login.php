@@ -13,9 +13,59 @@
 </head>
 
 <body>
-<?php include_once "UIHelper.php"; UIHelper::navBar(); ?>
+
+<?php
+include_once "UIHelper.php";
+include_once "Account.php";
+
+$user = Account::loadSession();
+
+if ($user !== null) Header("Location: index.php");
+
+UIHelper::navBar();
+
+if ($_SERVER['REQUEST_METHOD'] == "POST")
+{
+    $register = UIHelper::checkField("register");
+
+    if ($register === "Sign Up") {
+        $firstName = UIHelper::checkField("firstName");
+        $lastName = UIHelper::checkField("lastName");
+        $email = UIHelper::checkField("email");
+        $password = UIHelper::checkField("password");
+        $type = $_POST["type"];
+
+        $account = Account::tryLogin($email, $password);
+
+        if ($account === null)
+        {
+            $account = new Account(first_name: $firstName, last_name: $lastName, password: $password, email: $email, type: $type);
+            $account->insert();
+        }
+    } else {
+        $email = UIHelper::checkField("email");
+        $password = UIHelper::checkField("password");
+        if ($email && $password) {
+            $user = Account::tryLogin($email, $password);
+
+            if ($user !== NULL)
+            {
+                $user->saveSession();
+                header('Location: index.php');
+            } else  {
+                $error = true;
+            }
+        } else {
+            print "invalid";
+        }
+    }
+}
+
+
+?>
 <div class="container1">
     <div class="form-box">
+        <?php if ($error) uiHelper::printError("Invalid email or password!"); ?>
         <h1 id="title">Sign In</h1>
         <form method="post">
             <div class="input-group">
@@ -39,50 +89,6 @@
         </form>
     </div>
 </div>
-
-<?PHP
-include_once "UIHelper.php";
-include_once "Account.php";
-
-if ($_SERVER['REQUEST_METHOD'] == "POST")
-{
-    $register = UIHelper::checkField("register");
-
-    if ($register === "Sign Up") {
-        $firstName = UIHelper::checkField("firstName");
-        $lastName = UIHelper::checkField("lastName");
-        $email = UIHelper::checkField("email");
-        $password = UIHelper::checkField("password");
-
-        $account = Account::tryLogin($email, $password);
-
-        if ($account === null)
-        {
-            $account = new Account(first_name: $firstName, last_name: $lastName, password: $password, email: $email);
-            $account->insert();
-        }
-    } else {
-        $email = UIHelper::checkField("email");
-        $password = UIHelper::checkField("password");
-        if ($email && $password) {
-            $user = Account::tryLogin($email, $password);
-
-            if ($user !== NULL)
-            {
-                $user->saveSession();
-                header('Location: index.php');
-            } else  {
-                print "invalid login";
-            }
-        } else {
-            print "invalid";
-        }
-    }
-
-
-
-}
-?>
 
 </body>
 </html>
