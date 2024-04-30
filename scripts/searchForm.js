@@ -20,6 +20,7 @@ function isDefault(key, val)
     }
     return false;
 }
+
 $(document).ready(function()
 {
     $("#sumbit").click(function(){
@@ -51,6 +52,25 @@ $(document).ready(function()
         {
             urlEncodedData.push(encodeURIComponent("price_max")+"="+encodeURIComponent(maxPrice))
         }
+
+        function getRadios(tag)
+        {
+            var radios = [];
+            var children = tag.childNodes;
+            
+            children.forEach(function(tag) {
+                if ($(tag).attr('checked'))
+                {
+                    console.log('1');
+                }
+            })
+        }
+
+        var bathroomRadiosDiv = document.getElementById("bathroomRadios");
+        var bedroomRadiosDiv = document.getElementById("bedroomRadios");
+
+        var bathroomRadios = getRadios(bathroomRadiosDiv);
+        var bedroomRadios = getRadios(bedroomRadiosDiv);
     
         var urlEncodedString = urlEncodedData.join('&');
         

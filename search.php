@@ -47,121 +47,126 @@
     UIHelper::navBar();
     ?>
     <form method="GET" id="form">
-        <div class="container py-4 d-flex justify-content-center align-items-center text-center">
-            <div class="row g-1">
-                <div class="col dropdown">
-                    <button class="btn btn-dark dropdown-toggle" data-bs-auto-close="outside" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Location
-                    </button>
-                    <div class="dropdown-menu p-2">
-                        <label for="city">City</label>
-                        <input type="text" id="city" name="city" class="form-control">
-                        <label for="zipcode">Zipcode</label>
-                        <input type="number" id="zipcode" name="zipcode" class="form-control">
-                    </div>
-                </div>
-                <div class="col dropdown">
-                    <button class="btn btn-dark dropdown-toggle" data-bs-auto-close="outside" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Rooms
-                    </button>
-                    <div class="dropdown-menu text-center p-2 roomFrame">
-                        <div class="row">
-                            <h2>Bathrooms</h2>
-                            <div class="row m-0 p-0 justify-content-center">
-                                <button class="radio" checked name="bathroom" value="0" type="button">
-                                    Any
-                                </button>
-                                <button class="radio" name="bathroom" value="1" type="button">
-                                    1+
-                                </button>
-                                <button class="radio" name="bathroom" value="2" type="button">
-                                    2+
-                                </button>
-                                <button class="radio" name="bathroom" value="3" type="button">
-                                    3+
-                                </button>
-                                <button class="radio" name="bathroom" value="4" type="button">
-                                    4+
-                                </button>
-                                <button class="radio" name="bathroom" value="5" type="button">
-                                    5+
-                                </button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <h2>Bedrooms</h2>
-                            <div class="col m-0 p-0 justify-content-center">
-                                <button class="radio" checked name="bedroom" value="0" type="button">
-                                    Any
-                                </button>
-                                <button class="radio" name="bedroom" value="1" type="button">
-                                    1+
-                                </button>
-                                <button class="radio" name="bedroom" value="2" type="button">
-                                    2+
-                                </button>
-                                <button class="radio" name="bedroom" value="3" type="button">
-                                    3+
-                                </button>
-                                <button class="radio" name="bedroom" value="4" type="button">
-                                    4+
-                                </button>
-                                <button class="radio" name="bedroom" value="5" type="button">
-                                    5+
-                                </button>
-                            </div>
+        <div class="container py-4 justify-content-center align-items-center text-center">
+            <div class="d-flex justify-content-center">
+                <div class="row g-1">
+                    <div class="col dropdown">
+                        <button class="btn btn-dark dropdown-toggle" data-bs-auto-close="outside" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Location
+                        </button>
+                        <div class="dropdown-menu p-2">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" class="form-control">
+                            <label for="zipcode">Zipcode</label>
+                            <input type="number" id="zipcode" name="zipcode" class="form-control">
                         </div>
                     </div>
-                </div>
-                <div class="col dropdown">
-                    <button class="btn btn-dark dropdown-toggle" type="button" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
-                        Location
-                    </button>
-                    <div class="dropdown-menu">
-                        <div class="col">
-                            <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-                            <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-                            <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-                            <script>
-                            $(function() {
-                                $( "#slider-range").slider({
-                                range: true,
+                    <div class="col dropdown">
+                        <button class="btn btn-dark dropdown-toggle" data-bs-auto-close="outside" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Rooms
+                        </button>
+                        <div class="dropdown-menu text-center p-2 roomFrame">
+                            <div class="row">
+                                <h2>Bathrooms</h2>
+                                <div class="row m-0 p-0 justify-content-center" id="bathroomRadios">
+                                    <button class="radio" checked name="bathroom" value="0" type="button">
+                                        Any
+                                    </button>
+                                    <button class="radio" name="bathroom" value="1" type="button">
+                                        1+
+                                    </button>
+                                    <button class="radio" name="bathroom" value="2" type="button">
+                                        2+
+                                    </button>
+                                    <button class="radio" name="bathroom" value="3" type="button">
+                                        3+
+                                    </button>
+                                    <button class="radio" name="bathroom" value="4" type="button">
+                                        4+
+                                    </button>
+                                    <button class="radio" name="bathroom" value="5" type="button">
+                                        5+
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h2>Bedrooms</h2>
+                                <div class="col m-0 p-0 justify-content-center" id="bedroomRadios">
+                                    <button class="radio" checked name="bedroom" value="0" type="button">
+                                        Any
+                                    </button>
+                                    <button class="radio" name="bedroom" value="1" type="button">
+                                        1+
+                                    </button>
+                                    <button class="radio" name="bedroom" value="2" type="button">
+                                        2+
+                                    </button>
+                                    <button class="radio" name="bedroom" value="3" type="button">
+                                        3+
+                                    </button>
+                                    <button class="radio" name="bedroom" value="4" type="button">
+                                        4+
+                                    </button>
+                                    <button class="radio" name="bedroom" value="5" type="button">
+                                        5+
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
+                            Location
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="col">
+                                <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+                                <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+                                <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+                                <script>
+                                $(function() {
+                                    $( "#slider-range").slider({
+                                    range: true,
 
-                                min: 0,
-                                max: 1000000,
-                                step: 50000,
-                                values: [ 0, 1000000 ],
-                                slide: function( event, ui ) {
-                                    $( "#amount" ).val( "Minimum: $" + ui.values[ 0 ] + " - Maximum: $" + ui.values[ 1 ] );
-                                }
+                                    min: 0,
+                                    max: 1000000,
+                                    step: 50000,
+                                    values: [ 0, 1000000 ],
+                                    slide: function( event, ui ) {
+                                        $( "#amount" ).val( "Minimum: $" + ui.values[ 0 ] + " - Maximum: $" + ui.values[ 1 ] );
+                                    }
+                                    });
+                                    $( "#amount" ).val( "Minimum: $" + $( "#slider-range" ).slider( "values", 0 ) +
+                                    " - Maximum: $" + $( "#slider-range" ).slider( "values", 1 ) );
                                 });
-                                $( "#amount" ).val( "Minimum: $" + $( "#slider-range" ).slider( "values", 0 ) +
-                                " - Maximum: $" + $( "#slider-range" ).slider( "values", 1 ) );
-                            });
-                            </script>
-                            <style>
-                                .slider-data {
-                                    border:0;
-                                    color:#33cc33;
-                                    font-weight:bold;
-                                    width: 100%;
-                                    background-color: rgb(0, 0, 0, 0);
-                                }
-                            </style>
-                            <div class="row justify-content-center">
-                                <label for="amount">Price range:</label>
-                                <input type="text" class="slider-data" id="amount" readonly="">
-                                <div id="slider-range" class="my-2" style="slider-data"></div>
+                                </script>
+                                <style>
+                                    .slider-data {
+                                        border:0;
+                                        color:#33cc33;
+                                        font-weight:bold;
+                                        width: 100%;
+                                        background-color: rgb(0, 0, 0, 0);
+                                    }
+                                </style>
+                                <div class="row justify-content-center">
+                                    <label for="amount">Price range:</label>
+                                    <input type="text" class="slider-data" id="amount" readonly="">
+                                    <div id="slider-range" class="my-2" style="slider-data"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-<!--             
-            <div class="col-4">
-                <button>Submit</button>
-                <script src="scripts/searchForm.js"></script>
-            </div> -->
+            
+            <div class="row py-3">
+                <div class="col">
+                    <button type="button" class="btn btn-dark" id="sumbit">Apply filter</button>
+                    <h1>boker</h1>
+                    <script src="scripts/searchForm.js"></script>
+                </div>
+            </div>
         </div>
     </form>
     
@@ -199,9 +204,6 @@
     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Launch static backdrop modal
     </button> -->
-
-
-<!--    a;skldfjkl;ad-->
 
     <style>
         .modal-dialog,
