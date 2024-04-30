@@ -90,7 +90,7 @@
                         </div>
                         <div class="row">
                             <h2>Bedrooms</h2>
-                            <div class="col m-0 p-0 justify-content-center">
+                            <div class="row m-0 p-0 justify-content-center">
                                 <button class="radio" checked name="bedroom" value="0" type="button">
                                     Any
                                 </button>
@@ -117,7 +117,7 @@
                     <button class="btn btn-dark dropdown-toggle" type="button" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
                         Location
                     </button>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu location-dropdown">
                         <div class="col">
                             <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
                             <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -201,6 +201,20 @@
     </button> -->
 
     <style>
+
+        #slider-range {
+            max-width: 80%;
+        }
+
+        .roomFrame {
+            width: 25em;
+            height: 15em;
+        }
+
+        .location-dropdown {
+            width: 30em;
+        }
+
         .modal-dialog,
         .modal-content {
             /* 80% of window height */
