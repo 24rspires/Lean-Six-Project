@@ -13,7 +13,16 @@
 </head>
 
 <body>
-<?php include_once "UIHelper.php"; UIHelper::navBar(); ?>
+<?php
+include_once "UIHelper.php";
+include_once "Account.php";
+
+$user = Account::loadSession();
+
+if ($user !== null) Header("Location: index.php");
+
+UIHelper::navBar();
+?>
 <div class="container1">
     <div class="form-box">
         <h1 id="title">Sign In</h1>
