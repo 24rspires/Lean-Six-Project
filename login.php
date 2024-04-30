@@ -53,12 +53,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
         $lastName = UIHelper::checkField("lastName");
         $email = UIHelper::checkField("email");
         $password = UIHelper::checkField("password");
+        $type = $_POST["type"];
 
         $account = Account::tryLogin($email, $password);
 
         if ($account === null)
         {
-            $account = new Account(first_name: $firstName, last_name: $lastName, password: $password, email: $email);
+            $account = new Account(first_name: $firstName, last_name: $lastName, password: $password, email: $email, type: $type);
             $account->insert();
         }
     } else {
