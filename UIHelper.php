@@ -173,19 +173,20 @@ class UIHelper
             ";
         }
 
+
         print "
             <div class='col-sm-5 col-lg-3 col-md-4 col-xl-3 property-container m-2' pid='$pid'>
-                <div id='$pid' class='carousel slide' data-interval='false'>
+                <div id='boker$pid' class='carousel slide' data-interval='false'>
                     <div class='carousel-inner rounded-property-image'>
                         $imageString
                     </div>
-                    <button class='carousel-control-prev' data-bs-target='#$pid' click-ignore data-slide='prev'>
-                        <span class='carousel-control-prev-icon' aria-hidden='true'></span>
-                        <span class='sr-only'>Previous</span>
+                    <button class='carousel-control-prev' type='button' data-bs-target='#boker$pid' data-bs-slide='prev'>
+                        <span class='carousel-control-prev-icon' click-ignore aria-hidden='true'></span>
+                        <span class='visually-hidden'>Previous</span>
                     </button>
-                    <button class='carousel-control-next' data-bs-target='#$pid' data-slide='next'>
+                    <button class='carousel-control-next' type='button' data-bs-target='#boker$pid' data-bs-slide='next'>
                         <span class='carousel-control-next-icon' click-ignore aria-hidden='true'></span>
-                        <span class='sr-only'>Next</span>
+                        <span class='visually-hidden'>Next</span>
                     </button>
                 </div>
                 <div class='row'>
@@ -199,7 +200,7 @@ class UIHelper
                     </div>
                 </div>
             </div>
-        ";
+            ";
     }
 
     public static function printError(string $errorMessage, string|null $redirectLink = null)
