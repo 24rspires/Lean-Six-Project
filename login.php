@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
 <?php
 include_once "UIHelper.php";
 include_once "Account.php";
@@ -22,36 +23,6 @@ $user = Account::loadSession();
 if ($user !== null) Header("Location: index.php");
 
 UIHelper::navBar();
-?>
-<div class="container1">
-    <div class="form-box">
-        <h1 id="title">Sign In</h1>
-        <form method="post">
-            <div class="input-group">
-                <br>
-                <div class="input-field">
-                    <i class="fa-solid fa-envelope"></i>
-                    <input type="email" placeholder="Email" name="email">
-                </div>
-
-                <div class="input-field">
-                    <i class="fa-solid fa-lock"></i>
-                    <input type="password" placeholder="Password" name="password">
-                </div>
-
-                <p>Don't have an account? <a href="register.php"> Click Here!</a></p>
-            </div>
-
-            <div id="boker" class="btn-field">
-                <input type="submit" value="Sign In" id="signupBtn">
-            </div>
-        </form>
-    </div>
-</div>
-
-<?PHP
-include_once "UIHelper.php";
-include_once "Account.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST")
 {
@@ -82,17 +53,42 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
                 $user->saveSession();
                 header('Location: index.php');
             } else  {
-                print "invalid login";
+                $error = true;
             }
         } else {
             print "invalid";
         }
     }
-
-
-
 }
+
+
 ?>
+<div class="container1">
+    <div class="form-box">
+        <?php if ($error) uiHelper::printError("Invalid email or password!"); ?>
+        <h1 id="title">Sign In</h1>
+        <form method="post">
+            <div class="input-group">
+                <br>
+                <div class="input-field">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" placeholder="Email" name="email">
+                </div>
+
+                <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Password" name="password">
+                </div>
+
+                <p>Don't have an account? <a href="register.php"> Click Here!</a></p>
+            </div>
+
+            <div id="boker" class="btn-field">
+                <input type="submit" value="Sign In" id="signupBtn">
+            </div>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
