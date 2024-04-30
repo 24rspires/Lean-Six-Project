@@ -46,6 +46,9 @@ class UIHelper
                         <a href='agents.php'>Agents</a>
                     </div>
                     <div class='col'>
+                        <a href='FAQ.php'>FAQ</a>
+                    </div>
+                    <div class='col'>
                         $loginButton
                     </div>
                 </div>
