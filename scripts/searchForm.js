@@ -20,6 +20,7 @@ function isDefault(key, val)
     }
     return false;
 }
+
 $(document).ready(function()
 {
     $("#sumbit").click(function(){
@@ -51,7 +52,35 @@ $(document).ready(function()
         {
             urlEncodedData.push(encodeURIComponent("price_max")+"="+encodeURIComponent(maxPrice))
         }
-    
+
+        // function getChecked(tag)
+        // {
+        //     var children = tag.children;
+        //     for (const tag of children)
+        //     {
+        //         if ($(tag).attr('checked') != undefined)
+        //         {
+        //             return $(tag).attr('value');
+        //         }
+        //     }
+        // }
+
+        // var bathroomRadiosDiv = document.getElementById("bathroomRadios");
+        // var bedroomRadiosDiv = document.getElementById("bedroomRadios");
+
+        // var bathroomRadios = getChecked(bathroomRadiosDiv) || 0;
+        // var bedroomRadios = getChecked(bedroomRadiosDiv) || 0;
+
+        // if (!isDefault("bathroom", bathroomRadios))
+        // {
+        //     urlEncodedData.push(encodeURIComponent("bathroom")+"="+encodeURIComponent(bathroomRadios))
+        // }
+        
+        // if (!isDefault("bedroom", bedroomRadiosDiv))
+        // {
+        //     urlEncodedData.push(encodeURIComponent("bedroom")+"="+encodeURIComponent(bedroomRadiosDiv))
+        // }
+
         var urlEncodedString = urlEncodedData.join('&');
         
         window.location.href = "search.php?" + urlEncodedString;
