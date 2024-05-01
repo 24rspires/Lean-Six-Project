@@ -181,7 +181,7 @@ if (isset($_GET['id']))
                 <h5 class="modal-title" id="imageModalLabel">Image Gallery</h5>
                 <!-- Add image counter -->
                 <span id="imageCounter" class="ms-auto"></span>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" id="frameCloseButton" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <!-- Carousel here -->
