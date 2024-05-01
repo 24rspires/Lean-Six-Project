@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/nav-bar.css">
     <link rel="stylesheet" href="./css/faq.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>Frequently Asked Questions</title>
+    <style>
+        i {
+            height: 100%;
+        }
+    </style>
 </head>
 <?php include_once "UIHelper.php"; UIHelper::navBar(); ?>
 <body>
@@ -21,52 +27,15 @@
         <div class="wrap">
            
             <div class="bd-example">
-
                 <div class="accordion" id="accordionExample">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Can Users Create PFPs?
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                            <div class="card-body">
-                                Unfortunately, no only admin and agents can create a pfp.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    ?
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                            <div class="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Znam już podstawy, co dalej?
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                            <div class="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
+
+                    <?php
+                        UIHelper::printFAQCard("Can Users Create PFPs?", "Only admin and agents can create a pfp.");
+
+                        UIHelper::printFAQCard("", "");
+                    ?>
+
+
                 </div>
             </div>
 

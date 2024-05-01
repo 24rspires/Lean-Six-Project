@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
 ?>
 <div class="container1">
     <div class="form-box">
-        <?php if ($error) uiHelper::printError("Invalid email or password!"); ?>
+        <?php if (isset($error)) uiHelper::printError("Invalid email or password!"); ?>
         <h1 id="title">Sign In</h1>
         <form method="post">
             <div class="input-group">
