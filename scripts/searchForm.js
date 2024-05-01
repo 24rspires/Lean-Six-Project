@@ -53,25 +53,34 @@ $(document).ready(function()
             urlEncodedData.push(encodeURIComponent("price_max")+"="+encodeURIComponent(maxPrice))
         }
 
-        function getRadios(tag)
-        {
-            var radios = [];
-            var children = tag.childNodes;
-            
-            children.forEach(function(tag) {
-                if ($(tag).attr('checked'))
-                {
-                    console.log('1');
-                }
-            })
-        }
+        // function getChecked(tag)
+        // {
+        //     var children = tag.children;
+        //     for (const tag of children)
+        //     {
+        //         if ($(tag).attr('checked') != undefined)
+        //         {
+        //             return $(tag).attr('value');
+        //         }
+        //     }
+        // }
 
-        var bathroomRadiosDiv = document.getElementById("bathroomRadios");
-        var bedroomRadiosDiv = document.getElementById("bedroomRadios");
+        // var bathroomRadiosDiv = document.getElementById("bathroomRadios");
+        // var bedroomRadiosDiv = document.getElementById("bedroomRadios");
 
-        var bathroomRadios = getRadios(bathroomRadiosDiv);
-        var bedroomRadios = getRadios(bedroomRadiosDiv);
-    
+        // var bathroomRadios = getChecked(bathroomRadiosDiv) || 0;
+        // var bedroomRadios = getChecked(bedroomRadiosDiv) || 0;
+
+        // if (!isDefault("bathroom", bathroomRadios))
+        // {
+        //     urlEncodedData.push(encodeURIComponent("bathroom")+"="+encodeURIComponent(bathroomRadios))
+        // }
+        
+        // if (!isDefault("bedroom", bedroomRadiosDiv))
+        // {
+        //     urlEncodedData.push(encodeURIComponent("bedroom")+"="+encodeURIComponent(bedroomRadiosDiv))
+        // }
+
         var urlEncodedString = urlEncodedData.join('&');
         
         window.location.href = "search.php?" + urlEncodedString;

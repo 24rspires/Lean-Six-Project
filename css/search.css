@@ -63,7 +63,14 @@
     font-size: 80%;
 }
 
-.roomFrame {
-    width: 25rem;
-    height: 25rem;
+.btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.slider-data {
+    border:0;
+    color:#545454;
+    font-weight:bold;
+    background-color: rgb(0, 0, 0, 0);
 }
