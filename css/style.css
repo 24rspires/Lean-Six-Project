@@ -4,6 +4,55 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.nav-text
+{
+    color: white !important;
+    font-family: 'Poppins';
+}
+
+.logout-btn
+{
+    background-color: transparent;
+    text-align: left;
+    padding: 0px;
+    font-size: 20px;
+    font-weight: normal;
+    font-family: 'Poppins';
+    color: white;
+}
+
+.navbar-create-text {
+  display: none !important;
+}
+
+.navbar-text-style {
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar-create-icon {
+  display: flex !important;
+}
+
+@media (max-width: 990px) {
+  .navbar-create-text {
+    display: flex !important;
+  }
+  .navbar-create-icon {
+    display: none !important;
+  }
+}
+
+.nav-font {
+    font-family: 'Poppins';
+    color: white;
+}
+
+.create-icon {
+    font-size: 20px;
+    text-align: center;
+}
+
 nav {
   background-color: #333;
   padding: 20px;
