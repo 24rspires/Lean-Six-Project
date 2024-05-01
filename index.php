@@ -32,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php include_once "UIHelper.php"; UIHelper::navBar(); ?>
 <main>
 
-
-    <div class="container justify-content-center home">
+    
+    <div class="container1 justify-content-center home">
         <div class="home-image">
             <div class="home-text">
                 <h1>Welcome to Boker Real Estate</h1>
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
-    <div class="container property">
+    <div class="container2 property">
         <div class="prop-h">
             <h2>Trending Properties</h2><br>
             <p>Explore our trending properties showcasing premier locations and exceptional value!</p>
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <div class="location-detail">
-                    <p><img src="./images/location.svg"> 5723 Piatt Rd, Lewis Center, OH</p>
+                    <p><img src="./images/location.svg"> 614 Boker Dr, Delaware, OH</p>
                     <div class="detail">
                         <ul>
                             <li>
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <div class="location-detail">
-                    <p><img src="./images/location.svg"> 5544 Butternut Dr, Lewis Center, OH</p>
+                    <p><img src="./images/location.svg"> 5544 Butter Dr, Delaware, OH</p>
                     <div class="detail">
                         <ul>
                             <li>
@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <div class="location-detail">
-                    <p><img src="./images/location.svg"> 1949 Linden St, Lewis Center, OH</p>
+                    <p class="row-sm-1"><img src="./images/location.svg"> 1949 Linden St, Delaware, OH</p>
                     <div class="detail">
                         <ul>
                             <li>
