@@ -24,8 +24,6 @@ include_once "UIHelper.php";
 include_once "State.php";
 include_once "Account.php";
 
-UIHelper::navBar();
-
 class ImageGetter
 {
     function __construct($images)
@@ -101,7 +99,7 @@ if (isset($_GET['id']))
     <div class="row d-flex" id="imageRow">
         <!-- change images -->
         <div class="row text-center justify-content-center align-items-center py-3">
-            <img src="<?=IMAGEGETTER->getImage()?>" class="big-image p-0 col-xl-11" data-bs-toggle="modal" data-bs-target="#imageModal">
+            <img id="bigImage" src="<?=IMAGEGETTER->getImage()?>" class="big-image p-0 col-xl-11" data-bs-toggle="modal" data-bs-target="#imageModal">
         </div>
         <!-- <div class="col-xl image-container">
             <img src="<?=IMAGEGETTER->getImage()?>" class="image-container-image" alt="" data-bs-toggle="modal" data-bs-target="#imageModal">
@@ -177,13 +175,13 @@ if (isset($_GET['id']))
 </div>
 <!-- Image Modal -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="imageModalLabel">Image Gallery</h5>
                 <!-- Add image counter -->
                 <span id="imageCounter" class="ms-auto"></span>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" id="frameCloseButton" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <!-- Carousel here -->
