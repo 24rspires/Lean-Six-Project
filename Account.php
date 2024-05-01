@@ -129,27 +129,33 @@ class Account {
     public function getProfilePicture()
     {
         $query = "select * from agent_media where agent_id=$this->account_id";
-        
+
         $result = dbhelper::getInstance()->query($query);
 
         if ($result !== false) $result = $result->fetch_assoc();
-        
-        if ($result !== null && $result !== false)
-        {
+
+        if ($result !== null && $result !== false) {
             $media_id = $result['media_id'];
             $media_query = "select * from media where media_id=$media_id";
-            
+
             $media_result = dbhelper::getInstance()->query($media_query);
-            
+
             if ($media_result !== false) $media_result = $media_result->fetch_assoc();
 
-            if ($media_result !== null && $media_result !== false)
-            {
+            if ($media_result !== null && $media_result !== false) {
                 $relative_path = $media_result['file_path'];
                 return "images/agents/$relative_path";
             }
         }
 
-        return "images/default-agent-profile-picture.png";
+        return "images/agents/default-agent-profile-picture.png";
+    }
+
+    public static function getAgents() : array|false {
+        $result = dbhelper::getInstance()->query("SELECT * FROM accounts WHERE type=1");
+
+        if ($result !== false) $result = $result->fetch_all(MYSQLI_ASSOC);
+
+        return $result;
     }
 }
