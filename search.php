@@ -308,8 +308,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body modal-body-no-scroll">
                     <!-- Close button added inside modal-body -->
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <iframe class="modal-iframe" src="" width="100%" height="100%" allowfullscreen></iframe>
+                    <button id="mainCloseButton" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <iframe id="bokerFrame" class="modal-iframe" src="" width="100%" height="100%" allowfullscreen onload="bokerLoad()"></iframe>
                 </div>
             </div>
         </div>
@@ -465,11 +465,25 @@
                 var target = event.target;
                 if (propertyId && $(target).attr('click-ignore') === undefined)
                 {
-                    $(".modal-body").find("iframe").attr("src", "propertyEmbed.php?id=" + propertyId);
+                    $(".modal-body").find("iframe").attr("src", "property.php?id=" + propertyId);
                     $("#staticBackdrop").modal("show");
                 }
             })
 
+
+            function bokerLoad() {
+                let bokerFrame = document.getElementById('bokerFrame');
+                let iframeDoc = bokerFrame.contentWindow.document;
+                let bigImage = iframeDoc.getElementById('bigImage');0
+
+                let mainCloseButton = document.getElementById('mainCloseButton');
+
+                bigImage.addEventListener('click', function() {
+                    mainCloseButton.style.display = 'none';
+                });
+
+                console.log(bigImage.src);
+            }
 
             $(".carousel-control-prev").click(function()
             {
