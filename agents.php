@@ -15,7 +15,11 @@
         include_once "General.php";
         include_once "Account.php";
         include_once "UIHelper.php";
-        UIHelper::navBar()
+        UIHelper::navBar();
+
+        define("AGENTS", array_map(function ($account) {
+            return Account::getFromId($account["account_id"]);
+        } , Account::getAgents()));
       ?>
 
         <section>
@@ -31,23 +35,15 @@
             <div class="container">
                 <div class="row">
 
-                    <?php UIHelper::agentCard("https://media.licdn.com/dms/image/C5603AQFfXDHgxMpdiw/profile-displayphoto-shrink_200_200/0/1651248798288?e=1719446400&v=beta&t=Wgr-pRFECQFJ9LuD8TrMb6k0gtnFkTs5bOPquDQa9GU", "Greg Keyboard-Guardian McDonough", "740-201-3226", "mcdonoughg@delawareareacc.org", "https://www.delawareareacc.org/o/dacchs/page/app-development"); ?>
+                    <?php
 
-                    <?php UIHelper::agentCard("https://media.licdn.com/dms/image/C4E03AQGwFDPOLGzSjA/profile-displayphoto-shrink_100_100/0/1619440657993?e=1719446400&v=beta&t=U8VIPI5hjq70S1aAFDD4siQluSLizSDwQGgqq7-HaXw", "Eli CyberBoy Cochran", "740-203-2216", "cochrane@delawareareacc.org", "https://www.delawareareacc.org/o/dacchs/page/cybersecurity"); ?>
+                    foreach (AGENTS as $agent) {
+                        UIHelper::agentCard($agent->getProfilePicture(), implode(" ", [$agent->first_name, $agent->last_name]), $agent->phone, $agent->email);
+                    }
 
-                    <?php UIHelper::agentCard("https://media.licdn.com/dms/image/D5603AQGC2-_P5rj0aw/profile-displayphoto-shrink_100_100/0/1674150794425?e=1719446400&v=beta&t=pwTeh4xoZvie_artAgH0Lu_tViIZ4Ll-m27O2dmuPi0", "Wayne Lean-Six Strunk", "740-203-2400", "waynes@delawareareacc.org", "https://www.delawareareacc.org/o/dacchs/page/app-dev-programming"); ?>
+                    ?>
 
-                    <?php UIHelper::agentCard("https://media.licdn.com/dms/image/C5603AQGbOrvlUH8lmA/profile-displayphoto-shrink_200_200/0/1517250463559?e=1719446400&v=beta&t=nKDj9NFaoi4g3AzjcD9dfwtDKDoyTx3-jSUn1vOkszs", "Wil Donald-Duck Rowland", "740-201-3223", "waynes@delawareareacc.org", "https://www.delawareareacc.org/o/dacchs/page/app-dev-programming"); ?>
 
-                    <?php UIHelper::agentCard("https://media.licdn.com/dms/image/D5603AQFrnmuuWFCMUQ/profile-displayphoto-shrink_100_100/0/1708370945347?e=1719446400&v=beta&t=DA7wpfo0NKjAND-2q8ZUqvhPptUKn8p98HnbJdYEiVc", "Josh Business Professionals of America Gallagan", "740-201-3258", "waynes@delawareareacc.org", "https://www.delawareareacc.org/o/dacchs/page/digital-design"); ?>
-
-                    <?php UIHelper::agentCard("https://media.licdn.com/dms/image/C5603AQF4HxhEDasUWw/profile-displayphoto-shrink_100_100/0/1597240765428?e=1719446400&v=beta&t=yMSmqPc4Z9hRcbFpyQTV6aSyImkuff5YWIsYhMcVFs0", "Jeff Got That Beast In Him Fuller", "740-480-1783", "waynes@delawareareacc.org", "https://www.delawareareacc.org/o/dacchs/page/digital-design"); ?>
-
-                    <?php UIHelper::agentCard("https://media.licdn.com/dms/image/C4E03AQFZtxvPJ_SRRA/profile-displayphoto-shrink_200_200/0/1620923851623?e=1719446400&v=beta&t=UjPgGWeGClHQigIejqB5kMUReT-6GP_b6LEc00ep3Bg", "Simon Computer-Fixer Bates", "740-203-2261", "waynes@delawareareacc.org", "https://www.delawareareacc.org/o/dacchs/page/digital-design"); ?>
-
-                    <?php UIHelper::agentCard("https://media.licdn.com/dms/image/C4E03AQGgHWOYW3Pyqw/profile-displayphoto-shrink_200_200/0/1636572540301?e=1719446400&v=beta&t=AggmevXILXSpZuk3YD_BkjlnsaUeT2_J6Fj_S3YOJ50", "Mitch YOU-PUT-A-DUCKY-IN-MY-SYSTEM Buchanan", "740-203-2252", "waynes@delawareareacc.org", "https://www.delawareareacc.org/o/dacchs/page/digital-design"); ?>
-
-                    <?php UIHelper::agentCard("https://media.licdn.com/dms/image/D5603AQF9n7ZG58ZnKg/profile-displayphoto-shrink_100_100/0/1714146404358?e=1719446400&v=beta&t=K79cNQBJYePENrKPsstWSeFmqGY4OYv8paO6-Bw4luw", "Liam The Incredible Bulk Thomas", "740-972-5496", "messedupelican12@gmail.com", "https://www.delawareareacc.org/o/dacchs/page/digital-design"); ?>
                 </div>
             </div>
         </section>
