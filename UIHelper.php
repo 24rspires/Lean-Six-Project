@@ -17,43 +17,61 @@ class UIHelper
     public static function navBar(): void {
 
         $account = Account::loadSession();
-        $loginButton = "<a href='login.php'>Login</a>";
+        $loginButton = "<a class='nav-link active nav-text' href='login.php'>Login</a>";
 
         if ($account !== null) $loginButton = "
-            <div class=' dropdown '>
-                <button class='btn btn-secondary dropdown-toggle logout' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                    $account->first_name  $account->last_name 
+            <div class='dropdown-center mx-2'>
+                <button class='btn btn-dark dropdown-toggle' data-bs-toggle='dropdown' aria-expanded='false'>
+                    $account->first_name  $account->last_name
                 </button>
-                <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-                    <a class='' id='color' href='profile.php'>Account Settings</a>
-                    <form method='post'>
-                    <input id='color' type='submit' value='Logout' name='logout' >
-                    </form>
-                </div>
+                <ul class='dropdown-menu dropdown-menu-dark dropdown-menu-end'>
+                    <li><a class='dropdown-item nav-font' href='profile.php'>Profile</a></li>
+                    <li>
+                        <form class='dropdown-item' method='post'>
+                            <input type='submit' class='logout-btn h-100 w-100 text-start bg-none' value='Logout' name='logout'>
+                        </form>
+                    </li>
+                </ul>
             </div>
             ";
+
+        if ($account !== null && $account->type > 0) $loginButton .= "
+            <div class='navbar-create-icon align-items-center'>
+                <a href='create-property.php' class='text-white create-icon text-center'>
+                    <i class='fa-solid fa-pen-to-square'></i>
+                </a>
+            </div>
+            <div class='navbar-create-text'>
+                <a href='create-property.php' class='text-white navbar-text-style'>
+                    Create Property
+                </a>
+            </div>";
+
         // include account because logout will be in navbar
         // possibly consider adding two navbar functions
         // one with paramater for user and a separate version for logged out mode
         print "
-            <section class='nav'>
-            <div class=' d-flex container justify-content-center'>
-                <div class='row '>
-                    <div class='col'>
-                        <a href='index.php'>Home</a>
-                    </div>
-                    <div class='col'>
-                        <a href='agents.php'>Agents</a>
-                    </div>
-                    <div class='col'>
-                        <a href='FAQ.php'>FAQ</a>
-                    </div>
-                    <div class='col'>
-                        $loginButton
-                    </div>
-                </div>
-            </div>
-        </section>";
+            <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+    <div class='container-fluid'>
+        <a class='navbar-brand nav-text' href='index.php'>Boker</a>
+        <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
+            <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+        <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
+            <li class='nav-item nav-text'>
+                <a class='nav-link active nav-text' aria-current='page' href='agents.php'>Agents</a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link active nav-text' aria-current='page' href='FAQ.php'>FAQ</a>
+            </li>
+        </ul>
+            <ul class='navbar-nav'>
+                $loginButton
+            </ul>
+        </div>
+    </div>
+    </nav>";
 
         if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['logout']))
         {
