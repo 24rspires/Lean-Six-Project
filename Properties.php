@@ -215,5 +215,20 @@ class Properties
         {
             return "$this->address, $this->city, $state->abbreviation $this->zipcode";
         }
+
+        return null;
+    }
+
+    public static function getAllFromAgentId(int $agent_id): array|null
+    {
+        $query = "select * from boker.properties where agent_id=$agent_id";
+
+        $result = dbhelper::getInstance()->query($query);
+
+        if ($result !== false) $result = $result->fetch_all(MYSQLI_ASSOC);
+
+        return array_map(function ($property) {
+            return Properties::getFromId($property['property_id']);
+        }, $result);
     }
 }
