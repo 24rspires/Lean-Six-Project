@@ -62,13 +62,13 @@
                         </div>
                     </div>
                     <div class="col dropdown">
-                        <button class="btn btn-dark dropdown-toggle" data-bs-auto-close="outside" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button id="rooms" class="btn btn-dark dropdown-toggle" data-bs-auto-close="outside" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Rooms
                         </button>
                         <div class="dropdown-menu text-center p-2">
                             <div class="row">
                                 <h2>Bathrooms</h2>
-                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <div class="btn-group" id="bathroomRadios" role="group" aria-label="Basic radio toggle button group">
                                     <input type="radio" class="btn-check" name="bathroom" id="bathany" value="0" autocomplete="off" checked>
                                     <label class="btn btn-outline-secondary shadow-none" for="bathany">Any</label>
 
@@ -173,42 +173,6 @@
             </div>
         </div>
     </form>
-    
-    <!-- <div id="screenSizeDisplay"></div>
-
-<script>
-    // Function to get Bootstrap's current screen size
-    function getBootstrapScreenSize() {
-        const width = window.innerWidth;
-        if (width < 576) {
-            return 'xs';
-        } else if (width >= 576 && width < 768) {
-            return 'sm';
-        } else if (width >= 768 && width < 992) {
-            return 'md';
-        } else if (width >= 992 && width < 1200) {
-            return 'lg';
-        } else {
-            return 'xl';
-        }
-    }
-
-    // Update screen size display on page load and resize
-    function updateScreenSizeDisplay() {
-        const screenSize = getBootstrapScreenSize();
-        document.getElementById('screenSizeDisplay').innerText = 'Current Bootstrap Screen Size: ' + screenSize;
-    }
-
-    // Call the function when the page loads and when the window resizes
-    window.addEventListener('load', updateScreenSizeDisplay);
-    window.addEventListener('resize', updateScreenSizeDisplay);
-</script> -->
-
-    <!-- Button trigger modal -->
-    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Launch static backdrop modal
-    </button> -->
-
     <style>
         #slider-range {
             width: 80%;
@@ -404,63 +368,13 @@
             //     array()
             // );
             ?>
-            
-            <!-- <div class="col-sm-5 col-lg-3 col-md-4 col-xl-3 property-container m-2" pid='129'>
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-target='boker'>
-                    <div class="carousel-inner rounded-property-image">
-                        <div class="carousel-item active">
-                        <img class="d-block w-100 rounded-property-image" src="images/houses/129/0.jpg" alt="First slide">
-                        </div>
-                        <div class="carousel-item">
-                        <img class="d-block w-100 rounded-property-image" src="images/houses/129/1.jpg" alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                        <img class="d-block w-100 rounded-property-image" src="images/houses/129/2.jpg" alt="Third slide">
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" click-ignore aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" click-ignore aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <h6 class="property-price">$500,000</h6>
-                </div>
-                <div class="data-holder">
-                    <div class="row">
-                        <p class="data-row"><span class="data">5</span> bds <span class="data">|</span> <span class="data">4</span> ba <span class="data">|</span> <span class="data">3,711</span> sqft<p>
-                        <p class="data-row address">911 Boker Rd, Bokerville, OH 43015</p>
-                        <p class="realtor">Boker realty</p>
-                    </div>
-                </div>
-            <div> -->
-            <!-- <a class="col-sm-5 col-lg-3 col-md-4 col-xl-2 property-container m-2" href="house/id">
-                <img class="property-image" src="images/houses/129/0.jpg">
-                <div class="row">
-                    <h6 class="property-price">$500,000</h6>
-                </div>
-                <div class="data-holder">
-                    <div class="row">
-                        <p class="data-row"><span class="data">5</span> bds <span class="data">|</span> <span class="data">4</span> ba <span class="data">|</span> <span class="data">3,711</span> sqft<p>
-                        <p class="data-row address">911 Boker Rd, Bokerville, OH 43015</p>
-                        <p class="realtor">Boker realty</p>
-                    </div>
-                </div>
-            </a> -->
         </div>
         <div class="justify-content-center d-flex mt-4 mb-4">
             <button id='prev-btn' class="btn btn-dark mx-1"><i class="fa-solid fa-arrow-left"></i></button>
             <button id='next-btn' class="btn btn-dark mx-1"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
         
-        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
-
         <script>
             $('.property-container').click(function()
             {
