@@ -392,6 +392,7 @@
             bokerFrame.addEventListener('load', function() {
                 let bigImage = bokerFrame.contentWindow.document.getElementById('bigImage');
                 let frameCloseButton = bokerFrame.contentWindow.document.getElementById('frameCloseButton');
+                let agentContainer = bokerFrame.contentWindow.document.getElementById('agentContainer');
 
                 bigImage.addEventListener('click', function() {
                     console.log('clicked');
@@ -401,6 +402,10 @@
                 frameCloseButton.addEventListener('click', function() {
                     console.log('clicked');
                     $("#mainCloseButton").show();
+                });
+
+                agentContainer.addEventListener('click', function() {
+                   window.location.href = "agent.php?id=" + agentContainer.getAttribute('agent-id');
                 });
             });
 
