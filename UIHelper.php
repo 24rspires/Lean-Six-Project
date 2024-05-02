@@ -28,7 +28,7 @@ class UIHelper
                     <li><a class='dropdown-item nav-font' href='profile.php'>Profile</a></li>
                     <li>
                         <form class='dropdown-item' method='post'>
-                            <input type='submit' class='logout-btn h-100 w-100 text-start bg-none' value='Logout' name='logout'>
+                            <input type='submit' class='logout-btn h-100 w-100 text-start bg-none border-0' value='Logout' name='logout'>
                         </form>
                     </li>
                 </ul>
