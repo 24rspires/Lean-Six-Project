@@ -304,15 +304,14 @@ class UIHelper
         $root = __DIR__;
         $address = $addr;
         $env_path = "$root/env.ini";
-        if (file_exists("env_path"))
+        if (file_exists($env_path))
         {
-            $apiKey = parse_ini_file("$root/env.ini")["GOOGLE_API_KEY"];
+            $apiKey = parse_ini_file($env_path)["GOOGLE_API_KEY"];
             print "
                 <iframe
-                        width='600'
-                        height='450'
-                        style='border:0'
-                        loading='lazy'
+                        class=''
+                        style='border:0; width: 95vw; height: 50vh;'
+                        loading='eager'
                         allowfullscreen
                         referrerpolicy='no-referrer-when-downgrade'
                         src='https://www.google.com/maps/embed/v1/place?key={$apiKey}
@@ -322,7 +321,7 @@ class UIHelper
         }
         else
         {
-            // print "env.ini is missing";
+            print "env.ini is missing";
         }
     }
 

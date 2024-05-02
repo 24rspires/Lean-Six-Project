@@ -173,6 +173,32 @@ if (isset($_GET['id']))
         </div>
     </div>
 </div>
+<!--Property Map-->
+<div class="row justify-content-center py-3">
+    <div class="col d-flex p-3 justify-content-center">
+        <?php UIHelper::getMap(PROPERTY->address)?>
+    </div>
+</div>
+<!--Nearby Cities-->
+<div class="row justify-content-md-center justify-content-lg-start py-3">
+    <h1 class="text-center py-3">Nearby Cities</h1>
+    <div class="col align-items-center justify-content-start text-center">
+        <p>boker</p>
+        <p>boker2</p>
+        <p>boker3</p>
+    </div>
+    <div class="col align-items-center justify-content-start text-center">
+        <p>boker</p>
+        <p>boker2</p>
+        <p>boker3</p>
+    </div>
+    <div class="col align-items-center justify-content-start text-center">
+        <p>boker</p>
+        <p>boker2</p>
+        <p>boker3</p>
+    </div>
+</div>
+
 <!-- Image Modal -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
@@ -240,42 +266,6 @@ if (isset($_GET['id']))
     </div>
 </div>
 
-<!-- Another Example of Image Modal with property information on right hand side of image -->
-<!-- <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="imageModalLabel">Image Gallery</h5>
-                <span id="imageCounter" class="ms-auto"></span>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-9">
-                        <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="text-right">
-                            <h5>Additional Information</h5>
-                            <p>This is where you can display additional information about the image or property.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 
 <!-- Script to update image counter -->
