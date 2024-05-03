@@ -1,4 +1,8 @@
-
+<?php
+include_once "Account.php";
+include_once "Properties.php";
+include_once "UIHelper.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,9 +45,6 @@
     // if startSessionIfNotStarted() is not called before
     // the headers are sent the page will error
     // do not move the includes
-    include_once "Account.php";
-    include_once "Properties.php";
-    include_once "UIHelper.php";
     UIHelper::navBar();
     ?>
     <form method="GET" id="form">

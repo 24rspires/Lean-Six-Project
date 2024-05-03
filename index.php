@@ -1,6 +1,7 @@
 <?php
 include_once "UIHelper.php"; 
 include_once "Properties.php";
+include_once "UIHelper.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['submit'])) {
@@ -33,13 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body id="margin-fix">
  <?php 
- include_once "UIHelper.php"; UIHelper::navBar();
-
+    UIHelper::navBar();
  ?>
-
     <main>
-
-    
     <div class="container1 justify-content-center home">
         <div class="home-image">
             <div class="home-text">
@@ -57,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div> 
         </div>
     </div>
-
     <div class="container2 property">
         <div class="prop-h">
             <h2>Trending Properties</h2><br>
@@ -75,9 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                        $prop1->formatAddress(),
                        "Boker Realty", // we don't have a realtor in the db
                        $prop1->getImages(),
-
                    );
-
                    $prop1=Properties::getFromId(155);
                     UIHelper::propertyCard(
                        $prop1->property_id,
@@ -88,7 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                        $prop1->formatAddress(),
                        "Boker Realty", // we don't have a realtor in the db
                        $prop1->getImages()
-                       
                    );
 
                    $prop1=Properties::getFromId(169);

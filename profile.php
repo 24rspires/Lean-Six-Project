@@ -1,3 +1,8 @@
+<?php
+include_once "UIHelper.php";
+include_once "Account.php";
+include_once "dbhelper.php";
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -16,7 +21,7 @@
     
     <body >
         <?php 
-            include_once "UIHelper.php";
+            
             UIHelper::navBar();
         ?> 
     </body>
@@ -24,11 +29,6 @@
 
         
         <?php
-            include_once "UIHelper.php";
-            include_once "Account.php";
-            include_once "dbhelper.php";
-            
-
             $user = Account::loadSession();
 
             $errors = [];

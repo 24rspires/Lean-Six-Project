@@ -1,3 +1,7 @@
+<?php
+include_once "UIHelper.php";
+include_once "Account.php";
+?>
 <!doctype html>
 <html>
 <head>
@@ -15,8 +19,7 @@
 <body>
 
 <?php
-include_once "UIHelper.php";
-include_once "Account.php";
+
 
 $user = Account::loadSession();
 

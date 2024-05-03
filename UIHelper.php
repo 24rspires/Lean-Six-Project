@@ -1,6 +1,4 @@
-
 <?PHP
-
 include_once "Account.php";
 include_once "State.php";
 
