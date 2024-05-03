@@ -42,7 +42,7 @@ include_once "UIHelper.php";
                     <?php
 
                     foreach (AGENTS as $agent) {
-                        UIHelper::agentCard($agent->getProfilePicture(), implode(" ", [$agent->first_name, $agent->last_name]), $agent->phone !== "" ? $agent->phone : "1234567890", $agent->email);
+                        UIHelper::agentCard($agent->getProfilePicture(), implode(" ", [$agent->first_name, $agent->last_name]), $agent->phone !== "" ? $agent->phone : "1234567890", $agent->email, $agent->account_id);
                     }
 
                     ?>
