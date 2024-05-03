@@ -345,21 +345,19 @@ class UIHelper
     public static function printFAQCard(string $question, string $answer, int $id): void
     {
         print "
-         <div class='card'>
-            <div class='card-header' id='heading$id'>
-                <h2 class='mb-0'>
-                    <i class='fa-solid fa-question'></i>
-                    <button class='btn btn-link collapsed' type='button' data-toggle='collapse' data-target='#collapse$id' aria-expanded='false' aria-controls='collapseTwo'>
-                        $question
-                    </button>
-                </h2>
+          <div class='accordion-item'>
+            <h2 class='accordion-header' id='heading$id'>
+              <button class='accordion-button collapsed gap-3' type='button' data-bs-toggle='collapse' data-bs-target='#collapse$id' aria-expanded='false' aria-controls='collapse$id'>
+                <i class='fa-solid fa-question'></i>
+                $question
+            </button>
+            </h2>
+            <div id='collapse$id' class='accordion-collapse collapse' aria-labelledby='heading$id' data-bs-parent='#accordionExample'>
+              <div class='accordion-body'>
+                $answer
+              </div>
             </div>
-            <div id='collapse$id' class='collapse' aria-labelledby='headingTwo' data-parent='#accordionExample'>
-                <div class='card-body'>
-                    $answer
-                </div>
-            </div>
-        </div>";
+          </div>";
     }
 }
 ?>
