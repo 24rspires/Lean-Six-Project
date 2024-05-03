@@ -130,7 +130,7 @@ class UIHelper
     
     public static function agentCard(string $pfpUrl, string $name, string $phone, string $email, int $id): void
     {
-        $learnMore = $learnMore ?? "#";
+        
 
         print "
             <div class='col-md-4 agent-card'>
