@@ -442,6 +442,19 @@
                 {
                     move(1);
                 })
+
+                <?php
+
+                if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['id'])) {
+                    $property_id = $_GET['id'];
+
+                    echo "
+                    $('.modal-body').find('iframe').attr('src', 'property.php?id=$property_id');
+                    $('#staticBackdrop').modal('show');
+                    ";
+                }
+
+                ?>
             })
         </script>
     <div>
