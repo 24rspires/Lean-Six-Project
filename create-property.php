@@ -57,6 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $property->insert();
     }
 }
+UIHelper::navBar();
 ?>
 <div class="container justify-content-center align-items-center" id="main">
     <div class="row">

@@ -1,4 +1,7 @@
 <?php
+include_once "UIHelper.php"; 
+include_once "Properties.php";
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['submit'])) {
         if ($_POST['type'] === 'county') {
@@ -22,13 +25,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="./css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/nav-bar.css">
     <link rel="stylesheet" href="./css/autocomplete.css">
+    <link rel="stylesheet" href="./css/search.css">
+    <link rel="stylesheet" href="./css/aspect-ratio.css">
     <script src="./js/main.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body id="margin-fix">
- <?php include_once "UIHelper.php"; UIHelper::navBar(); ?>
-<main>
+ <?php 
+ include_once "UIHelper.php"; UIHelper::navBar();
+
+ ?>
+
+    <main>
 
     
     <div class="container1 justify-content-center home">
@@ -54,109 +63,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h2>Trending Properties</h2><br>
             <p>Explore our trending properties showcasing premier locations and exceptional value!</p>
         </div>
+        <div class="row d-flex align-items-center justify-content-center">
+            <?PHP
+                    $prop1=Properties::getFromId(256);
+                    UIHelper::propertyCard(
+                       $prop1->property_id,
+                       UIHelper::toMoney($prop1->price),
+                       $prop1->bedrooms,
+                       $prop1->bathrooms,
+                       $prop1->square_feet,
+                       $prop1->formatAddress(),
+                       "Boker Realty", // we don't have a realtor in the db
+                       $prop1->getImages(),
 
-        <div class="de-box">
-            <a href="#"><div class="box">
-                <div class="image">
-                    <img src="./images/property1.jpg" alt="">
+                   );
+
+                   $prop1=Properties::getFromId(155);
+                    UIHelper::propertyCard(
+                       $prop1->property_id,
+                       UIHelper::toMoney($prop1->price),
+                       $prop1->bedrooms,
+                       $prop1->bathrooms,
+                       $prop1->square_feet,
+                       $prop1->formatAddress(),
+                       "Boker Realty", // we don't have a realtor in the db
+                       $prop1->getImages()
+                       
+                   );
+
+                   $prop1=Properties::getFromId(169);
+                    UIHelper::propertyCard(
+                       $prop1->property_id,
+                       UIHelper::toMoney($prop1->price),
+                       $prop1->bedrooms,
+                       $prop1->bathrooms,
+                       $prop1->square_feet,
+                       $prop1->formatAddress(),
+                       "Boker Realty", // we don't have a realtor in the db
+                       $prop1->getImages()
+                   );
+                ?>
+                <div class="explore">
+                    <a href="./search.php">Explore All</a>
                 </div>
-
-                <div class="price-name">
-                    <h4>$729,900</h4>
-                </div>
-
-                <div class="location-detail">
-                    <p><img src="./images/location.svg"> 614 Boker Dr, Delaware, OH</p>
-                    <div class="detail">
-                        <ul>
-                            <li>
-                                <img src="./images/bed.svg">4 Beds
-                            </li>
-
-                            <li>
-                                <img src="./images/bath.svg">4 Baths
-                            </li>
-
-                            <li>
-                                <img src="./images/sqft.svg">2,812 Sqft
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                </div></a>
-
-            <a><div class="box">
-                <div class="image">
-                    <img src="./images/property2.jpg" alt="">
-                </div>
-
-                <div class="price-name">
-                    <h4>$774,762</h4>
-                </div>
-
-                <div class="location-detail">
-                    <p><img src="./images/location.svg"> 5544 Butter Dr, Delaware, OH</p>
-                    <div class="detail">
-                        <ul>
-                            <li>
-                                <img src="./images/bed.svg">3 Beds
-                            </li>
-
-                            <li>
-                                <img src="./images/bath.svg">3 Baths
-                            </li>
-
-                            <li>
-                                <img src="./images/sqft.svg">2,453 Sqft
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                </div></a>
-
-            <a><div class="box">
-                <div class="image">
-                    <img src="./images/property3.jpg" alt="">
-                </div>
-
-                <div class="price-name">
-                    <h4>$672,500</h4>
-                </div>
-
-                <div class="location-detail">
-                    <p class="row-sm-1"><img src="./images/location.svg"> 1949 Linden St, Delaware, OH</p>
-                    <div class="detail">
-                        <ul>
-                            <li>
-                                <img src="./images/bed.svg">5 Beds
-                            </li>
-
-                            <li>
-                                <img src="./images/bath.svg">4 Baths
-                            </li>
-
-                            <li>
-                                <img src="./images/sqft.svg">2,951 Sqft
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div></a>
         </div>
 
-        <div class="explore">
-            <a href="./search.php">Explore All</a>
-        </div>
-    </div>
 
-    <div class="footer">
-        <div class="footer-box">
-            <div class="box">
-                <div class="logo">
-                    <img src="./images/Boker%20Real%20Estate-logos.jpeg" alt="">
+        <div class="footer">
+            <div class="footer-box">
+                <div class="box">
+                    <div class="logo">
+                        <img src="./images/Boker%20Real%20Estate-logos.jpeg" alt="">
+                    </div>
+                    <p>Unlock Home Dreams with Boker!</p>
                 </div>
-                <p>Unlock Home Dreams with Boker!</p>
-            </div>
 
             <div class="box">
                 <h3>Quick Links</h3>
