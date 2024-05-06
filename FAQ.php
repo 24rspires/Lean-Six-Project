@@ -1,3 +1,6 @@
+<?php
+include_once "UIHelper.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +18,7 @@
         }
     </style>
 </head>
-<?php include_once "UIHelper.php"; UIHelper::navBar(); ?>
+<?php  UIHelper::navBar(); ?>
 <body>
     <div class="d-flex container justify-content-center my-4">
         <div class="row">

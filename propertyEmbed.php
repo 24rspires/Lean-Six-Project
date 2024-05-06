@@ -1,3 +1,8 @@
+<?php
+include_once "Properties.php";
+include_once "UIHelper.php";
+include_once "State.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,9 +23,7 @@
 <body>
 
 <?PHP
-include_once "Properties.php";
-include_once "UIHelper.php";
-include_once "State.php";
+
 
 class ImageGetter
 {

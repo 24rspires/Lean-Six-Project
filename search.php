@@ -1,4 +1,8 @@
-
+<?php
+include_once "Account.php";
+include_once "Properties.php";
+include_once "UIHelper.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,9 +45,6 @@
     // if startSessionIfNotStarted() is not called before
     // the headers are sent the page will error
     // do not move the includes
-    include_once "Account.php";
-    include_once "Properties.php";
-    include_once "UIHelper.php";
     UIHelper::navBar();
     ?>
     <form method="GET" id="form">
@@ -442,6 +443,19 @@
                 {
                     move(1);
                 })
+
+                <?php
+
+                if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['id'])) {
+                    $property_id = $_GET['id'];
+
+                    echo "
+                    $('.modal-body').find('iframe').attr('src', 'property.php?id=$property_id');
+                    $('#staticBackdrop').modal('show');
+                    ";
+                }
+
+                ?>
             })
         </script>
     <div>
