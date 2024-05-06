@@ -7,7 +7,7 @@ include_once "Account.php";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--    <base target="_parent">-->
+   <base target="_parent">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -189,32 +189,32 @@ if (isset($_GET['id']))
 <div class="row justify-content-md-center justify-content-lg-start py-3">
     <h1 class="text-center py-3 boker">Nearby Cities</h1>
     <div class="col align-items-center justify-content-start text-center">
-        <a href="" class="text-decoration-none boker">
+        <a href="search.php?city=boker" class="text-decoration-none boker">
             <p class="">boker</p>
         </a>
-        <a href="" class="text-decoration-none boker">
+        <a href="search.php?city=berkshire" class="text-decoration-none boker">
             <p>Berkshire</p>
         </a>
-        <a href="" class="text-decoration-none boker">
+        <a href="search.php?city=berlin" class="text-decoration-none boker">
             <p>Berlin</p>
         </a>
     </div>
     <div class="col align-items-center justify-content-start text-center">
-        <a href="" class="text-decoration-none boker">
+        <a href="search.php?city=concord" class="text-decoration-none boker">
             <p class="">Concord</p>
         </a>
-        <a href="" class="text-decoration-none boker">
+        <a href="search.php?city=delaware" class="text-decoration-none boker">
             <p>Delaware</p>
         </a>
-        <a href="" class="text-decoration-none boker">
+        <a href="search.php?city=genoa" class="text-decoration-none boker">
             <p>Genoa</p>
         </a>
     </div>
     <div class="col align-items-center justify-content-start text-center">
-        <a href="" class="text-decoration-none boker">
+        <a href="search.php?city=harlem" class="text-decoration-none boker">
             <p class="">Harlem</p>
         </a>
-        <a href="" class="text-decoration-none boker">
+        <a href="search.php?city=kingston" class="text-decoration-none boker">
             <p>Kingston</p>
         </a>
         <a href="search.php?city=Lewis+Center" class="text-decoration-none">
