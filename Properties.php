@@ -93,6 +93,14 @@ class Properties
         {
             $query .= " and zipcode=$zipcode";
         }
+        if ($price_min == null)
+        {
+            $price_min = 0;
+        }
+        if ($price_max == null)
+        {
+            $price_max = 1000000;
+        }
         if ($price_min !== null && $price_max !== null)
         {
             $query .= " and price between $price_min and $price_max";
