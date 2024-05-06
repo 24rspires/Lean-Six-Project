@@ -189,32 +189,32 @@ if (isset($_GET['id']))
             <p class="">boker</p>
         </a>
         <a href="" class="text-decoration-none">
-            <p>boker</p>
+            <p>Berkshire</p>
         </a>
         <a href="" class="text-decoration-none">
-            <p>boker</p>
-        </a>
-    </div>
-    <div class="col align-items-center justify-content-start text-center">
-        <a href="" class="text-decoration-none">
-            <p class="">boker</p>
-        </a>
-        <a href="" class="text-decoration-none">
-            <p>boker</p>
-        </a>
-        <a href="" class="text-decoration-none">
-            <p>boker</p>
+            <p>Berlin</p>
         </a>
     </div>
     <div class="col align-items-center justify-content-start text-center">
         <a href="" class="text-decoration-none">
-            <p class="">boker</p>
+            <p class="">Concord</p>
         </a>
         <a href="" class="text-decoration-none">
-            <p>boker</p>
+            <p>Delaware</p>
         </a>
         <a href="" class="text-decoration-none">
-            <p>boker</p>
+            <p>Genoa</p>
+        </a>
+    </div>
+    <div class="col align-items-center justify-content-start text-center">
+        <a href="" class="text-decoration-none">
+            <p class="">Harlem</p>
+        </a>
+        <a href="" class="text-decoration-none">
+            <p>Kingston</p>
+        </a>
+        <a href="search.php?city=Lewis+Center" class="text-decoration-none">
+            <p>Lewis Center</p>
         </a>
     </div>
 </div>
