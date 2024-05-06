@@ -35,8 +35,8 @@ include_once "Properties.php";
         <?php if (USER === null || USER->type < 1) UIHelper::printError("The account with $id id is not an agent account", "agents.php"); else { ?>
 
         <div class="container">
-            <div class="row justify-content-center align-items-center text-center">
-                <img id="pfp" class="rounded-circle" src="<?= USER->getProfilePicture(); ?>" alt="Agent <?=$id?> PFP" />
+            <div class="row py-4 justify-content-center align-items-center text-center">
+                <img id="pfp" class="rounded-circle p-0 m-0" src="<?= USER->getProfilePicture(); ?>" alt="Agent <?=$id?> PFP" />
                 <h1><?= implode(" ", [USER->first_name, USER->last_name]); ?></h1>
             </div>
             <div class="row justify-content-center align-items-center text-center">
