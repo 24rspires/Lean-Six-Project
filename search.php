@@ -43,7 +43,11 @@ include_once "UIHelper.php";
             }
         }
 
+<<<<<<< HEAD
         setInterval(changeTitle, 150);
+=======
+        setInterval(changeTitle, 100);
+>>>>>>> 093a1e22a58e956dccf8d74d3381eee14a01a1db
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
