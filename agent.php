@@ -69,7 +69,21 @@ include_once "Properties.php";
                 ?>
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <script>
+            $('.property-container').click(function()
+            {
+                console.log('clicked')
+                var propertyId = $(this).attr('pid');
+                var target = event.target;
+                if (propertyId && $(target).attr('click-ignore') === undefined)
+                {
+                    window.location.href = "property.php?id=" + propertyId;
+                }
+            })
 
+        </script>
         <?php } ?>
     </main>
 </body>

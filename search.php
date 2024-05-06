@@ -19,12 +19,19 @@ include_once "UIHelper.php";
     <link rel="stylesheet" href="css/search.css">
     <script type="text/javascript">
         var index = 0;
+        // var titles = [
+        //     "🅱oker",
+        //     "🍺🍺🍺🍺",
+        //     "✡✡✡✡",
+        //     "🐒🐒🐒🐒",
+        // ];
         var titles = [
-            "🅱oker",
-            "🍺🍺🍺🍺",
-            "✡✡✡✡",
-            "🐒🐒🐒🐒",
-        ];
+            "boker",
+            "okerb",
+            "kerbo",
+            "erbok",
+            "rboke",
+        ]
 
         function changeTitle() {
             var newTitle = titles[index];
