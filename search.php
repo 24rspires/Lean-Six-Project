@@ -394,20 +394,18 @@ include_once "UIHelper.php";
                 let bigImage = bokerFrame.contentWindow.document.getElementById('bigImage');
                 let frameCloseButton = bokerFrame.contentWindow.document.getElementById('frameCloseButton');
                 let agentContainer = bokerFrame.contentWindow.document.getElementById('agentContainer');
+                let links = bokerFrame.contentWindow.document.getElementsByClassName('boker');
 
                 bigImage.addEventListener('click', function() {
                     console.log('clicked');
                     $("#mainCloseButton").hide();
-                });
+                })
 
                 frameCloseButton.addEventListener('click', function() {
                     console.log('clicked');
                     $("#mainCloseButton").show();
-                });
+                })
 
-                agentContainer.addEventListener('click', function() {
-                   window.location.href = "agent.php?id=" + agentContainer.getAttribute('agent-id');
-                });
             });
 
 
