@@ -144,7 +144,7 @@ if (isset($_GET['id']))
         </div>
     </div>
     <div class="row justify-content-md-center justify-content-lg-start">
-        <div class="col-md-10 col-lg-7 col-xl-6 agent-container p-3">
+        <div class="col-md-10 col-lg-7 col-xl-6 agent-container p-3" id="agentContainer" agent-id="<?=PROPERTY->agent_id?>">
             <h3 class="text-center my-0 agent-title">Agent</h3>
             <div class="row align-items-center">
                 <div class="col-5 text-center">
@@ -183,19 +183,37 @@ if (isset($_GET['id']))
 <div class="row justify-content-md-center justify-content-lg-start py-3">
     <h1 class="text-center py-3">Nearby Cities</h1>
     <div class="col align-items-center justify-content-start text-center">
-        <p>boker</p>
-        <p>boker2</p>
-        <p>boker3</p>
+        <a href="" class="text-decoration-none">
+            <p class="">boker</p>
+        </a>
+        <a href="" class="text-decoration-none">
+            <p>boker</p>
+        </a>
+        <a href="" class="text-decoration-none">
+            <p>boker</p>
+        </a>
     </div>
     <div class="col align-items-center justify-content-start text-center">
-        <p>boker</p>
-        <p>boker2</p>
-        <p>boker3</p>
+        <a href="" class="text-decoration-none">
+            <p class="">boker</p>
+        </a>
+        <a href="" class="text-decoration-none">
+            <p>boker</p>
+        </a>
+        <a href="" class="text-decoration-none">
+            <p>boker</p>
+        </a>
     </div>
     <div class="col align-items-center justify-content-start text-center">
-        <p>boker</p>
-        <p>boker2</p>
-        <p>boker3</p>
+        <a href="" class="text-decoration-none">
+            <p class="">boker</p>
+        </a>
+        <a href="" class="text-decoration-none">
+            <p>boker</p>
+        </a>
+        <a href="" class="text-decoration-none">
+            <p>boker</p>
+        </a>
     </div>
 </div>
 
@@ -270,7 +288,6 @@ if (isset($_GET['id']))
 
 <!-- Script to update image counter -->
 <script>
-
     function dispMessage() {
         alert('jack says feature not currently avaliable with much love (big riley)');
     }

@@ -199,7 +199,7 @@ class Properties
                     foreach ($media_result as $media)
                     {
                         $src = $media['file_path'];
-                        $images[] = "images/houses/$src";
+                        $images[] = "http://res.cloudinary.com/dpurg0teb/image/upload/v1714776524/129/$src";
                     }
                 }
             }
