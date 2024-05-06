@@ -421,11 +421,11 @@ include_once "UIHelper.php";
             });
 
 
-            $(".carousel-control-prev").click(function()
-            {
-                console.log("prev");
-                $(this).parent().parent().carousel("prev");
-            })
+            // $(".carousel-control-prev").click(function()
+            // {
+            //     console.log("prev");
+            //     $(this).parent().parent().carousel("prev");
+            // })
 
             $(document).ready(function()
             {

@@ -79,7 +79,7 @@ include_once "Properties.php";
                 var target = event.target;
                 if (propertyId && $(target).attr('click-ignore') === undefined)
                 {
-                    window.location.href = "property.php?id=" + propertyId;
+                    window.location.href = "search.php?id=" + propertyId;
                 }
             })
 
