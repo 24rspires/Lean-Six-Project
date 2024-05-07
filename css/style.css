@@ -233,11 +233,10 @@ body {
 }
 
 .footer {
-  width: 150%;
+  width: 100%;
   background: #f2c3bb;
   padding: 3rem 8rem 50px;
-  padding-top: 15%;
-  padding-right: 10%;
+  margin: 0%;
 }
 
 .footer img {
