@@ -56,7 +56,7 @@ include_once "Properties.php";
                 <h1 class="text-center mb-4">Property List</h1>
             </div>
 
-            <div class="row justify-content-center align-items-center text-center">
+            <div class="row justify-content-center align-items-center">
                 <?php
                 $properties = Properties::getAllFromAgentId($id);
                 if (count($properties) > 0) {
