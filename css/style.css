@@ -207,6 +207,7 @@ body {
   display: flex;
   margin-top: 5rem;
   justify-content: center;
+  padding-bottom: 30px;
 }
 
 .property .explore a {
@@ -222,8 +223,6 @@ body {
   box-shadow: 1px 5px 15px #000;
 }
 
-
-
 .property .de-box {
   gap: 2rem;
   grid-template-columns: 1fr 1fr 1fr;
@@ -234,13 +233,16 @@ body {
 }
 
 .footer {
-  width: 100%;
+  width: 150%;
   background: #f2c3bb;
-  padding: 3rem 8rem 0;
+  padding: 3rem 8rem 50px;
+  padding-top: 15%;
+  padding-right: 10%;
 }
 
 .footer img {
   width: 150px;
+  height: 300px;
 }
 
 .footer .footer-box {
