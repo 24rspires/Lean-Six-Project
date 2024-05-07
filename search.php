@@ -1,4 +1,8 @@
-
+<?php
+include_once "Account.php";
+include_once "Properties.php";
+include_once "UIHelper.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,12 +19,19 @@
     <link rel="stylesheet" href="css/search.css">
     <script type="text/javascript">
         var index = 0;
+        // var titles = [
+        //     "🅱oker",
+        //     "🍺🍺🍺🍺",
+        //     "✡✡✡✡",
+        //     "🐒🐒🐒🐒",
+        // ];
         var titles = [
-            "🅱oker",
-            "🍺🍺🍺🍺",
-            "✡✡✡✡",
-            "🐒🐒🐒🐒",
-        ];
+            "boker",
+            "okerb",
+            "kerbo",
+            "erbok",
+            "rboke",
+        ]
 
         function changeTitle() {
             var newTitle = titles[index];
@@ -32,7 +43,11 @@
             }
         }
 
-        setInterval(changeTitle, 1);
+<<<<<<< HEAD
+        setInterval(changeTitle, 150);
+=======
+        setInterval(changeTitle, 100);
+>>>>>>> 093a1e22a58e956dccf8d74d3381eee14a01a1db
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -41,9 +56,6 @@
     // if startSessionIfNotStarted() is not called before
     // the headers are sent the page will error
     // do not move the includes
-    include_once "Account.php";
-    include_once "Properties.php";
-    include_once "UIHelper.php";
     UIHelper::navBar();
     ?>
     <form method="GET" id="form">
@@ -375,6 +387,7 @@
         </div>
         
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <!-- <script src="scripts/property-card-clicker"> -->
         <script>
             $('.property-container').click(function()
             {
@@ -393,28 +406,26 @@
                 let bigImage = bokerFrame.contentWindow.document.getElementById('bigImage');
                 let frameCloseButton = bokerFrame.contentWindow.document.getElementById('frameCloseButton');
                 let agentContainer = bokerFrame.contentWindow.document.getElementById('agentContainer');
+                let links = bokerFrame.contentWindow.document.getElementsByClassName('boker');
 
                 bigImage.addEventListener('click', function() {
                     console.log('clicked');
                     $("#mainCloseButton").hide();
-                });
+                })
 
                 frameCloseButton.addEventListener('click', function() {
                     console.log('clicked');
                     $("#mainCloseButton").show();
-                });
+                })
 
-                agentContainer.addEventListener('click', function() {
-                   window.location.href = "agent.php?id=" + agentContainer.getAttribute('agent-id');
-                });
             });
 
 
-            $(".carousel-control-prev").click(function()
-            {
-                console.log("prev");
-                $(this).parent().parent().carousel("prev");
-            })
+            // $(".carousel-control-prev").click(function()
+            // {
+            //     console.log("prev");
+            //     $(this).parent().parent().carousel("prev");
+            // })
 
             $(document).ready(function()
             {
@@ -442,6 +453,19 @@
                 {
                     move(1);
                 })
+
+                <?php
+
+                if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['id'])) {
+                    $property_id = $_GET['id'];
+
+                    echo "
+                    $('.modal-body').find('iframe').attr('src', 'property.php?id=$property_id');
+                    $('#staticBackdrop').modal('show');
+                    ";
+                }
+
+                ?>
             })
         </script>
     <div>

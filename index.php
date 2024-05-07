@@ -1,6 +1,7 @@
 <?php
 include_once "UIHelper.php"; 
 include_once "Properties.php";
+include_once "UIHelper.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['submit'])) {
@@ -33,13 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body id="margin-fix">
  <?php 
- include_once "UIHelper.php"; UIHelper::navBar();
-
+    UIHelper::navBar();
  ?>
-
     <main>
-
-    
     <div class="container1 justify-content-center home">
         <div class="home-image">
             <div class="home-text">
@@ -57,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div> 
         </div>
     </div>
-
     <div class="container2 property">
         <div class="prop-h">
             <h2>Trending Properties</h2><br>
@@ -75,32 +71,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                        $prop1->formatAddress(),
                        "Boker Realty", // we don't have a realtor in the db
                        $prop1->getImages(),
-
                    );
 
-                   $prop1=Properties::getFromId(155);
+                   $prop2=Properties::getFromId(155);
                     UIHelper::propertyCard(
-                       $prop1->property_id,
-                       UIHelper::toMoney($prop1->price),
-                       $prop1->bedrooms,
-                       $prop1->bathrooms,
-                       $prop1->square_feet,
-                       $prop1->formatAddress(),
+                       $prop2->property_id,
+                       UIHelper::toMoney($prop2->price),
+                       $prop2->bedrooms,
+                       $prop2->bathrooms,
+                       $prop2->square_feet,
+                       $prop2->formatAddress(),
                        "Boker Realty", // we don't have a realtor in the db
-                       $prop1->getImages()
+                       $prop2->getImages()
                        
                    );
 
-                   $prop1=Properties::getFromId(169);
+                   $prop3=Properties::getFromId(169);
                     UIHelper::propertyCard(
-                       $prop1->property_id,
-                       UIHelper::toMoney($prop1->price),
-                       $prop1->bedrooms,
-                       $prop1->bathrooms,
-                       $prop1->square_feet,
-                       $prop1->formatAddress(),
+                       $prop3->property_id,
+                       UIHelper::toMoney($prop3->price),
+                       $prop3->bedrooms,
+                       $prop3->bathrooms,
+                       $prop3->square_feet,
+                       $prop3->formatAddress(),
                        "Boker Realty", // we don't have a realtor in the db
-                       $prop1->getImages()
+                       $prop3->getImages()
                    );
                 ?>
                 <div class="explore">
@@ -133,7 +128,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
-<script src="./js/main.js"></script>
+<script>
+    const cards = document.querySelectorAll('.property-container');
+
+    cards[0].addEventListener('click', function() {
+        window.location.href = 'search.php?id=<?=$prop1->property_id?>';
+    });
+
+    cards[1].addEventListener('click', function() {
+        window.location.href = 'search.php?id=<?=$prop2->property_id?>';
+    });
+
+    cards[2].addEventListener('click', function() {
+        window.location.href = 'search.php?id=<?=$prop3->property_id?>';
+    });
+</script>
 
 </body>
 </html>

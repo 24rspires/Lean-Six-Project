@@ -1,7 +1,13 @@
-
+<?php
+include_once "Properties.php";
+include_once "UIHelper.php";
+include_once "State.php";
+include_once "Account.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   <base target="_parent">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -19,10 +25,7 @@
 <body>
 
 <?PHP
-include_once "Properties.php";
-include_once "UIHelper.php";
-include_once "State.php";
-include_once "Account.php";
+
 
 class ImageGetter
 {
@@ -143,36 +146,39 @@ if (isset($_GET['id']))
             </div>
         </div>
     </div>
-    <div class="row justify-content-md-center justify-content-lg-start">
-        <div class="col-md-10 col-lg-7 col-xl-6 agent-container p-3">
-            <h3 class="text-center my-0 agent-title">Agent</h3>
-            <div class="row align-items-center">
-                <div class="col-5 text-center">
-                    <img class="col-11 agent-image" src="<?=AGENT->getProfilePicture()?>">
-                </div>
-                <div class="col text-start">
-                    <h4 class="agent-name"><?=UIHelper::formatAgentName(AGENT->first_name, AGENT->last_name)?></h4>
-                    <div class="row my-2">
-                        <div class="col-1">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <div class="col">
-                            <p class="agent-number"><?=UIHelper::formatAgentNumber(AGENT->phone)?></p>
-                        </div>
+        <div class="row justify-content-md-center justify-content-lg-start">
+            <div class="col-md-10 col-lg-7 col-xl-6 agent-container p-3" id="agentContainer" agent-id="<?=PROPERTY->agent_id?>">
+                <a href="agent.php?id=<?=PROPERTY->agent_id?>" class="row justify-content-md-center justify-content-lg-start text-decoration-none text-black">
+                <h3 class="text-center my-0 agent-title">Agent</h3>
+                <div class="row align-items-center">
+                    <div class="col-5 text-center">
+                        <img class="col-11 agent-image" src="<?=AGENT->getProfilePicture()?>">
                     </div>
-                    <div class="row">
-                        <div class="col-1  py-0 my-0">
-                            <i class="fa-solid fa-envelope"></i>
+                    <div class="col text-start">
+                        <h4 class="agent-name"><?=UIHelper::formatAgentName(AGENT->first_name, AGENT->last_name)?></h4>
+                        <div class="row my-2">
+                            <div class="col-1">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div class="col">
+                                <p class="agent-number"><?=UIHelper::formatAgentNumber(AGENT->phone)?></p>
+                            </div>
                         </div>
-                        <div class="col py-0">
-                            <p class="agent-email py-0"><?=AGENT->email?></p>
+                        <div class="row">
+                            <div class="col-1  py-0 my-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="col py-0">
+                                <p class="agent-email py-0"><?=AGENT->email?></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            </a>
         </div>
     </div>
-</div>
+
 <!--Property Map-->
 <div class="row justify-content-center py-3">
     <div class="col d-flex p-3 justify-content-center">
@@ -181,21 +187,39 @@ if (isset($_GET['id']))
 </div>
 <!--Nearby Cities-->
 <div class="row justify-content-md-center justify-content-lg-start py-3">
-    <h1 class="text-center py-3">Nearby Cities</h1>
+    <h1 class="text-center py-3 boker">Nearby Cities</h1>
     <div class="col align-items-center justify-content-start text-center">
-        <p>boker</p>
-        <p>boker2</p>
-        <p>boker3</p>
+        <a href="search.php?city=boker" class="text-decoration-none boker">
+            <p class="">boker</p>
+        </a>
+        <a href="search.php?city=berkshire" class="text-decoration-none boker">
+            <p>Berkshire</p>
+        </a>
+        <a href="search.php?city=berlin" class="text-decoration-none boker">
+            <p>Berlin</p>
+        </a>
     </div>
     <div class="col align-items-center justify-content-start text-center">
-        <p>boker</p>
-        <p>boker2</p>
-        <p>boker3</p>
+        <a href="search.php?city=concord" class="text-decoration-none boker">
+            <p class="">Concord</p>
+        </a>
+        <a href="search.php?city=delaware" class="text-decoration-none boker">
+            <p>Delaware</p>
+        </a>
+        <a href="search.php?city=genoa" class="text-decoration-none boker">
+            <p>Genoa</p>
+        </a>
     </div>
     <div class="col align-items-center justify-content-start text-center">
-        <p>boker</p>
-        <p>boker2</p>
-        <p>boker3</p>
+        <a href="search.php?city=harlem" class="text-decoration-none boker">
+            <p class="">Harlem</p>
+        </a>
+        <a href="search.php?city=kingston" class="text-decoration-none boker">
+            <p>Kingston</p>
+        </a>
+        <a href="search.php?city=Lewis+Center" class="text-decoration-none">
+            <p>Lewis Center</p>
+        </a>
     </div>
 </div>
 
@@ -270,10 +294,10 @@ if (isset($_GET['id']))
 
 <!-- Script to update image counter -->
 <script>
-
     function dispMessage() {
         alert('jack says feature not currently avaliable with much love (big riley)');
     }
+
 
     $(window).on('load', function() {
         var carousel = document.getElementById('imageCarousel');

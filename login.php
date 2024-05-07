@@ -1,3 +1,12 @@
+<?php
+include_once "UIHelper.php";
+include_once "Account.php";
+
+$user = Account::loadSession();
+
+if ($user !== null) Header("Location: index.php");
+
+?>
 <!doctype html>
 <html>
 <head>
@@ -15,13 +24,6 @@
 <body>
 
 <?php
-include_once "UIHelper.php";
-include_once "Account.php";
-
-$user = Account::loadSession();
-
-if ($user !== null) Header("Location: index.php");
-
 UIHelper::navBar();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST")
@@ -51,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
             if ($user !== NULL)
             {
                 $user->saveSession();
-                header('Location: index.php');
+		echo "<script>window.location.href = './'</script>";
             } else  {
                 $error = true;
             }

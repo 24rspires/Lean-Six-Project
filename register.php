@@ -1,3 +1,6 @@
+<?php
+include_once "UIHelper.php"; 
+?>
 <!doctype html>
 <html>
 <head>
@@ -13,7 +16,7 @@
 </head>
 
 <body>
-<?php include_once "UIHelper.php"; UIHelper::navBar(); ?>
+<?php UIHelper::navBar(); ?>
 <div class="container1">
     <div class="form-box">
         <h1 id="title">Sign Up</h1>

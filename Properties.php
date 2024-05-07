@@ -93,6 +93,14 @@ class Properties
         {
             $query .= " and zipcode=$zipcode";
         }
+        if ($price_min == null)
+        {
+            $price_min = 0;
+        }
+        if ($price_max == null)
+        {
+            $price_max = 1000000;
+        }
         if ($price_min !== null && $price_max !== null)
         {
             $query .= " and price between $price_min and $price_max";
@@ -146,7 +154,7 @@ class Properties
     }
 
     public static function getSeachTerms() {
-        $query = "select property_id, address, city, zipcode from boker.properties";
+        $query = "SELECT property_id, address, city, zipcode FROM properties";
 
         $result = dbhelper::getInstance()->query($query);
 
@@ -170,7 +178,7 @@ class Properties
     public function getImages(): null|array
     {
         $images = array();
-        $query = "select * from boker.property_media where property_id=$this->property_id";
+        $query = "select * from property_media where property_id=$this->property_id";
         
         $result = dbhelper::getInstance()->query($query);
 
@@ -188,7 +196,7 @@ class Properties
             if (!empty($ids))
             {
                 $in_string = "(" . implode(', ', $ids) . ")";
-                $media_query = "select * from boker.media where media_id in $in_string";
+                $media_query = "select * from media where media_id in $in_string";
                 
                 $media_result = dbhelper::getInstance()->query($media_query);
 
@@ -199,7 +207,7 @@ class Properties
                     foreach ($media_result as $media)
                     {
                         $src = $media['file_path'];
-                        $images[] = "images/houses/$src";
+                        $images[] = "http://res.cloudinary.com/dpurg0teb/image/upload/$src";
                     }
                 }
             }
