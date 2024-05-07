@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                        $prop3->getImages()
                    );
                 ?>
-                <div class="explore">
+                <div class="explore py-4">
                     <a href="./search.php">Explore All</a>
                 </div>
         </div>

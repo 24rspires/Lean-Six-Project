@@ -37,7 +37,7 @@ include_once "Properties.php";
         <div class="container">
             <div class="row py-4 justify-content-center align-items-center text-center">
                 <img id="pfp" class="rounded-circle p-0 m-0" src="<?= USER->getProfilePicture(); ?>" alt="Agent <?=$id?> PFP" />
-                <h1><?= implode(" ", [USER->first_name, USER->last_name]); ?></h1>
+                <h1><?= UIHelper::formatAgentName(USER->first_name, USER->last_name); ?></h1>
             </div>
             <div class="row justify-content-center align-items-center text-center">
                 <p class="text-center">
@@ -61,7 +61,16 @@ include_once "Properties.php";
                 $properties = Properties::getAllFromAgentId($id);
                 if (count($properties) > 0) {
                     foreach ($properties as $property) {
-                        UIHelper::propertyCard($property->property_id, UIHelper::toMoney($property->price), $property->bedrooms, $property->bathrooms, $property->square_feet, $property->formatAddress(), implode(" ", [USER->first_name, USER->last_name]), $property->getImages());
+                        UIHelper::propertyCard(
+                            $property->property_id,
+                            UIHelper::toMoney($property->price),
+                            $property->bedrooms,
+                            $property->bathrooms,
+                            $property->square_feet,
+                            $property->formatAddress(),
+                            implode(" ", [USER->first_name, USER->last_name]),
+                            $property->getImages()
+                        );
                     }
                 } else {
                     echo "<h3>This agent has no properties listed!</h3>";
