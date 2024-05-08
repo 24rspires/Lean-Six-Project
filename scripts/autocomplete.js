@@ -42,7 +42,7 @@ async function autocomplete(inp, typ, id, arr) {
                     id.value = this.getElementsByTagName("input")[2].value;
 
                     if (typ.value === 'address') {
-                        window.location.href = "./property.php?id=" + id.value;
+                        window.location.href = "./search.php?id=" + id.value;
                     }
 
                     /*close the list of autocompleted values,
