@@ -64,13 +64,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $prop1=Properties::getFromId(256);
                     UIHelper::propertyCard(
                        $prop1->property_id,
-                       UIHelper::toMoney($prop1->price),
+                       "$10 (negociable)",
                        $prop1->bedrooms,
                        $prop1->bathrooms,
                        $prop1->square_feet,
-                       $prop1->formatAddress(),
+                       "307 Boker Blvd, Delaware, OH 43015",
                        "Boker Realty", // we don't have a realtor in the db
-                       $prop1->getImages(),
+                       ['images/houses/256/1.jpg'],
                    );
 
                    $prop2=Properties::getFromId(155);
@@ -131,19 +131,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
 <script>
-    const cards = document.querySelectorAll('.property-container');
-
-    cards[0].addEventListener('click', function() {
-        window.location.href = 'search.php?id=<?=$prop1->property_id?>';
-    });
-
-    cards[1].addEventListener('click', function() {
-        window.location.href = 'search.php?id=<?=$prop2->property_id?>';
-    });
-
-    cards[2].addEventListener('click', function() {
-        window.location.href = 'search.php?id=<?=$prop3->property_id?>';
-    });
+    $('.property-container').click(function()
+    {
+        var propertyId = $(this).attr('pid');
+        var target = event.target;
+        if (propertyId && $(target).attr('click-ignore') === undefined)
+        {
+            window.location.href = "search.php?id=" + propertyId;
+        }
+    })
 </script>
 
 </body>

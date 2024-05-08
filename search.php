@@ -146,7 +146,7 @@ include_once "UIHelper.php";
                     </div>
                     <div class="col dropdown">
                         <button class="btn btn-dark dropdown-toggle" type="button" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
-                            Location
+                            Price
                         </button>
                         <div class="dropdown-menu p-4">
                             <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
