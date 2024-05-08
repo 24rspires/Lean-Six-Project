@@ -168,7 +168,7 @@ include_once "dbhelper.php";
 
             <?php
                 if ($user->type > 0) {
-                    echo "
+                    print "
                         <div class='form-group'>
                             <label for='pfp'>Profile Picture: </label>
                             <input type='file' name='pfp' id='pfp' value='Upload Profile Picture' class='form-control-file' accept='.png,.jpg,.jfif'>
@@ -176,7 +176,7 @@ include_once "dbhelper.php";
                     ";
 
                     If (isset($pfp)) {
-                        echo "
+                        print "
                             <label>Current Profile Picture:</label><br>
                             <img src='./images/agents/$pfp' alt='Profile Picture' />
                         ";

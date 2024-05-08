@@ -73,7 +73,7 @@ include_once "Properties.php";
                         );
                     }
                 } else {
-                    echo "<h3>This agent has no properties listed!</h3>";
+                    print "<h3 class='text-center'>This agent has no properties listed!</h3>";
                 }
                 ?>
             </div>

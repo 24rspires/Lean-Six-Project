@@ -459,7 +459,7 @@ include_once "UIHelper.php";
                 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['id'])) {
                     $property_id = $_GET['id'];
 
-                    echo "
+                    print "
                     $('.modal-body').find('iframe').attr('src', 'property.php?id=$property_id');
                     $('#staticBackdrop').modal('show');
                     ";

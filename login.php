@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
             if ($user !== NULL)
             {
                 $user->saveSession();
-		echo "<script>window.location.href = './'</script>";
+		print "<script>window.location.href = './'</script>";
             } else  {
                 $error = true;
             }
